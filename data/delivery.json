@@ -1,0 +1,48 @@
+{
+  "delivery": [
+    {
+      "id": "del001",
+      "project_id": "prj001", 
+      "name": "Food Panda",
+      "image": "/opt/yodeck/medias/delivery-foodpanda.jpg",
+      "category": "Food Delivery",
+      "contact": {
+        "app": "Food Panda App",
+        "phone": "1150"
+      }
+    },
+    {
+      "id": "del002", 
+      "project_id": "prj002",
+      "name": "Grab Food",
+      "image": "/opt/yodeck/medias/delivery-grab.jpg", 
+      "category": "Food Delivery",
+      "contact": {
+        "app": "Grab App",
+        "phone": "1685"
+      }
+    },
+    {
+      "id": "del003",
+      "project_id": "prj003",
+      "name": "Line Man",
+      "image": "/opt/yodeck/medias/delivery-lineman.jpg",
+      "category": "Everything Delivery", 
+      "contact": {
+        "app": "Line Man App",
+        "phone": "088-080-0080"
+      }
+    },
+    {
+      "id": "del004",
+      "project_id": "prj004",
+      "name": "Shopee Food",
+      "image": "/opt/yodeck/medias/delivery-shopee.jpg",
+      "category": "Food Delivery",
+      "contact": {
+        "app": "Shopee App",
+        "phone": "02-123-4567"
+      }
+    }
+  ]
+}

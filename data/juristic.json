@@ -1,0 +1,43 @@
+{
+  "juristic": [
+    {
+      "id": "jur001",
+      "project_id": "prj001",
+      "name": "Monthly Fee Payment",
+      "image": "/opt/yodeck/medias/juristic-payment.jpg",
+      "type": "billing",
+      "due_date": "15th of every month",
+      "methods": ["Bank Transfer", "Counter Service", "Mobile Banking"],
+      "late_fee": "50 THB after due date"
+    },
+    {
+      "id": "jur002",
+      "project_id": "prj002",
+      "name": "Annual General Meeting",
+      "image": "/opt/yodeck/medias/juristic-meeting.jpg",
+      "type": "announcement",
+      "date": "15-Feb-2025 at 2:00 PM", 
+      "location": "Community Hall, Ground Floor",
+      "agenda": "Budget approval & facility updates"
+    },
+    {
+      "id": "jur003", 
+      "project_id": "prj003",
+      "name": "Maintenance Notice",
+      "image": "/opt/yodeck/medias/juristic-maintenance.jpg",
+      "type": "maintenance",
+      "date": "20-Jan-2025, 9:00 AM - 5:00 PM",
+      "service": "Elevator maintenance - Building C",
+      "alternative": "Use Building A or B elevators"
+    },
+    {
+      "id": "jur004",
+      "project_id": "prj004", 
+      "name": "New Rules & Regulations",
+      "image": "/opt/yodeck/medias/juristic-rules.jpg",
+      "type": "policy",
+      "effective_date": "01-Feb-2025",
+      "changes": ["Pet registration required", "Visitor parking fees", "Quiet hours 10PM-8AM"]
+    }
+  ]
+}

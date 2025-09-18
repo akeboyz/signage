@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shop Details - Signage</title>
+
+  <style>
+    /* ================== Reset & Base ================== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      background: black;
+      overflow: hidden;
+      font-family: 'Nunito', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ================== Signage Container (9:16) ================== */
+    .page-wrapper {
+      aspect-ratio: 9 / 16;
+      width: 100%;
+      height: 100vh;
+      max-width: 56.25vh;
+      display: flex;
+      flex-direction: column;
+      background: white;
+      position: relative;
+    }
+
+    /* ================== Header Section ================== */
+    .shop-header {
+      background: linear-gradient(135deg, #0033cc 0%, #001D56 100%);
+      color: white;
+      padding: 12px 15px;
+      text-align: center;
+      position: relative;
+      height: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .shop-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+      line-height: 1.1;
+    }
+
+    .shop-subtitle {
+      font-size: 0.8rem;
+      opacity: 0.9;
+      line-height: 1.1;
+    }
+
+    .back-btn {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 11px;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+      user-select: none;
+      line-height: 1.1;
+    }
+
+    /* ================== Content Section ================== */
+    .content-section {
+      flex: 1;
+      padding: 10px;
+      overflow: hidden;
+      background: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .unit-card {
+      background: white;
+      border-radius: 12px;
+      padding: 10px;
+      color: #333;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* ================== Top Section Layout ================== */
+    .top-section {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 8px;
+      height: 120px;
+    }
+
+    .shop-info-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 8px;
+      overflow: hidden;
+      padding: 12px;
+    }
+
+    .shop-info-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0.4) 50%,
+        rgba(0, 0, 0, 0.6) 100%);
+      z-index: 1;
+    }
+
+    .shop-header-info {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+    }
+
+    .shop-name {
+      font-size: 1.1rem;
+      color: white;
+      margin-bottom: 3px;
+      font-weight: 700;
+      line-height: 1.1;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .shop-category {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.7rem;
+      margin-bottom: 2px;
+      line-height: 1.1;
+      font-weight: 600;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .shop-location {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.65rem;
+      margin-bottom: 3px;
+      font-weight: 500;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .shop-about {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.6rem;
+      line-height: 1.2;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .service-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+      margin-top: 3px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .service-badge {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 2px 6px;
+      border-radius: 8px;
+      font-size: 0.5rem;
+      font-weight: 600;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ================== Compact Image Gallery ================== */
+    .image-gallery {
+      flex: 0 0 120px;
+      width: 120px;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      background: #f5f5f5;
+      border: 1px solid #e0e0e0;
+    }
+
+    .main-image-container {
+      position: relative;
+      width: 100%;
+      height: 120px;
+      overflow: hidden;
+      background: #f0f0f0;
+    }
+
+    .main-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    .image-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      border: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .prev-btn { left: 4px; }
+    .next-btn { right: 4px; }
+
+    .image-counter {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-size: 0.5rem;
+      line-height: 1;
+    }
+
+    /* ================== Compact Details Grid ================== */
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 6px;
+      margin: 8px 0;
+      flex: 1;
+    }
+
+    .detail-item {
+      display: flex;
+      flex-direction: column;
+      padding: 6px;
+      background: #f8f9fa;
+      border-radius: 6px;
+      min-height: 45px;
+      justify-content: center;
+    }
+
+    .detail-label {
+      font-size: 0.6rem;
+      color: #666;
+      margin-bottom: 2px;
+      font-weight: 600;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .detail-value {
+      font-size: 0.7rem;
+      color: #333;
+      font-weight: 600;
+      line-height: 1.1;
+    }
+
+    /* ================== Compact Contact Section ================== */
+    .contact-section {
+      background: rgba(0, 51, 204, 0.1);
+      border-radius: 8px;
+      padding: 8px;
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+
+    .contact-title {
+      font-size: 0.7rem;
+      color: #0033cc;
+      margin-bottom: 6px;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1;
+    }
+
+    .contact-buttons {
+      display: flex;
+      gap: 6px;
+    }
+
+    .contact-btn {
+      flex: 1;
+      background: #0033cc;
+      color: white;
+      border: none;
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-size: 0.6rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      line-height: 1;
+    }
+
+    .contact-btn:hover {
+      background: #001D56;
+    }
+
+    .contact-btn.secondary {
+      background: #FF6900;
+    }
+
+    .contact-btn.secondary:hover {
+      background: #e05d00;
+    }
+
+    /* ================== Items Section ================== */
+    .items-section {
+      background: #f5f8ff;
+      border-radius: 8px;
+      padding: 8px;
+      margin-top: 6px;
+      flex-shrink: 0;
+      border: 1px solid #d6e8ff;
+      position: relative;
+    }
+
+    .items-title {
+      font-size: 0.7rem;
+      color: #0033cc;
+      margin-bottom: 6px;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1;
+    }
+
+    .items-container {
+      position: relative;
+      overflow: hidden;
+      height: 80px;
+    }
+
+    .items-scroll {
+      display: flex;
+      gap: 6px;
+      transition: transform 0.3s ease;
+      height: 80px;
+      align-items: flex-start;
+      flex-wrap: nowrap;
+      align-content: flex-start;
+    }
+
+    .item {
+      background: white;
+      border-radius: 8px;
+      border: 1px solid #f0f0f0;
+      min-width: 100px;
+      height: 75px;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    .item-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: linear-gradient(135deg, #0033cc 0%, #001D56 100%);
+    }
+
+    .item-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: white;
+      padding: 4px 6px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .item-name {
+      font-size: 0.55rem;
+      font-weight: 600;
+      line-height: 1.1;
+      text-align: left;
+      margin-bottom: 2px;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .item-price {
+      font-size: 0.5rem;
+      color: #FFD700;
+      font-weight: 700;
+      line-height: 1;
+      text-align: left;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+    }
+
+    .items-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 51, 204, 0.8);
+      color: white;
+      border: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      opacity: 0.8;
+    }
+
+    .items-nav:hover {
+      opacity: 1;
+      background: rgba(0, 51, 204, 1);
+    }
+
+    .items-nav.prev {
+      left: 2px;
+    }
+
+    .items-nav.next {
+      right: 2px;
+    }
+
+    .items-nav.disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+
+    /* ================== Auto-return Message ================== */
+    .auto-return {
+      position: absolute;
+      bottom: 10px;
+      right: 15px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      backdrop-filter: blur(10px);
+    }
+
+    /* ================== Loading State ================== */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      font-size: 1.2rem;
+      color: #666;
+    }
+
+    /* ================== Map Modal ================== */
+    .map-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .map-modal-backdrop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+    }
+
+    .map-modal-content {
+      position: relative;
+      background: white;
+      border-radius: 16px;
+      width: 90vw;
+      height: 90vw;
+      max-width: 500px;
+      max-height: 500px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      animation: modalSlideIn 0.3s ease-out;
+    }
+
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .map-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid #eee;
+      background: #f8f9fa;
+    }
+
+    .map-modal-header h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .map-modal-close {
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #666;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .map-modal-close:hover {
+      background: rgba(0, 0, 0, 0.1);
+      color: #333;
+    }
+
+    .map-modal-body {
+      display: flex;
+      flex-direction: column;
+      height: calc(100% - 65px);
+    }
+
+    .map-container {
+      flex: 1;
+      position: relative;
+    }
+
+    .map-container iframe {
+      border: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    .map-info {
+      padding: 16px 20px;
+      background: #f8f9fa;
+      border-top: 1px solid #eee;
+      flex-shrink: 0;
+    }
+
+    .map-address,
+    .map-hours,
+    .map-contact {
+      margin-bottom: 12px;
+      font-size: 13px;
+      line-height: 1.4;
+      color: #555;
+    }
+
+    .map-address:last-child,
+    .map-hours:last-child,
+    .map-contact:last-child {
+      margin-bottom: 0;
+    }
+
+    .map-address strong,
+    .map-hours strong,
+    .map-contact strong {
+      color: #333;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .map-contact a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .map-contact a:hover {
+      text-decoration: underline;
+    }
+
+    .map-button {
+      background: #0066cc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 16px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      margin-left: 8px;
+    }
+
+    .map-button:hover {
+      background: #0052a3;
+    }
+
+    /* ================== Cart & Ordering System ================== */
+    .items-section {
+      position: relative;
+    }
+
+    .cart-icon-container {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      z-index: 10;
+      cursor: pointer;
+    }
+
+    .cart-icon {
+      background: rgba(0, 51, 204, 0.8);
+      color: white;
+      border: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.8;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .cart-icon:hover {
+      opacity: 1;
+      background: rgba(0, 51, 204, 1);
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: #FF0000;
+      color: white;
+      border-radius: 50%;
+      width: 14px;
+      height: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      font-weight: bold;
+      border: 1px solid white;
+      min-width: 14px;
+    }
+
+    .item-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quantity-controls {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+
+    .quantity-btn {
+      background: rgba(0, 51, 204, 0.9);
+      color: white;
+      border: none;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s;
+      line-height: 1;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .quantity-btn:hover {
+      background: rgba(0, 51, 204, 1);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    .quantity-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .quantity-display {
+      color: white;
+      font-weight: bold;
+      font-size: 9px;
+      min-width: 10px;
+      text-align: center;
+      line-height: 1;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 8px;
+      padding: 1px 3px;
+    }
+
+    /* ================== Checkout Modal ================== */
+    .checkout-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .checkout-modal-backdrop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+    }
+
+    .checkout-modal-content {
+      position: relative;
+      background: white;
+      border-radius: 16px;
+      width: 90vw;
+      height: 90vw;
+      max-width: 500px;
+      max-height: 500px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      animation: modalSlideIn 0.3s ease-out;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .checkout-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid #eee;
+      background: #f8f9fa;
+      flex-shrink: 0;
+    }
+
+    .checkout-modal-header h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .checkout-modal-close {
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #666;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .checkout-modal-close:hover {
+      background: rgba(0, 0, 0, 0.1);
+      color: #333;
+    }
+
+    .checkout-modal-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 20px;
+    }
+
+    .cart-empty {
+      text-align: center;
+      color: #666;
+      padding: 40px 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+
+    .cart-item-image {
+      width: 50px;
+      height: 50px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .cart-item-details {
+      flex: 1;
+      margin-left: 12px;
+    }
+
+    .cart-item-name {
+      font-weight: 600;
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 4px;
+    }
+
+    .cart-item-price {
+      color: #666;
+      font-size: 12px;
+    }
+
+    .cart-item-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cart-quantity-btn {
+      background: #f0f0f0;
+      border: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .cart-quantity-btn:hover {
+      background: #e0e0e0;
+    }
+
+    .cart-quantity {
+      font-weight: bold;
+      min-width: 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .checkout-modal-footer {
+      padding: 16px 20px;
+      border-top: 1px solid #eee;
+      background: #f8f9fa;
+      flex-shrink: 0;
+    }
+
+    .cart-total {
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .checkout-btn {
+      width: 100%;
+      background: #0033cc;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .checkout-btn:hover {
+      background: #0029a3;
+    }
+
+    .checkout-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- Header Section -->
+    <div class="shop-header">
+      <div class="shop-title" id="shopTitle">Shop Details</div>
+      <div class="shop-subtitle" id="shopSubtitle">Loading...</div>
+      <button class="back-btn" id="backBtn">↩️ back to<br>daily</button>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content-section">
+      <div id="loadingState" class="loading">Loading shop details...</div>
+
+      <div id="errorState" class="error" style="display: none;">
+        <h3>Shop Not Found</h3>
+        <p>The requested shop could not be loaded.</p>
+      </div>
+
+      <div id="shopContent" style="display: none;">
+        <!-- Shop content will be loaded here -->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Map Modal -->
+  <div id="mapModal" class="map-modal" style="display: none;">
+    <div class="map-modal-backdrop" onclick="closeMapModal()"></div>
+    <div class="map-modal-content">
+      <div class="map-modal-header">
+        <h3 id="mapModalTitle">Location</h3>
+        <button class="map-modal-close" onclick="closeMapModal()">×</button>
+      </div>
+      <div class="map-modal-body">
+        <div id="mapContainer" class="map-container">
+          <iframe id="mapIframe" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="map-info">
+          <div id="mapAddress" class="map-address"></div>
+          <div id="mapHours" class="map-hours"></div>
+          <div id="mapContact" class="map-contact"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div id="checkoutModal" class="checkout-modal" style="display: none;">
+    <div class="checkout-modal-backdrop" onclick="closeCheckoutModal()"></div>
+    <div class="checkout-modal-content">
+      <div class="checkout-modal-header">
+        <h3>Your Order</h3>
+        <button class="checkout-modal-close" onclick="closeCheckoutModal()">×</button>
+      </div>
+      <div class="checkout-modal-body">
+        <div id="cartItems"></div>
+        <div id="cartEmpty" class="cart-empty" style="display: none;">
+          <p>Your cart is empty</p>
+        </div>
+      </div>
+      <div class="checkout-modal-footer" id="checkoutFooter" style="display: none;">
+        <div id="cartTotal" class="cart-total"></div>
+        <button class="checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ===== PARAMETERS =====
+    const qs = new URLSearchParams(location.search);
+    const shopId = qs.get('shop') || 'shop001';
+    const projectId = qs.get('project_id') || '';
+
+    // ===== UTILITY FUNCTIONS =====
+    const withBase = (p) => './' + p.replace(/^\.?\//, '');
+
+    function getImageUrl(imagePath) {
+      if (!imagePath) return '/opt/yodeck/medias/placeholder.jpg';
+      if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+        return imagePath; // External URL, use as-is
+      }
+      return withBase(imagePath); // Local path, add base
+    }
+
+    function escapeHtml(s) {
+      return String(s || '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+    }
+
+    function serviceBadges(arr) {
+      if (!Array.isArray(arr)) return [];
+      const map = {
+        walk_in: { text: 'Walk-in', class: 'walkin' },
+        delivery: { text: 'Delivery', class: 'delivery' },
+        mobile_order: { text: 'Mobile Order', class: 'mobile' },
+        reservation: { text: 'Reservation', class: 'reservation' },
+        ads_only: { text: 'Ads Only', class: 'ads' }
+      };
+      return arr.map(k => map[k] || { text: k, class: 'default' });
+    }
+
+    // ===== IMAGE GALLERY =====
+    function createImageGallery(images, videos) {
+      let currentIndex = 0;
+      const allImages = [];
+
+      // Combine images and videos
+      if (Array.isArray(images)) {
+        images.forEach(src => allImages.push(src));
+      }
+      if (Array.isArray(videos)) {
+        videos.forEach(src => allImages.push(src));
+      }
+
+      if (allImages.length === 0) {
+        allImages.push('/opt/yodeck/medias/placeholder.jpg');
+      }
+
+      console.log('Gallery images:', allImages);
+
+      const imageGallery = document.createElement('div');
+      imageGallery.className = 'image-gallery';
+
+      const imageContainer = document.createElement('div');
+      imageContainer.className = 'main-image-container';
+
+      const mainImage = document.createElement('img');
+      mainImage.className = 'main-image';
+      mainImage.src = getImageUrl(allImages[0]);
+      mainImage.alt = 'Shop Image';
+      mainImage.onerror = function() {
+        this.src = '/opt/yodeck/medias/placeholder.jpg';
+      };
+      mainImage.style.display = 'block';
+
+      const prevBtn = document.createElement('button');
+      prevBtn.className = 'image-nav prev-btn';
+      prevBtn.innerHTML = '‹';
+      prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
+        updateImage();
+      });
+
+      const nextBtn = document.createElement('button');
+      nextBtn.className = 'image-nav next-btn';
+      nextBtn.innerHTML = '›';
+      nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % allImages.length;
+        updateImage();
+      });
+
+      const imageCounter = document.createElement('div');
+      imageCounter.className = 'image-counter';
+      imageCounter.textContent = `1 / ${allImages.length}`;
+
+      function updateImage() {
+        mainImage.src = getImageUrl(allImages[currentIndex]);
+        imageCounter.textContent = `${currentIndex + 1} / ${allImages.length}`;
+      }
+
+      imageContainer.appendChild(mainImage);
+      if (allImages.length > 1) {
+        imageContainer.appendChild(prevBtn);
+        imageContainer.appendChild(nextBtn);
+      }
+      imageContainer.appendChild(imageCounter);
+      imageGallery.appendChild(imageContainer);
+
+      return imageGallery;
+    }
+
+    // ===== GLOBAL SHOP REFERENCE & CART SYSTEM =====
+    let currentShop = null;
+    let cart = [];
+
+    function updateCartDisplay() {
+      const cartIcon = document.getElementById('cartIcon');
+      const cartCount = document.getElementById('cartCount');
+
+      // Return early if elements don't exist yet
+      if (!cartIcon || !cartCount) return;
+
+      const hasOrderableItems = currentShop &&
+        Array.isArray(currentShop.service_type) &&
+        (currentShop.service_type.includes('mobile_order') ||
+         currentShop.service_type.includes('delivery'));
+
+      if (hasOrderableItems && cart.length > 0) {
+        cartIcon.style.display = 'block';
+        cartCount.style.display = 'block';
+        cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+      } else if (hasOrderableItems) {
+        cartIcon.style.display = 'block';
+        cartCount.style.display = 'none';
+      } else {
+        cartIcon.style.display = 'none';
+      }
+    }
+
+    function addToCart(shopItem) {
+      const existingItem = cart.find(item => item.id === shopItem.id);
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({
+          id: shopItem.id || shopItem.name_en,
+          name: shopItem.name_en || shopItem.name_th,
+          price: shopItem.price || 0,
+          image: shopItem.image,
+          quantity: 1
+        });
+      }
+      updateCartDisplay();
+      updateItemControls(shopItem);
+      resetAutoReturn();
+    }
+
+    function removeFromCart(shopItem) {
+      const existingItem = cart.find(item => item.id === (shopItem.id || shopItem.name_en));
+      if (existingItem) {
+        existingItem.quantity -= 1;
+        if (existingItem.quantity <= 0) {
+          cart = cart.filter(item => item.id !== existingItem.id);
+        }
+      }
+      updateCartDisplay();
+      updateItemControls(shopItem);
+      resetAutoReturn();
+    }
+
+    function getCartQuantity(shopItem) {
+      const cartItem = cart.find(item => item.id === (shopItem.id || shopItem.name_en));
+      return cartItem ? cartItem.quantity : 0;
+    }
+
+    function updateItemControls(shopItem) {
+      const itemId = shopItem.id || shopItem.name_en;
+      const controls = document.querySelector(`[data-item-id="${itemId}"] .quantity-controls`);
+      const quantityDisplay = document.querySelector(`[data-item-id="${itemId}"] .quantity-display`);
+
+      if (controls && quantityDisplay) {
+        const quantity = getCartQuantity(shopItem);
+        quantityDisplay.textContent = quantity || '0';
+      }
+    }
+
+    function showCheckoutModal() {
+      const modal = document.getElementById('checkoutModal');
+      const cartItems = document.getElementById('cartItems');
+      const cartEmpty = document.getElementById('cartEmpty');
+      const checkoutFooter = document.getElementById('checkoutFooter');
+      const cartTotal = document.getElementById('cartTotal');
+
+      if (cart.length === 0) {
+        cartItems.innerHTML = '';
+        cartEmpty.style.display = 'block';
+        checkoutFooter.style.display = 'none';
+      } else {
+        cartEmpty.style.display = 'none';
+        checkoutFooter.style.display = 'block';
+
+        // Render cart items
+        cartItems.innerHTML = cart.map(item => `
+          <div class="cart-item">
+            <div class="cart-item-image" style="background-image: url('${item.image || 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=100&h=100&fit=crop'}')"></div>
+            <div class="cart-item-details">
+              <div class="cart-item-name">${escapeHtml(item.name)}</div>
+              <div class="cart-item-price">฿${item.price}</div>
+            </div>
+            <div class="cart-item-controls">
+              <button class="cart-quantity-btn" onclick="updateCartItemQuantity('${item.id}', -1)">-</button>
+              <div class="cart-quantity">${item.quantity}</div>
+              <button class="cart-quantity-btn" onclick="updateCartItemQuantity('${item.id}', 1)">+</button>
+            </div>
+          </div>
+        `).join('');
+
+        // Calculate total
+        const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        cartTotal.textContent = `Total: ฿${total}`;
+      }
+
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      resetAutoReturn();
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById('checkoutModal').style.display = 'none';
+      document.body.style.overflow = 'auto';
+      resetAutoReturn();
+    }
+
+    function updateCartItemQuantity(itemId, change) {
+      const item = cart.find(item => item.id === itemId);
+      if (item) {
+        item.quantity += change;
+        if (item.quantity <= 0) {
+          cart = cart.filter(cartItem => cartItem.id !== itemId);
+        }
+        updateCartDisplay();
+        showCheckoutModal(); // Refresh the modal
+
+        // Update item controls
+        const shopItem = { id: itemId, name_en: itemId };
+        updateItemControls(shopItem);
+      }
+    }
+
+    function proceedToCheckout() {
+      // Here you would integrate with payment system
+      alert(`Proceeding to checkout with ${cart.length} items. Total: ฿${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)}`);
+
+      // For demo, clear cart after "checkout"
+      cart = [];
+      updateCartDisplay();
+      closeCheckoutModal();
+    }
+
+    // ===== RENDER SHOP DETAILS =====
+    function renderShopDetails(shop) {
+      // Store current shop reference for cart and map system
+      currentShop = shop;
+
+      // Hide loading, show content
+      document.getElementById('loadingState').style.display = 'none';
+      document.getElementById('shopContent').style.display = 'block';
+
+      // Update header
+      const name = shop.name_en || shop.name_th || 'Shop';
+      document.getElementById('shopTitle').textContent = name;
+
+      const category = shop.category_en || shop.category_th || '';
+      const location = shop.location_en || shop.location_th || '';
+      document.getElementById('shopSubtitle').textContent = [category, location].filter(Boolean).join(' • ');
+
+      const container = document.getElementById('shopContent');
+      container.innerHTML = '';
+
+      // Shop Info Card
+      const shopCard = document.createElement('div');
+      shopCard.className = 'unit-card';
+
+      // Top Section: Info + Image
+      const topSection = document.createElement('div');
+      topSection.className = 'top-section';
+
+      // Info Section with Background Image
+      const infoSection = document.createElement('div');
+      infoSection.className = 'shop-info-section';
+
+      // Set background image on info section
+      const bgImage = (shop.images && shop.images.length > 0)
+        ? shop.images[0]
+        : 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=300&fit=crop';
+      infoSection.style.backgroundImage = `url('${bgImage}')`;
+
+      const headerInfo = document.createElement('div');
+      headerInfo.className = 'shop-header-info';
+
+      const shopName = document.createElement('div');
+      shopName.className = 'shop-name';
+      shopName.textContent = name;
+
+      const shopCategory = document.createElement('div');
+      shopCategory.className = 'shop-category';
+      shopCategory.textContent = category;
+
+      // Location information
+      const shopLocation = document.createElement('div');
+      shopLocation.className = 'shop-location';
+      shopLocation.textContent = location;
+
+      // About/Description information
+      const shopAbout = document.createElement('div');
+      shopAbout.className = 'shop-about';
+      const description = shop.description_en || shop.description_th || '';
+      shopAbout.textContent = description;
+
+      // Service badges (compact)
+      const serviceBadgesContainer = document.createElement('div');
+      serviceBadgesContainer.className = 'service-badges';
+      const services = serviceBadges(shop.service_type);
+      services.slice(0, 3).forEach(service => {
+        const badge = document.createElement('span');
+        badge.className = 'service-badge';
+        badge.textContent = service.text;
+        serviceBadgesContainer.appendChild(badge);
+      });
+
+      headerInfo.appendChild(shopName);
+      headerInfo.appendChild(shopCategory);
+      headerInfo.appendChild(shopLocation);
+      headerInfo.appendChild(shopAbout);
+      headerInfo.appendChild(serviceBadgesContainer);
+      infoSection.appendChild(headerInfo);
+
+      // Image gallery
+      const imageGallery = createImageGallery(shop.images, shop.videos);
+
+      topSection.appendChild(infoSection);
+      topSection.appendChild(imageGallery);
+      shopCard.appendChild(topSection);
+
+      // Details grid
+      const detailsGrid = document.createElement('div');
+      detailsGrid.className = 'details-grid';
+
+      // Shop info
+      const infoCard = document.createElement('div');
+      infoCard.className = 'detail-item';
+      infoCard.innerHTML = `
+        <div class="detail-label">Category</div>
+        <div class="detail-value">${escapeHtml(category)}</div>
+      `;
+      detailsGrid.appendChild(infoCard);
+
+      const locationCard = document.createElement('div');
+      locationCard.className = 'detail-item';
+      locationCard.innerHTML = `
+        <div class="detail-label">Location</div>
+        <div class="detail-value">${escapeHtml(location)}</div>
+      `;
+      detailsGrid.appendChild(locationCard);
+
+      // Description
+      if (shop.description_en || shop.description_th) {
+        const descCard = document.createElement('div');
+        descCard.className = 'detail-item';
+        descCard.innerHTML = `
+          <div class="detail-label">About</div>
+          <div class="detail-value">${escapeHtml(shop.description_en || shop.description_th)}</div>
+        `;
+        detailsGrid.appendChild(descCard);
+      }
+
+      shopCard.appendChild(detailsGrid);
+
+      // Items section with horizontal scroll
+      if (shop.items && Array.isArray(shop.items) && shop.items.length > 0) {
+        const itemsSection = document.createElement('div');
+        itemsSection.className = 'items-section';
+
+        const itemsTitle = document.createElement('div');
+        itemsTitle.className = 'items-title';
+        itemsTitle.textContent = 'Items & Services';
+
+        // Add cart icon to items section
+        const cartIcon = document.createElement('div');
+        cartIcon.id = 'cartIcon';
+        cartIcon.className = 'cart-icon-container';
+        cartIcon.style.display = 'none';
+        cartIcon.addEventListener('click', showCheckoutModal);
+        cartIcon.innerHTML = `
+          <div class="cart-icon">
+            🛒
+            <div id="cartCount" class="cart-count" style="display: none;">0</div>
+          </div>
+        `;
+
+        const itemsContainer = document.createElement('div');
+        itemsContainer.className = 'items-container';
+
+        const itemsScroll = document.createElement('div');
+        itemsScroll.className = 'items-scroll';
+
+        // Create items
+        shop.items.forEach(item => {
+          const itemElement = document.createElement('div');
+          itemElement.className = 'item item-card';
+          itemElement.setAttribute('data-item-id', item.id || item.name_en);
+
+          // Item image (with gradient fallback)
+          const itemImage = document.createElement('div');
+          itemImage.className = 'item-image';
+
+          // Try to load the image, fall back to gradient if it fails
+          const img = new Image();
+          img.onload = function() {
+            itemImage.style.backgroundImage = `url('${this.src}')`;
+            itemImage.style.backgroundSize = 'cover';
+            itemImage.style.backgroundPosition = 'center';
+          };
+          img.onerror = function() {
+            // Keep the CSS gradient background as fallback
+            console.log('Item image failed to load:', item.image);
+          };
+          if (item.image) {
+            img.src = getImageUrl(item.image);
+          }
+
+          // Overlay with text
+          const overlay = document.createElement('div');
+          overlay.className = 'item-overlay';
+
+          const itemName = document.createElement('div');
+          itemName.className = 'item-name';
+          itemName.textContent = item.name_en || item.name_th || 'Item';
+
+          const itemPrice = document.createElement('div');
+          itemPrice.className = 'item-price';
+          itemPrice.textContent = item.price ? `฿${item.price}` : (item.price === 0 ? 'Free' : '');
+
+          overlay.appendChild(itemName);
+          overlay.appendChild(itemPrice);
+
+          // Add quantity controls (only for mobile_order or delivery)
+          const hasOrderableItems = shop &&
+            Array.isArray(shop.service_type) &&
+            (shop.service_type.includes('mobile_order') ||
+             shop.service_type.includes('delivery'));
+
+          console.log('Shop service types:', shop.service_type);
+          console.log('Has orderable items:', hasOrderableItems);
+
+          if (hasOrderableItems) {
+            const quantityControls = document.createElement('div');
+            quantityControls.className = 'quantity-controls';
+
+            const minusBtn = document.createElement('button');
+            minusBtn.className = 'quantity-btn';
+            minusBtn.textContent = '-';
+            minusBtn.onclick = (e) => {
+              e.stopPropagation();
+              removeFromCart(item);
+            };
+
+            const quantityDisplay = document.createElement('div');
+            quantityDisplay.className = 'quantity-display';
+            quantityDisplay.textContent = '0';
+
+            const plusBtn = document.createElement('button');
+            plusBtn.className = 'quantity-btn';
+            plusBtn.textContent = '+';
+            plusBtn.onclick = (e) => {
+              e.stopPropagation();
+              addToCart(item);
+            };
+
+            quantityControls.appendChild(minusBtn);
+            quantityControls.appendChild(quantityDisplay);
+            quantityControls.appendChild(plusBtn);
+            itemElement.appendChild(quantityControls);
+          }
+
+          itemElement.appendChild(itemImage);
+          itemElement.appendChild(overlay);
+          itemsScroll.appendChild(itemElement);
+        });
+
+        // Navigation buttons
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'items-nav prev';
+        prevBtn.innerHTML = '‹';
+
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'items-nav next';
+        nextBtn.innerHTML = '›';
+
+        // Horizontal scroll functionality
+        let currentItemsScroll = 0;
+        const itemWidth = 106; // 100px + 6px gap
+        let visibleItems = 3; // default value
+        let maxScroll = 0;
+
+        function calculateScrollMetrics() {
+          const containerWidth = itemsContainer.offsetWidth || 250;
+          visibleItems = Math.floor(containerWidth / itemWidth) || 3;
+          maxScroll = Math.max(0, (shop.items.length - visibleItems) * itemWidth);
+        }
+
+        function updateItemsScroll() {
+          itemsScroll.style.transform = `translateX(-${currentItemsScroll}px)`;
+
+          // Update button states
+          prevBtn.classList.toggle('disabled', currentItemsScroll <= 0);
+          nextBtn.classList.toggle('disabled', currentItemsScroll >= maxScroll);
+        }
+
+        prevBtn.addEventListener('click', () => {
+          calculateScrollMetrics(); // Recalculate in case of resize
+          if (currentItemsScroll > 0) {
+            currentItemsScroll = Math.max(0, currentItemsScroll - itemWidth * 2);
+            updateItemsScroll();
+          }
+        });
+
+        nextBtn.addEventListener('click', () => {
+          calculateScrollMetrics(); // Recalculate in case of resize
+          if (currentItemsScroll < maxScroll) {
+            currentItemsScroll = Math.min(maxScroll, currentItemsScroll + itemWidth * 2);
+            updateItemsScroll();
+          }
+        });
+
+        // Touch/swipe support
+        let startX = 0;
+        let currentX = 0;
+        let isDragging = false;
+
+        itemsContainer.addEventListener('touchstart', (e) => {
+          startX = e.touches[0].clientX;
+          isDragging = true;
+        }, { passive: true });
+
+        itemsContainer.addEventListener('touchmove', (e) => {
+          if (!isDragging) return;
+          currentX = e.touches[0].clientX;
+          e.preventDefault();
+        }, { passive: false });
+
+        itemsContainer.addEventListener('touchend', () => {
+          if (!isDragging) return;
+          isDragging = false;
+          calculateScrollMetrics(); // Recalculate before touch action
+
+          const deltaX = startX - currentX;
+          if (Math.abs(deltaX) > 30) { // Minimum swipe distance
+            if (deltaX > 0 && currentItemsScroll < maxScroll) {
+              // Swipe left - scroll right
+              currentItemsScroll = Math.min(maxScroll, currentItemsScroll + itemWidth * 2);
+            } else if (deltaX < 0 && currentItemsScroll > 0) {
+              // Swipe right - scroll left
+              currentItemsScroll = Math.max(0, currentItemsScroll - itemWidth * 2);
+            }
+            updateItemsScroll();
+          }
+        });
+
+        itemsContainer.appendChild(itemsScroll);
+
+        itemsSection.appendChild(itemsTitle);
+        itemsSection.appendChild(cartIcon);
+        itemsSection.appendChild(itemsContainer);
+        shopCard.appendChild(itemsSection);
+
+        // Update cart display after cart icon is created
+        setTimeout(() => updateCartDisplay(), 0);
+
+        // Initialize scroll state after DOM is added
+        setTimeout(() => {
+          calculateScrollMetrics();
+
+          if (shop.items.length > visibleItems) {
+            itemsContainer.appendChild(prevBtn);
+            itemsContainer.appendChild(nextBtn);
+          }
+
+          updateItemsScroll();
+        }, 100);
+      }
+
+      // Contact section
+      if (shop.contact) {
+        const contactSection = document.createElement('div');
+        contactSection.className = 'contact-section';
+
+        const contactInfo = [];
+        if (shop.contact.phone) contactInfo.push(`📞 ${shop.contact.phone}`);
+        if (shop.contact.line) contactInfo.push(`💬 Line: ${shop.contact.line}`);
+
+        const hasWalkIn = Array.isArray(shop.service_type) && shop.service_type.includes('walk_in');
+        const hasMapEmbed = shop.map_embed_url;
+
+        let contactButtons = `
+            <button class="contact-btn">📞 Call Now</button>
+            <button class="contact-btn secondary">💬 Inquire</button>
+        `;
+
+        if (hasWalkIn && hasMapEmbed) {
+          contactButtons += `<button class="contact-btn map-button" onclick="showMapModal(currentShop)">📍 View Map</button>`;
+        }
+
+        contactSection.innerHTML = `
+          <div class="contact-title">Contact Information</div>
+          <div class="contact-buttons">
+            ${contactButtons}
+          </div>
+        `;
+        shopCard.appendChild(contactSection);
+      }
+
+      // Add the card to container
+      container.appendChild(shopCard);
+    }
+
+    // ===== LOAD SHOP DATA =====
+    async function loadShopData() {
+      try {
+        const response = await fetch('./data/shop.json');
+        const data = await response.json();
+        const shops = Array.isArray(data) ? data : (data.shops || []);
+        const shop = shops.find(s => s.id === shopId);
+
+        if (!shop) {
+          document.getElementById('loadingState').style.display = 'none';
+          document.getElementById('errorState').style.display = 'block';
+          return;
+        }
+
+        renderShopDetails(shop);
+        document.getElementById('loadingState').style.display = 'none';
+
+      } catch (error) {
+        console.error('Error loading shop data:', error);
+        document.getElementById('loadingState').style.display = 'none';
+        document.getElementById('errorState').style.display = 'block';
+        document.getElementById('errorState').innerHTML = `
+          <h3>Error</h3>
+          <p>Failed to load shop data</p>
+        `;
+      }
+    }
+
+    // ===== BACK BUTTON =====
+    document.getElementById('backBtn').addEventListener('click', () => {
+      const url = new URL('/category.html', location.origin);
+      url.searchParams.set('type', 'daily');
+      if (projectId) url.searchParams.set('project_id', projectId);
+      location.href = url.toString();
+    });
+
+
+    // ===== MAP MODAL FUNCTIONS =====
+    function showMapModal(shop) {
+      if (!shop.map_embed_url) return;
+
+      // Set modal content
+      document.getElementById('mapModalTitle').textContent = `${shop.name_en || shop.name_th || 'Shop'} - Location`;
+      document.getElementById('mapIframe').src = shop.map_embed_url;
+
+      // Set address and contact info
+      const addressEl = document.getElementById('mapAddress');
+      if (shop.address) {
+        addressEl.innerHTML = `<strong>Address:</strong><br>${escapeHtml(shop.address)}`;
+        addressEl.style.display = 'block';
+      } else {
+        addressEl.style.display = 'none';
+      }
+
+      const hoursEl = document.getElementById('mapHours');
+      if (shop.opening_hours) {
+        hoursEl.innerHTML = `<strong>Hours:</strong><br>${escapeHtml(shop.opening_hours)}`;
+        hoursEl.style.display = 'block';
+      } else {
+        hoursEl.style.display = 'none';
+      }
+
+      const contactEl = document.getElementById('mapContact');
+      if (shop.contact && shop.contact.phone) {
+        contactEl.innerHTML = `<strong>Phone:</strong> <a href="tel:${escapeHtml(shop.contact.phone)}">${escapeHtml(shop.contact.phone)}</a>`;
+        contactEl.style.display = 'block';
+      } else {
+        contactEl.style.display = 'none';
+      }
+
+      // Show modal
+      document.getElementById('mapModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+
+      // Reset auto return timer when map is opened
+      resetAutoReturn();
+    }
+
+    function closeMapModal() {
+      document.getElementById('mapModal').style.display = 'none';
+      document.body.style.overflow = 'auto';
+      document.getElementById('mapIframe').src = 'about:blank';
+
+      // Reset auto return timer when map is closed
+      resetAutoReturn();
+    }
+
+    function resetAutoReturn() {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        const url = new URL('./menu.html', location.origin);
+        if (projectId) url.searchParams.set('project_id', projectId);
+        location.href = url.toString();
+      }, 60000);
+    }
+
+    // ===== AUTO RETURN =====
+    let timeout = setTimeout(() => {
+      const url = new URL('./menu.html', location.origin);
+      if (projectId) url.searchParams.set('project_id', projectId);
+      location.href = url.toString();
+    }, 60000);
+
+    // Reset timer on user interaction
+    ['click', 'touchstart', 'mousemove'].forEach(event => {
+      document.addEventListener(event, resetAutoReturn);
+    });
+
+    // ===== INITIALIZE =====
+    loadShopData();
+  </script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+{
+  "foodies": [
+    {
+      "id": "rest001",
+      "project_id": "prj001",
+      "name_th": "ซูชิ ฮิโร่",
+      "name_en": "Sushi Hiro",
+      "category_th": "อาหารญี่ปุ่น",
+      "category_en": "Japanese",
+      "location_th": "ชั้น 1 อาคาร A",
+      "location_en": "1st Floor, Building A",
+      "service_type": ["walk_in", "delivery", "reservation"],
+      "contact": {
+        "phone": "02-123-4567",
+        "line": "@sushihiro"
+      },
+      "images": ["rest001-01.jpeg", "rest001-02.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "rest002",
+      "project_id": "prj002",
+      "name_th": "อาฟเตอร์ ยู",
+      "name_en": "After You",
+      "category_th": "ของหวาน & คาเฟ่",
+      "category_en": "Dessert & Cafe",
+      "location_th": "ชั้นล่าง",
+      "location_en": "Ground Floor",
+      "service_type": ["walk_in", "mobile_order"],
+      "contact": {
+        "phone": "02-234-5678",
+        "line": "@afteryou"
+      },
+      "images": ["rest002-01.jpeg", "rest002-02.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "rest003",
+      "project_id": "prj003",
+      "name_th": "ไฟร์ ไทเกอร์",
+      "name_en": "Fire Tiger",
+      "category_th": "บาร์บีคิวไทย",
+      "category_en": "Thai BBQ",
+      "location_th": "ชั้น 2",
+      "location_en": "2nd Floor",
+      "service_type": ["walk_in", "reservation"],
+      "contact": {
+        "phone": "02-345-6789",
+        "line": "@firetiger"
+      },
+      "images": ["rest003-01.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "rest004",
+      "project_id": "prj004",
+      "name_th": "พาสต้า เฟรสกา",
+      "name_en": "Pasta Fresca",
+      "category_th": "อิตาลี",
+      "category_en": "Italian",
+      "location_th": "ชั้น 1",
+      "location_en": "1st Floor",
+      "service_type": ["walk_in", "delivery"],
+      "contact": {
+        "phone": "02-456-7890",
+        "line": "@pastafresca"
+      },
+      "images": ["rest004-01.jpeg", "rest004-02.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "rest005",
+      "project_id": "prj001",
+      "name_th": "สเต็กเฮ้าส์",
+      "name_en": "Steak House",
+      "category_th": "อาหารตะวันตก",
+      "category_en": "Western",
+      "location_th": "ชั้น 2 อาคาร A",
+      "location_en": "2nd Floor, Building A",
+      "service_type": ["walk_in", "reservation"],
+      "contact": {
+        "phone": "02-567-8901",
+        "line": "@steakhouse"
+      },
+      "images": ["rest005-01.jpeg", "rest005-02.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "rest006",
+      "project_id": "prj001",
+      "name_th": "ก๋วยเตี๋ยวเรือ",
+      "name_en": "Boat Noodles",
+      "category_th": "อาหารไทย",
+      "category_en": "Thai",
+      "location_th": "ชั้นล่าง",
+      "location_en": "Ground Floor",
+      "service_type": ["walk_in", "delivery"],
+      "contact": {
+        "phone": "02-678-9012",
+        "line": "@boatnoodles"
+      },
+      "images": ["rest006-01.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "rest007",
+      "project_id": "prj002",
+      "name_th": "พิซซ่าแฮท",
+      "name_en": "Pizza Hut",
+      "category_th": "อาหารตะวันตก",
+      "category_en": "Western",
+      "location_th": "ชั้น 1",
+      "location_en": "1st Floor",
+      "service_type": ["walk_in", "delivery", "takeout"],
+      "contact": {
+        "phone": "1150",
+        "line": "@pizzahut"
+      },
+      "images": ["rest007-01.jpeg", "rest007-02.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "rest008",
+      "project_id": "prj002",
+      "name_th": "ข้าวมันไก่",
+      "name_en": "Chicken Rice",
+      "category_th": "อาహารไทย-จีน",
+      "category_en": "Thai-Chinese",
+      "location_th": "ชั้นล่าง",
+      "location_en": "Ground Floor",
+      "service_type": ["walk_in"],
+      "contact": {
+        "phone": "02-789-0123",
+        "line": "@chickenrice"
+      },
+      "images": ["rest008-01.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "rest009",
+      "project_id": "prj003",
+      "name_th": "โมคาคาเฟ่",
+      "name_en": "Mocha Cafe",
+      "category_th": "คาเฟ่",
+      "category_en": "Cafe",
+      "location_th": "ชั้น 1",
+      "location_en": "1st Floor",
+      "service_type": ["walk_in", "delivery"],
+      "contact": {
+        "phone": "02-890-1234",
+        "line": "@mochacafe"
+      },
+      "images": ["rest009-01.jpeg", "rest009-02.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "rest010",
+      "project_id": "prj003",
+      "name_th": "โรงแรมจีน",
+      "name_en": "Chinese Restaurant",
+      "category_th": "อาหารจีน",
+      "category_en": "Chinese",
+      "location_th": "ชั้น 3",
+      "location_en": "3rd Floor",
+      "service_type": ["walk_in", "reservation"],
+      "contact": {
+        "phone": "02-901-2345",
+        "line": "@chineserest"
+      },
+      "images": ["rest010-01.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "rest011",
+      "project_id": "prj004",
+      "name_th": "บาร์เบอร์เกอร์",
+      "name_en": "Burger Bar",
+      "category_th": "ฟาสต์ฟู้ด",
+      "category_en": "Fast Food",
+      "location_th": "ชั้นล่าง",
+      "location_en": "Ground Floor",
+      "service_type": ["walk_in", "delivery", "takeout"],
+      "contact": {
+        "phone": "02-012-3456",
+        "line": "@burgerbar"
+      },
+      "images": ["rest011-01.jpeg", "rest011-02.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "rest012",
+      "project_id": "prj004",
+      "name_th": "ไอศกรีมโฮมเมด",
+      "name_en": "Homemade Ice Cream",
+      "category_th": "ของหวาน",
+      "category_en": "Dessert",
+      "location_th": "ชั้น 1",
+      "location_en": "1st Floor",
+      "service_type": ["walk_in"],
+      "contact": {
+        "phone": "02-123-4567",
+        "line": "@icecream"
+      },
+      "images": ["rest012-01.jpeg"],
+      "status": "open"
+    }
+  ]
+}

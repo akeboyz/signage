@@ -1,0 +1,31 @@
+{
+  "property_management_companies": [
+    {
+      "pm_id": "pm001",
+      "name_th": "บริษัท แอล พี พี พรอพเพอร์ตี้ มาเนจเมนท์ จำกัด",
+      "name_en": "LPP Property Management Co., Ltd.",
+      "logo": "/opt/yodeck/medias/pm001_logo.png",
+      "email": "",
+      "website": "",
+      "address": ""
+    },
+    {
+      "pm_id": "pm002",
+      "name_th": "บริษัทบริหารสินทรัพย์ นิติบุคคลคอนโด สุขุมวิท เรสซิเดนซ์",
+      "name_en": "Sukhumvit Residence Juristic Management Co., Ltd.",
+      "logo": "/opt/yodeck/medias/pm002_logo.png",
+      "email": "",
+      "website": "",
+      "address": ""
+    },
+    {
+      "pm_id": "pm003",
+      "name_th": "บริษัท พี พี เอ็ม แมนเนจเมนท์ จำกัด",
+      "name_en": "PPM Management Co., Ltd.",
+      "logo": "/opt/yodeck/medias/pm003_logo.png",
+      "email": "info@ppmthai.com",
+      "website": "https://ppmthai.com",
+      "address": "1000/145 Liberty Plaza Building, Soi Thonglor Sukhumvit 55, Klong Tan Nuea, Wattana, Bangkok, 10110"
+    }
+  ]
+}

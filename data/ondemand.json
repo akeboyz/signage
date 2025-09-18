@@ -1,0 +1,44 @@
+{
+  "ondemand": [
+    {
+      "id": "od001",
+      "project_id": "prj001",
+      "name": "Housekeeping Service",
+      "image": "/opt/yodeck/medias/ondemand-cleaning.jpg",
+      "type": "home_service",
+      "price": "800 THB for 3 hours",
+      "booking": "Call Ext. 102 or Line @housekeeping",
+      "availability": "Mon-Sat, 8:00 AM - 6:00 PM"
+    },
+    {
+      "id": "od002", 
+      "project_id": "prj002",
+      "name": "Grocery Delivery",
+      "image": "/opt/yodeck/medias/ondemand-grocery.jpg",
+      "type": "delivery",
+      "price": "50 THB delivery fee",
+      "booking": "Order via app or call 02-111-2222", 
+      "availability": "Daily, 7:00 AM - 10:00 PM"
+    },
+    {
+      "id": "od003",
+      "project_id": "prj003",
+      "name": "Laundry & Dry Cleaning", 
+      "image": "/opt/yodeck/medias/ondemand-laundry.jpg",
+      "type": "home_service",
+      "price": "Starting from 120 THB",
+      "booking": "Drop off at lobby or call Ext. 103",
+      "availability": "Mon-Fri, 8:00 AM - 7:00 PM"
+    },
+    {
+      "id": "od004",
+      "project_id": "prj004",
+      "name": "Pet Care Service",
+      "image": "/opt/yodeck/medias/ondemand-petcare.jpg",
+      "type": "pet_service", 
+      "price": "500 THB per visit",
+      "booking": "Book 24 hours in advance via Line @petcare",
+      "availability": "Daily, 9:00 AM - 8:00 PM"
+    }
+  ]
+}

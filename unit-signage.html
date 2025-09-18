@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit Details - Digital Signage</title>
+  <style>
+    /* ================== Reset & Base ================== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      background: black;
+      overflow: hidden;
+      font-family: 'Nunito', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ================== Signage Container (9:16) ================== */
+    .page-wrapper {
+      aspect-ratio: 9 / 16;
+      width: 100%;
+      height: 100vh;
+      max-width: 56.25vh;
+      display: flex;
+      flex-direction: column;
+      background: white;
+      position: relative;
+    }
+
+    /* ================== Header Section ================== */
+    .unit-header {
+      background: linear-gradient(135deg, #001D56 0%, #0033cc 100%);
+      color: white;
+      padding: 12px 15px;
+      text-align: center;
+      position: relative;
+      height: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .unit-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+      line-height: 1.1;
+    }
+
+    .unit-subtitle {
+      font-size: 0.8rem;
+      opacity: 0.9;
+      line-height: 1.1;
+    }
+
+    .back-btn {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 11px;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+      user-select: none;
+      line-height: 1.1;
+    }
+
+    /* ================== Content Section ================== */
+    .content-section {
+      flex: 1;
+      padding: 10px;
+      overflow: hidden;
+      background: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .unit-card {
+      background: white;
+      border-radius: 12px;
+      padding: 10px;
+      color: #333;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* ================== Top Section Layout ================== */
+    .top-section {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 8px;
+      height: 120px;
+    }
+
+    .unit-info-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .unit-header-info {
+      flex: 1;
+    }
+
+    .unit-name {
+      font-size: 1.1rem;
+      color: #001D56;
+      margin-bottom: 3px;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .unit-location {
+      color: #666;
+      font-size: 0.7rem;
+      margin-bottom: 5px;
+      line-height: 1.1;
+    }
+
+    .status-badge {
+      display: inline-block;
+      background: #0033cc;
+      color: white;
+      padding: 3px 6px;
+      border-radius: 8px;
+      font-size: 0.6rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      width: fit-content;
+    }
+
+    .price-section {
+      margin-top: auto;
+    }
+
+    .price-main {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #FF6900;
+      line-height: 1.1;
+    }
+
+    .price-sub {
+      font-size: 0.6rem;
+      color: #666;
+      margin-top: 1px;
+      line-height: 1.1;
+    }
+
+    /* ================== Compact Image Gallery ================== */
+    .image-gallery {
+      flex: 0 0 120px;
+      width: 120px;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      background: #f5f5f5;
+      border: 1px solid #e0e0e0;
+    }
+
+    .main-image-container {
+      position: relative;
+      width: 100%;
+      height: 120px;
+      overflow: hidden;
+      background: #f0f0f0;
+    }
+
+    .main-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    .image-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      border: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .prev-btn { left: 4px; }
+    .next-btn { right: 4px; }
+
+    .image-counter {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-size: 0.5rem;
+      line-height: 1;
+    }
+
+    /* ================== Compact Details Grid ================== */
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 6px;
+      margin: 8px 0;
+      flex: 1;
+    }
+
+    .detail-item {
+      display: flex;
+      flex-direction: column;
+      padding: 6px;
+      background: #f8f9fa;
+      border-radius: 6px;
+      min-height: 45px;
+      justify-content: center;
+    }
+
+    .detail-label {
+      font-size: 0.6rem;
+      color: #666;
+      margin-bottom: 2px;
+      font-weight: 600;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .detail-value {
+      font-size: 0.7rem;
+      color: #333;
+      font-weight: 600;
+      line-height: 1.1;
+    }
+
+    /* ================== Compact Contact Section ================== */
+    .contact-section {
+      background: rgba(0, 29, 86, 0.1);
+      border-radius: 8px;
+      padding: 8px;
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+
+    .contact-title {
+      font-size: 0.7rem;
+      color: #001D56;
+      margin-bottom: 6px;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1;
+    }
+
+    .contact-buttons {
+      display: flex;
+      gap: 6px;
+    }
+
+    .contact-btn {
+      flex: 1;
+      background: #FF6900;
+      color: white;
+      border: none;
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-size: 0.6rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      line-height: 1;
+    }
+
+    .contact-btn:hover {
+      background: #e05d00;
+    }
+
+    .contact-btn.secondary {
+      background: #001D56;
+    }
+
+    .contact-btn.secondary:hover {
+      background: #001a4d;
+    }
+
+    /* ================== Loading/Error States ================== */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 150px;
+      color: #666;
+      font-size: 1rem;
+    }
+
+    .error {
+      background: rgba(220, 53, 69, 0.1);
+      border: 1px solid rgba(220, 53, 69, 0.3);
+      color: #dc3545;
+      padding: 15px;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- Header Section -->
+    <div class="unit-header">
+      <div class="unit-title" id="projectName">Unit Details</div>
+      <div class="unit-subtitle" id="projectAddress">Loading...</div>
+      <button class="back-btn" id="backBtn">↩️ back to<br>deals</button>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content-section">
+    <div id="loadingState" class="loading">Loading unit details...</div>
+
+    <div id="errorState" class="error" style="display: none;">
+      <h3>Unit Not Found</h3>
+      <p>The requested unit could not be loaded.</p>
+    </div>
+
+    <div id="unitContent" style="display: none;">
+      <!-- Unit Info Card -->
+      <div class="unit-card">
+        <!-- Top Section: Info + Image -->
+        <div class="top-section">
+          <div class="unit-info-section">
+            <div class="unit-header-info">
+              <div class="unit-name" id="unitName">4 Bedroom A108</div>
+              <div class="unit-location" id="unitSubtitle">Building A, Floor 12</div>
+              <div class="status-badge" id="statusBadge">For Sale</div>
+            </div>
+            <div class="price-section">
+              <div class="price-main" id="mainPrice">5,000,000 Baht</div>
+              <div class="price-sub" id="subPrice">55,556 Baht/sqm</div>
+            </div>
+          </div>
+
+          <!-- Compact Image Gallery -->
+          <div class="image-gallery">
+            <div class="main-image-container">
+              <img id="mainImage" class="main-image" src="/opt/yodeck/medias/placeholder.jpg" alt="Unit Image">
+              <button class="image-nav prev-btn" id="prevBtn">‹</button>
+              <button class="image-nav next-btn" id="nextBtn">›</button>
+              <div class="image-counter" id="imageCounter">1 / 5</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Unit Details -->
+        <div class="details-grid">
+          <div class="detail-item">
+            <span class="detail-label">Room Type</span>
+            <span class="detail-value" id="roomType">4 Bedroom</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Size</span>
+            <span class="detail-value" id="roomSize">90 sqm</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Floor</span>
+            <span class="detail-value" id="floor">12</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">View</span>
+            <span class="detail-value" id="view">Garden View</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Furnishing</span>
+            <span class="detail-value" id="furnishing">Partially Furnished</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Parking</span>
+            <span class="detail-value" id="parking">1 Space</span>
+          </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section">
+          <div class="contact-title">Interested in this unit?</div>
+          <div class="contact-buttons">
+            <button class="contact-btn" id="callBtn">📞 Call Now</button>
+            <button class="contact-btn secondary" id="inquireBtn">💬 Inquire</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script>
+    // Get parameters
+    function getParam(name) {
+      const url = new URL(window.location.href);
+      return url.searchParams.get(name);
+    }
+
+    const unitId = getParam('id');
+    const projectId = getParam('project_id') || 'prj001';
+
+    // Navigation state
+    let currentImages = [];
+    let currentImageIndex = 0;
+
+    // Load unit data
+    async function loadUnitData() {
+      try {
+        if (!unitId) {
+          showError('Missing unit ID parameter');
+          return;
+        }
+
+        // Load unit and project data
+        const [unitData, projectData] = await Promise.all([
+          fetch('data/unit.json').then(r => r.json()),
+          fetch('project/ann/data/project.json').then(r => r.json()).catch(() => ({ projects: [] }))
+        ]);
+
+        const unit = unitData.units.find(u => u.unit_id === unitId);
+        if (!unit) {
+          showError('Unit not found');
+          return;
+        }
+
+        const project = projectData.projects?.find(p => p.project_id === unit.project_id) || {};
+
+        displayUnit(unit, project);
+
+      } catch (error) {
+        console.error('Error loading unit data:', error);
+        showError('Failed to load unit data');
+      }
+    }
+
+    function displayUnit(unit, project) {
+      // Hide loading, show content
+      document.getElementById('loadingState').style.display = 'none';
+      document.getElementById('unitContent').style.display = 'block';
+
+      // Project info
+      document.getElementById('projectName').textContent = project.project_name || 'Unit Details';
+      document.getElementById('projectAddress').textContent = project.project_address || 'Property Details';
+
+      // Unit header
+      const unitName = `${unit.unit?.room_type || 'Unit'} ${unit.unit?.unit_number || ''}`;
+      document.getElementById('unitName').textContent = unitName;
+      document.getElementById('unitSubtitle').textContent =
+        `Building ${unit.unit?.building || 'N/A'}, Floor ${unit.unit?.floor || 'N/A'}`;
+
+      // Status badge
+      const listingType = unit.unit?.listing_type?.toLowerCase();
+      const selling = unit.condition?.selling_price;
+      const renting = unit.condition?.rental_price;
+
+      let statusText = 'Available';
+      if (selling && renting) statusText = 'Sale & Rent';
+      else if (selling) statusText = 'For Sale';
+      else if (renting) statusText = 'For Rent';
+
+      document.getElementById('statusBadge').textContent = statusText;
+
+      // Pricing
+      if (selling) {
+        document.getElementById('mainPrice').textContent = `${Number(selling).toLocaleString()} Baht`;
+        const pricePerSqm = unit.unit?.room_size ?
+          Math.round(Number(selling) / unit.unit.room_size).toLocaleString() : '';
+        document.getElementById('subPrice').textContent = pricePerSqm ? `${pricePerSqm} Baht/sqm` : '';
+      } else if (renting) {
+        document.getElementById('mainPrice').textContent = `${Number(renting).toLocaleString()} Baht/month`;
+        document.getElementById('subPrice').textContent = 'Monthly Rent';
+      }
+
+      // Unit details
+      document.getElementById('roomType').textContent = unit.unit?.room_type || 'N/A';
+      document.getElementById('roomSize').textContent = unit.unit?.room_size ? `${unit.unit.room_size} sqm` : 'N/A';
+      document.getElementById('floor').textContent = unit.unit?.floor || 'N/A';
+      document.getElementById('view').textContent = unit.unit?.view || 'N/A';
+      document.getElementById('furnishing').textContent = unit.unit?.room_decor || 'N/A';
+      document.getElementById('parking').textContent = unit.unit?.num_parking ?
+        `${unit.unit.num_parking} Space${unit.unit.num_parking > 1 ? 's' : ''}` : 'None';
+
+      // Image gallery
+      setupImageGallery(unit.images || []);
+    }
+
+    function setupImageGallery(images) {
+      currentImages = images.filter(img => img && img.length > 0);
+      currentImageIndex = 0;
+
+      if (currentImages.length === 0) {
+        currentImages = ['/opt/yodeck/medias/placeholder.jpg'];
+      }
+
+      updateImage();
+
+      // Image navigation
+      document.getElementById('prevBtn').addEventListener('click', () => {
+        currentImageIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
+        updateImage();
+      });
+
+      document.getElementById('nextBtn').addEventListener('click', () => {
+        currentImageIndex = (currentImageIndex + 1) % currentImages.length;
+        updateImage();
+      });
+
+      // Hide nav buttons if only one image
+      const showNav = currentImages.length > 1;
+      document.getElementById('prevBtn').style.display = showNav ? 'flex' : 'none';
+      document.getElementById('nextBtn').style.display = showNav ? 'flex' : 'none';
+    }
+
+    function updateImage() {
+      document.getElementById('mainImage').src = currentImages[currentImageIndex];
+      document.getElementById('imageCounter').textContent =
+        `${currentImageIndex + 1} / ${currentImages.length}`;
+    }
+
+    function showError(message) {
+      document.getElementById('loadingState').style.display = 'none';
+      document.getElementById('errorState').style.display = 'block';
+      document.getElementById('errorState').innerHTML = `
+        <h3>Error</h3>
+        <p>${message}</p>
+      `;
+    }
+
+    // Back navigation
+    document.getElementById('backBtn').addEventListener('click', () => {
+      const url = new URL('/category.html', window.location.origin);
+      url.searchParams.set('type', 'deal');
+      url.searchParams.set('project_id', projectId);
+      window.location.href = url.toString();
+    });
+
+    // Contact buttons
+    document.getElementById('callBtn').addEventListener('click', () => {
+      alert('Contact feature - Connect to property hotline');
+    });
+
+    document.getElementById('inquireBtn').addEventListener('click', () => {
+      alert('Inquiry feature - Open contact form');
+    });
+
+    // Auto return to menu after 1 minute of inactivity (for signage)
+    let inactivityTimer;
+    function resetInactivityTimer() {
+      clearTimeout(inactivityTimer);
+      inactivityTimer = setTimeout(() => {
+        const url = new URL('./menu.html', window.location.origin);
+        if (projectId) url.searchParams.set('project_id', projectId);
+        window.location.href = url.toString();
+      }, 60000); // 1 minute for signage
+    }
+
+    ['click', 'touchstart', 'mousemove'].forEach(event => {
+      document.addEventListener(event, resetInactivityTimer);
+    });
+    resetInactivityTimer();
+
+    // Initialize
+    loadUnitData();
+  </script>
+</body>
+</html>

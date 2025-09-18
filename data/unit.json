@@ -1,0 +1,319 @@
+{
+  "units": [
+    {
+      "unit_id": "unit001",
+      "project_id": "prj001",
+      "unit": {
+        "unit_number": "A108",
+        "room_type": "4 Bedroom",
+        "room_size": 90,
+        "floor": 12,
+        "building": "A",
+        "view": "Garden View",
+        "listing_type": "Sell",
+        "room_decor": "Partially Furnished",
+        "num_parking": 0
+      },
+      "condition": {
+        "selling_price": 5000000,
+        "rental_price": null,
+        "available_date": "01-Jan-2025",
+        "deposit": 30000,
+        "inclusive_of": []
+      },
+      "images": [
+        "images/unit001-01.jpeg",
+        "images/unit001-02.jpeg",
+        "images/unit001-03.jpeg",
+        "images/unit001-04.jpeg",
+        "images/unit001-05.jpeg"
+      ]
+    },
+    {
+      "unit_id": "unit002",
+      "project_id": "prj001",
+      "unit": {
+        "unit_number": "A257",
+        "room_type": "3 Bedroom",
+        "room_size": 28,
+        "floor": 19,
+        "building": "A",
+        "view": "Pool View",
+        "listing_type": "Rent",
+        "room_decor": "Fully Furnished",
+        "num_parking": 1
+      },
+      "condition": {
+        "selling_price": null,
+        "rental_price": 50000,
+        "available_date": "01-Jan-2025",
+        "deposit": 30000,
+        "inclusive_of": []
+      },
+      "images": [
+        "images/unit002-01.jpeg",
+        "images/unit002-02.jpeg",
+        "images/unit002-03.jpeg",
+        "images/unit002-04.jpeg",
+        "images/unit002-05.jpeg"
+      ]
+    },
+    {
+      "unit_id": "unit003",
+      "project_id": "prj001",
+      "unit": {
+        "unit_number": "A131",
+        "room_type": "4 Bedroom",
+        "room_size": 28,
+        "floor": 5,
+        "building": "A",
+        "view": "City View",
+        "listing_type": "Rent",
+        "room_decor": "Fully Furnished",
+        "num_parking": 0
+      },
+      "condition": {
+        "selling_price": null,
+        "rental_price": 80000,
+        "available_date": "01-Jan-2025",
+        "deposit": 80000,
+        "inclusive_of": [
+          "Electricity"
+        ]
+      },
+      "images": [
+        "images/unit003-01.jpeg",
+        "images/unit003-02.jpeg",
+        "images/unit003-03.jpeg",
+        "images/unit003-04.jpeg",
+        "images/unit003-05.jpeg"
+      ]
+    },
+    {
+      "unit_id": "unit004",
+      "project_id": "prj001",
+      "unit": {
+        "unit_number": "A131",
+        "room_type": "2 Bedroom",
+        "room_size": 35,
+        "floor": 11,
+        "building": "A",
+        "view": "City View",
+        "listing_type": "Rent",
+        "room_decor": "Fully Furnished",
+        "num_parking": 1
+      },
+      "condition": {
+        "selling_price": null,
+        "rental_price": 18207,
+        "available_date": "01-Jan-2025",
+        "deposit": 80000,
+        "inclusive_of": [
+          "Electricity",
+          "Water",
+          "Internet"
+        ]
+      },
+      "images": [
+        "images/unit004-01.jpeg",
+        "images/unit004-02.jpeg",
+        "images/unit004-03.jpeg",
+        "images/unit004-04.jpeg",
+        "images/unit004-05.jpeg"
+      ]
+    },
+    {
+      "unit_id": "unit005",
+      "project_id": "prj001",
+      "unit": {
+        "unit_number": "A124",
+        "room_type": "Studio",
+        "room_size": 35,
+        "floor": 22,
+        "building": "A",
+        "view": "Garden View",
+        "listing_type": "Both",
+        "room_decor": "Partially Furnished",
+        "num_parking": 1
+      },
+      "condition": {
+        "selling_price": 7496564,
+        "rental_price": 23930,
+        "available_date": "01-Jan-2025",
+        "deposit": 30000,
+        "inclusive_of": [
+          "Internet"
+        ]
+      },
+      "images": [
+        "images/unit005-01.jpeg",
+        "images/unit005-02.jpeg",
+        "images/unit005-03.jpeg",
+        "images/unit005-04.jpeg",
+        "images/unit005-05.jpeg"
+      ]
+    },
+
+    {
+      "unit_id": "unit006",
+      "project_id": "prj001",
+      "unit": {
+        "unit_number": "A182",
+        "room_type": "1 Bedroom",
+        "room_size": 55,
+        "floor": 18,
+        "building": "A",
+        "view": "Garden View",
+        "listing_type": "Sell",
+        "room_decor": "Unfurnished",
+        "num_parking": 0
+      },
+      "condition": {
+        "selling_price": 8103228,
+        "rental_price": null,
+        "available_date": "01-Jan-2025",
+        "deposit": 30000,
+        "inclusive_of": [
+          "Internet",
+          "Electricity"
+        ]
+      },
+      "images": [
+        "images/unit006-01.jpeg",
+        "images/unit006-02.jpeg",
+        "images/unit006-03.jpeg",
+        "images/unit006-04.jpeg",
+        "images/unit006-05.jpeg"
+      ]
+    },
+    {
+      "unit_id": "unit007",
+      "project_id": "prj001",
+      "unit": {
+        "unit_number": "A172",
+        "room_type": "Studio",
+        "room_size": 35,
+        "floor": 21,
+        "building": "A",
+        "view": "Garden View",
+        "listing_type": "Both",
+        "room_decor": "Unfurnished",
+        "num_parking": 1
+      },
+      "condition": {
+        "selling_price": 5218410,
+        "rental_price": 32298,
+        "available_date": "01-Jan-2025",
+        "deposit": 50000,
+        "inclusive_of": [
+          "Electricity",
+          "Water"
+        ]
+      },
+      "images": [
+        "images/unit007-01.jpeg",
+        "images/unit007-02.jpeg",
+        "images/unit007-03.jpeg",
+        "images/unit007-04.jpeg",
+        "images/unit007-05.jpeg"
+      ]
+    },
+    {
+      "unit_id": "unit008",
+      "project_id": "prj001",
+      "unit": {
+        "unit_number": "A159",
+        "room_type": "Studio",
+        "room_size": 90,
+        "floor": 10,
+        "building": "A",
+        "view": "Garden View",
+        "listing_type": "Rent",
+        "room_decor": "Partially Furnished",
+        "num_parking": 1
+      },
+      "condition": {
+        "selling_price": null,
+        "rental_price": 50000,
+        "available_date": "01-Jan-2025",
+        "deposit": 50000,
+        "inclusive_of": [
+          "Internet",
+          "Electricity"
+        ]
+      },
+      "images": [
+        "images/unit008-01.jpeg",
+        "images/unit008-02.jpeg",
+        "images/unit008-03.jpeg",
+        "images/unit008-04.jpeg",
+        "images/unit008-05.jpeg"
+      ]
+    },
+    {
+      "unit_id": "unit009",
+      "project_id": "prj001",
+      "unit": {
+        "unit_number": "A138",
+        "room_type": "1 Bedroom",
+        "room_size": 28,
+        "floor": 17,
+        "building": "A",
+        "view": "Pool View",
+        "listing_type": "Sell",
+        "room_decor": "Unfurnished",
+        "num_parking": 1
+      },
+      "condition": {
+        "selling_price": 10529693,
+        "rental_price": null,
+        "available_date": "01-Jan-2025",
+        "deposit": 30000,
+        "inclusive_of": [
+          "Electricity",
+          "Water",
+          "Internet"
+        ]
+      },
+      "images": [
+        "images/unit009-01.jpeg",
+        "images/unit009-02.jpeg",
+        "images/unit009-03.jpeg",
+        "images/unit009-04.jpeg",
+        "images/unit009-05.jpeg"
+      ]
+    },
+    {
+      "unit_id": "unit010",
+      "project_id": "prj001",
+      "unit": {
+        "unit_number": "A254",
+        "room_type": "2 Bedroom",
+        "room_size": 55,
+        "floor": 6,
+        "building": "A",
+        "view": "Garden View",
+        "listing_type": "Rent",
+        "room_decor": "Unfurnished",
+        "num_parking": 1
+      },
+      "condition": {
+        "selling_price": null,
+        "rental_price": 37263,
+        "available_date": "01-Jan-2025",
+        "deposit": 80000,
+        "inclusive_of": [
+          "Internet",
+          "Electricity"
+        ]
+      },
+      "images": [
+        "images/unit010-01.jpeg",
+        "images/unit010-02.jpeg",
+        "images/unit010-03.jpeg",
+        "images/unit010-04.jpeg",
+        "images/unit010-05.jpeg"
+      ]
+    }
+  ]
+}

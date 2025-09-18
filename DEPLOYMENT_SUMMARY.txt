@@ -1,0 +1,25 @@
+MAHOGANY SIGNAGE - OPTIMIZED DEPLOYMENT PACKAGE
+=====================================================
+
+✅ OPTIMIZATION COMPLETE
+- Package Size: 491KB (reduced from 50MB+)
+- All video files moved to Yodeck local storage
+- All HTML/JSON files updated to use /opt/yodeck/medias/ paths
+- External images (Unsplash) require no upload
+
+📦 WHAT'S INCLUDED
+- 6 HTML signage pages
+- 17 JSON data files
+- 1 placeholder image
+- Configuration files (netlify.toml, version.txt)
+- Documentation (README.md, YODECK_MEDIA_FILES.md)
+
+🎯 NEXT STEPS
+1. Upload media files to Yodeck (see YODECK_MEDIA_FILES.md)
+2. Deploy this folder to Netlify
+3. Configure Yodeck with Netlify URL
+
+🔗 MAIN URL
+https://your-netlify-url/ → Auto-redirects to Mahogany signage
+
+Ready for deployment! 🚀

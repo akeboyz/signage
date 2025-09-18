@@ -1,0 +1,40 @@
+{
+  "deals": [
+    {
+      "id": "deal001",
+      "project_id": "prj001",
+      "name": "Happy Hour 50% Off",
+      "image": "/opt/yodeck/medias/deal-happyhour.jpg",
+      "description": "All beverages 50% off from 3-6 PM",
+      "valid_until": "31-Jan-2025",
+      "location": "Sushi Hiro"
+    },
+    {
+      "id": "deal002", 
+      "project_id": "prj002",
+      "name": "Buy 1 Get 1 Free",
+      "image": "/opt/yodeck/medias/deal-buy1get1.jpg",
+      "description": "Buy any dessert, get another free",
+      "valid_until": "28-Feb-2025", 
+      "location": "After You"
+    },
+    {
+      "id": "deal003",
+      "project_id": "prj003", 
+      "name": "Weekend BBQ Special",
+      "image": "/opt/yodeck/medias/deal-bbq.jpg",
+      "description": "All-you-can-eat BBQ for 399 THB",
+      "valid_until": "15-Mar-2025",
+      "location": "Fire Tiger"
+    },
+    {
+      "id": "deal004",
+      "project_id": "prj004",
+      "name": "Pasta Combo Deal", 
+      "image": "/opt/yodeck/medias/deal-pasta.jpg",
+      "description": "Pasta + Drink + Salad for 299 THB",
+      "valid_until": "30-Apr-2025",
+      "location": "Pasta Fresca"
+    }
+  ]
+}

@@ -1,0 +1,1094 @@
+[
+  {
+    "id": "shop001",
+    "name_th": "อควาแม็กซ์ โฆษณา",
+    "name_en": "AquaMax Ads",
+    "logo": "logos/aquamx.png",
+    "images": [
+      "images/aquamx-ads01.jpg",
+      "images/aquamx-ads02.jpg",
+      "images/aquamx.png",
+      "images/supermarket-interior.jpg",
+      "images/coffee-shop.jpg"
+    ],
+    "videos": [
+      "videos/aquamx-ads-promo.mp4"
+    ],
+    "description_th": "บริการโฆษณาสำหรับธุรกิจในคอนโด ด้วยสื่อดิจิทัลแบบสัมผัส",
+    "description_en": "Advertising service for local businesses via interactive digital signage in condos.",
+    "type": "service",
+    "category_th": "บริการโฆษณา",
+    "category_en": "Advertising Services",
+    "contact": {
+      "phone": "020000000",
+      "line": "@aquamx"
+    },
+    "location_th": "ทุกคอนโดที่มีหน้าจอของ aquamax",
+    "location_en": "All condominiums with aquamax signage",
+    "address_th": "สำนักงานใหญ่: ถนนสุขุมวิท กรุงเทพฯ",
+    "address_en": "Head Office: Sukhumvit Road, Bangkok",
+    "projects": ["prj001", "prj002", "prj003"],
+    "status": "active",
+    "service_type": ["ads_only", "walk_in", "delivery"],
+    "address": "Head Office: 123 Sukhumvit Road, Bangkok 10110",
+    "opening_hours": "Mon-Fri: 9:00 AM - 6:00 PM",
+    "image": "/opt/yodeck/medias/shop001-01.MP4",
+    "map_url": "https://maps.app.goo.gl/aquamxads",
+    "map_embed_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.5642781195495!2d100.55424631525244!3d13.73988209038486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29ee109c11843%3A0x8984b5e7bfc6e7b5!2sCentralWorld!5e0!3m2!1sen!2sth!4v1642015000000!5m2!1sen!2sth",
+    "items": [
+      {
+        "name_th": "แพ็คเกจโฆษณาสัปดาห์",
+        "name_en": "Weekly Ad Package",
+        "price": 1500,
+        "image": "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "แพ็คเกจโฆษณารายเดือน",
+        "name_en": "Monthly Ad Package",
+        "price": 5000,
+        "image": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "แพ็คเกจโฆษณา 3 เดือน",
+        "name_en": "3-Month Ad Package",
+        "price": 12000,
+        "image": "https://images.unsplash.com/photo-1551033406-611cf9a28f67?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ออกแบบโฆษณาพิเศษ",
+        "name_en": "Custom Ad Design",
+        "price": 3000,
+        "image": "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "วิเคราะห์ผลการโฆษณา",
+        "name_en": "Ad Analytics Report",
+        "price": 800,
+        "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "คอนซัลติ้งการตลาด",
+        "name_en": "Marketing Consultation",
+        "price": 2500,
+        "image": "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "โฆษณาแบนเนอร์ดิจิทัล",
+        "name_en": "Digital Banner Ads",
+        "price": 1800,
+        "image": "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "โฆษณาวิดีโอสั้น",
+        "name_en": "Short Video Ads",
+        "price": 4500,
+        "image": "https://images.unsplash.com/photo-1536240478700-b869070f9279?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "โฆษณาโซเชียลมีเดีย",
+        "name_en": "Social Media Ads",
+        "price": 2200,
+        "image": "https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "แคมเปญ QR Code",
+        "name_en": "QR Code Campaign",
+        "price": 1200,
+        "image": "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "โฆษณาแอนิเมชั่น",
+        "name_en": "Animation Ads",
+        "price": 6500,
+        "image": "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "บริการถ่ายภาพสินค้า",
+        "name_en": "Product Photography",
+        "price": 3500,
+        "image": "https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=400&h=300&fit=crop"
+      }
+    ],
+    "promotions": [
+      {
+        "title_th": "โฆษณาฟรีเดือนแรก!",
+        "title_en": "Free First Month Ad!",
+        "description_th": "เมื่อสมัครแพ็คเกจราย 3 เดือน",
+        "description_en": "Valid with 3-month package subscription",
+        "start_date": "2025-08-01",
+        "end_date": "2025-08-31",
+        "image": "images/promo-aquamxads.jpg"
+      }
+    ]
+  },
+  {
+    "id": "shop002",
+    "name_th": "อควาแม็กซ์ เอเจนท์",
+    "name_en": "AquaMax Agent",
+    "logo": "logos/aquamx-agent.png",
+    "images": [
+      "images/aquamx-agent01.jpg",
+      "images/aquamx-agent02.jpg",
+      "images/aquamx-agent.png",
+      "images/convenience-store.jpg",
+      "images/pharmacy-interior.jpg"
+    ],
+    "videos": [
+      "videos/aquamx-agent-promo.mp4"
+    ],
+    "description_th": "บริการนายหน้าอสังหาริมทรัพย์มืออาชีพ ขาย/เช่า คอนโดง่าย ๆ",
+    "description_en": "Professional property brokerage service for selling and renting condos.",
+    "type": "service",
+    "category_th": "นายหน้าอสังหาริมทรัพย์",
+    "category_en": "Property Agent",
+    "contact": {
+      "phone": "021234567",
+      "line": "@aquamx"
+    },
+    "location_th": "สำนักงานใหญ่ ถนนสุขุมวิท",
+    "location_en": "Head Office, Sukhumvit Road",
+    "address_th": "สำนักงานใหญ่: ถนนสุขุมวิท แขวงคลองเตยเหนือ กรุงเทพฯ",
+    "address_en": "Head Office: Sukhumvit Road, Wattana, Bangkok",
+    "projects": ["prj001", "prj004"],
+    "status": "active",
+    "service_type": ["ads_only", "walk_in", "reservation"],
+    "image": "/opt/yodeck/medias/shop002-01.MP4",
+    "map_url": "https://maps.app.goo.gl/aquamxagent",
+    "map_embed_url": "https://www.google.com/maps/embed?pb=aquamxagent",
+    "items": [
+      {
+        "name_th": "บริการขายคอนโด",
+        "name_en": "Condo Sale Service",
+        "price": 0,
+        "image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "บริการเช่าคอนโด",
+        "name_en": "Condo Rental Service",
+        "price": 0,
+        "image": "https://images.unsplash.com/photo-1536895058539-69a7f7b6dc5e?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ประเมินราคาคอนโด",
+        "name_en": "Property Valuation",
+        "price": 1500,
+        "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ถ่ายภาพคอนโด",
+        "name_en": "Property Photography",
+        "price": 2500,
+        "image": "https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "นัดชมคอนโด",
+        "name_en": "Property Viewing",
+        "price": 0,
+        "image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ปรึกษาการลงทุน",
+        "name_en": "Investment Consultation",
+        "price": 3000,
+        "image": "https://images.unsplash.com/photo-1554224154-22dec7ec8818?w=400&h=300&fit=crop"
+      }
+    ],
+    "promotions": [
+      {
+        "title_th": "ค่าคอมมิชชัน 0% เดือนแรก",
+        "title_en": "0% Commission for First Month",
+        "description_th": "เมื่อฝากขาย/เช่า กับ aquamax ภายในเดือนนี้",
+        "description_en": "Valid when listing with aquamax this month",
+        "start_date": "2025-08-01",
+        "end_date": "2025-08-31",
+        "image": "images/promo-aquamxagent.jpg"
+      }
+    ]
+  },
+  {
+    "id": "shop003",
+    "name_th": "ซุปเปอร์มาร์เก็ต เฟรช",
+    "name_en": "Fresh Supermarket",
+    "logo": "logos/freshsuper.png",
+    "images": [
+      "images/freshsuper-1.jpg",
+      "images/supermarket-interior.jpg",
+      "images/freshsuper.png",
+      "images/convenience-store.jpg",
+      "images/pharmacy-interior.jpg"
+    ],
+    "videos": [],
+    "description_th": "ซุปเปอร์มาร์เก็ตสะดวกซื้อ อาหารสด เครื่องใช้ในบ้าน เปิด 24 ชั่วโมง",
+    "description_en": "Convenient 24-hour supermarket with fresh food and household items.",
+    "type": "non-service",
+    "category_th": "ซุปเปอร์มาร์เก็ต",
+    "category_en": "Supermarket",
+    "contact": {
+      "phone": "022334455"
+    },
+    "location_th": "ชั้น G โซนช้อปปิ้ง",
+    "location_en": "Ground floor, Shopping zone",
+    "address_th": "99 ถนนสุขุมวิท แขวงคลองเตย กรุงเทพฯ",
+    "address_en": "99 Sukhumvit Rd, Klongtoey, Bangkok",
+    "projects": ["prj001", "prj002"],
+    "status": "active",
+    "service_type": ["ads_only", "walk_in"],
+    "image": "/opt/yodeck/medias/shop001-02.MP4",
+    "map_url": "https://maps.app.goo.gl/freshsuper",
+    "map_embed_url": "https://www.google.com/maps/embed?pb=freshsuper",
+    "items": [
+      {
+        "name_th": "ผลไม้สดรายวัน",
+        "name_en": "Daily Fresh Fruits",
+        "price": 80,
+        "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ผักใบเขียวออร์แกนิก",
+        "name_en": "Organic Green Vegetables",
+        "price": 60,
+        "image": "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "เนื้อววัสด",
+        "name_en": "Fresh Beef",
+        "price": 180,
+        "image": "https://images.unsplash.com/photo-1588347818017-54361dd3ba5d?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ไก่สด",
+        "name_en": "Fresh Chicken",
+        "price": 120,
+        "image": "https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "นมสดและผลิตภัณฑ์นม",
+        "name_en": "Fresh Milk & Dairy",
+        "price": 50,
+        "image": "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ของใช้ในบ้าน",
+        "name_en": "Household Items",
+        "price": 25,
+        "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop"
+      }
+    ],
+    "promotions": [
+      {
+        "title_th": "ลด 10% สินค้าสด ทุกวันศุกร์",
+        "title_en": "10% OFF Fresh Products Every Friday",
+        "description_th": "ผลไม้ ผัก เนื้อสด ปลาสด",
+        "description_en": "Fruits, vegetables, fresh meat, fresh fish",
+        "start_date": "2025-08-01",
+        "end_date": "2025-12-31",
+        "image": "images/promo-freshsuper.jpg"
+      }
+    ]
+  },
+  {
+    "id": "shop004",
+    "name_th": "ร้านขายยา คิวร์",
+    "name_en": "Cure Pharmacy",
+    "logo": "logos/pharmacy.png",
+    "images": [
+      "images/pharmacy-interior.jpg",
+      "images/pharmacy.png",
+      "images/supermarket-interior.jpg",
+      "images/convenience-store.jpg",
+      "images/cleaning-service.jpg"
+    ],
+    "videos": [],
+    "description_th": "ร้านขายยาและเวชภัณฑ์ครบครัน เภสัชกรประจำร้าน",
+    "description_en": "Complete pharmacy with healthcare products and licensed pharmacist.",
+    "type": "non-service",
+    "category_th": "ร้านขายยา",
+    "category_en": "Pharmacy",
+    "contact": {
+      "phone": "023445566",
+      "line": "@curepharmacy"
+    },
+    "location_th": "ชั้น 1 โซนสุขภาพ",
+    "location_en": "1st floor, Health zone",
+    "address_th": "88 ถนนสุขุมวิท แขวงวัฒนา กรุงเทพฯ",
+    "address_en": "88 Sukhumvit Rd, Wattana, Bangkok",
+    "projects": ["prj002", "prj003"],
+    "status": "active",
+    "service_type": ["ads_only", "walk_in"],
+    "image": "/opt/yodeck/medias/shop002-02.MP4",
+    "map_url": "https://maps.app.goo.gl/curepharmacy",
+    "map_embed_url": "https://www.google.com/maps/embed?pb=curepharmacy",
+    "items": [
+      {
+        "name_th": "ยาแก้ปวด",
+        "name_en": "Pain Relief Medicine",
+        "price": 45,
+        "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ยาแก้ไข้",
+        "name_en": "Fever Reducer",
+        "price": 38,
+        "image": "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "วิตามินรวม",
+        "name_en": "Multivitamins",
+        "price": 180,
+        "image": "https://images.unsplash.com/photo-1550572017-ebe24c99e2a8?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ยาแก้หวัด",
+        "name_en": "Cold Medicine",
+        "price": 65,
+        "image": "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ครีมบำรุงผิว",
+        "name_en": "Skin Care Cream",
+        "price": 120,
+        "image": "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "แผลก่อ-พลาสเตอร์",
+        "name_en": "Bandages & Plasters",
+        "price": 25,
+        "image": "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=400&h=300&fit=crop"
+      }
+    ],
+    "promotions": [
+      {
+        "title_th": "ฟรีการวัดความดันโลหิต",
+        "title_en": "Free Blood Pressure Check",
+        "description_th": "บริการฟรีทุกวัน 9:00-18:00 น.",
+        "description_en": "Free service daily 9am-6pm",
+        "start_date": "2025-08-01",
+        "end_date": "2025-12-31"
+      }
+    ]
+  },
+  {
+    "id": "shop005",
+    "name_th": "บริการทำความสะอาด โปร",
+    "name_en": "Pro Cleaning Service",
+    "logo": "logos/procleaning.png",
+    "images": [
+      "images/cleaning-service.jpg",
+      "images/procleaning.png",
+      "images/convenience-store.jpg",
+      "images/pharmacy-interior.jpg",
+      "images/supermarket-interior.jpg"
+    ],
+    "videos": [
+      "videos/procleaning-promo.mp4"
+    ],
+    "description_th": "บริการทำความสะอาดบ้าน สำนักงาน คอนโด มืออาชีพ",
+    "description_en": "Professional home, office and condo cleaning service.",
+    "type": "service",
+    "category_th": "บริการทำความสะอาด",
+    "category_en": "Cleaning Service",
+    "contact": {
+      "phone": "024556677",
+      "line": "@procleaning"
+    },
+    "location_th": "บริการนัดหมายถึงที่",
+    "location_en": "On-site appointment service",
+    "address_th": "สำนักงาน: ซอยสุขุมวิท 24 กรุงเทพฯ",
+    "address_en": "Office: Soi Sukhumvit 24, Bangkok",
+    "projects": ["prj001", "prj003", "prj004"],
+    "status": "active",
+    "service_type": ["ads_only", "reservation", "mobile_order"],
+    "image": "/opt/yodeck/medias/unit001-01.MP4",
+    "map_url": "https://maps.app.goo.gl/procleaning",
+    "map_embed_url": "https://www.google.com/maps/embed?pb=procleaning",
+    "items": [
+      {
+        "name_th": "ทำความสะอาดห้องนั่งเล่น",
+        "name_en": "Living Room Cleaning",
+        "price": 800,
+        "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ทำความสะอาดห้องครัว",
+        "name_en": "Kitchen Deep Clean",
+        "price": 1200,
+        "image": "https://images.unsplash.com/photo-1556911220-bff31c812dba?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ทำความสะอาดห้องน้ำ",
+        "name_en": "Bathroom Cleaning",
+        "price": 600,
+        "image": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ทำความสะอาดห้องนอน",
+        "name_en": "Bedroom Cleaning",
+        "price": 700,
+        "image": "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ทำความสะอาดพรม",
+        "name_en": "Carpet Cleaning",
+        "price": 500,
+        "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ล้างแอร์",
+        "name_en": "Air Con Cleaning",
+        "price": 900,
+        "image": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ทำความสะอาดสำนักงาน",
+        "name_en": "Office Cleaning",
+        "price": 1500,
+        "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "บริการรายเดือน",
+        "name_en": "Monthly Service",
+        "price": 3500,
+        "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop"
+      }
+    ],
+    "promotions": [
+      {
+        "title_th": "ลด 20% บริการครั้งแรก",
+        "title_en": "20% OFF First Service",
+        "description_th": "สำหรับลูกค้าใหม่ ทำความสะอาดทั้งห้อง",
+        "description_en": "For new customers, full room cleaning",
+        "start_date": "2025-08-01",
+        "end_date": "2025-09-30"
+      }
+    ]
+  },
+  {
+    "id": "shop006",
+    "name_th": "ร้านสะดวกซื้อ มินิ",
+    "name_en": "Mini Convenience Store",
+    "logo": "logos/miniconvenience.png",
+    "images": [
+      "images/convenience-store.jpg",
+      "images/miniconvenience.png",
+      "images/supermarket-interior.jpg",
+      "images/pharmacy-interior.jpg",
+      "images/freshsuper-1.jpg"
+    ],
+    "videos": [],
+    "description_th": "ร้านสะดวกซื้อขนาดเล็ก ของใช้จำเป็น เครื่องดื่ม ขนม เปิด 6-24 น.",
+    "description_en": "Small convenience store with essentials, drinks, snacks. Open 6am-12am.",
+    "type": "non-service",
+    "category_th": "ร้านสะดวกซื้อ",
+    "category_en": "Convenience Store",
+    "contact": {
+      "phone": "025667788"
+    },
+    "location_th": "ชั้น G ใกล้ล็อบบี้",
+    "location_en": "Ground floor, near lobby",
+    "address_th": "77 ถนนสุขุมวิท แขวงคลองเตย กรุงเทพฯ",
+    "address_en": "77 Sukhumvit Rd, Klongtoey, Bangkok",
+    "projects": ["prj003", "prj004"],
+    "status": "active",
+    "service_type": ["ads_only", "walk_in"],
+    "image": "/opt/yodeck/medias/rest001-01.MP4",
+    "map_url": "https://maps.app.goo.gl/ministore",
+    "map_embed_url": "https://www.google.com/maps/embed?pb=ministore",
+    "items": [
+      {
+        "name_th": "ขนมขบเคี้ยว",
+        "name_en": "Snacks & Chips",
+        "price": 25,
+        "image": "https://images.unsplash.com/photo-1610970881699-44a5587cabec?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "น้ำดื่มเย็น",
+        "name_en": "Cold Drinks",
+        "price": 20,
+        "image": "https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ก๋วยเตี๋ยวกึ่งสำเร็จรูป",
+        "name_en": "Instant Noodles",
+        "price": 15,
+        "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "อาหารกระป๋อง",
+        "name_en": "Canned Food",
+        "price": 35,
+        "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ขนมปังสำเร็จรูป",
+        "name_en": "Packaged Bread",
+        "price": 30,
+        "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ไอศครีม",
+        "name_en": "Ice Cream",
+        "price": 45,
+        "image": "https://images.unsplash.com/photo-1560008581-09b93dcde938?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ของใช้ประจำวัน",
+        "name_en": "Daily Necessities",
+        "price": 50,
+        "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "บุหรี่",
+        "name_en": "Cigarettes",
+        "price": 90,
+        "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop"
+      }
+    ]
+  },
+  {
+    "id": "shop007",
+    "name_th": "ร้านซักแห้ง เอ็กซ์เพรส",
+    "name_en": "Express Dry Cleaning",
+    "logo": "logos/drycleaning.png",
+    "images": [
+      "images/drycleaning-1.jpg",
+      "images/drycleaning-2.jpg"
+    ],
+    "videos": [],
+    "description_th": "บริการซักแห้ง ซักรีด รับ-ส่ง ภายในวัน",
+    "description_en": "Dry cleaning and laundry service with same-day pickup and delivery.",
+    "type": "service",
+    "category_th": "ซักแห้ง",
+    "category_en": "Dry Cleaning",
+    "contact": {
+      "phone": "026778899",
+      "line": "@expressdry"
+    },
+    "location_th": "ชั้น 1 โซนบริการ",
+    "location_en": "1st floor, Service zone",
+    "address_th": "ซอยสุขุมวิท 26 กรุงเทพฯ",
+    "address_en": "Soi Sukhumvit 26, Bangkok",
+    "projects": ["prj001", "prj002"],
+    "status": "active",
+    "service_type": ["walk_in", "delivery", "mobile_order"],
+    "image": "/opt/yodeck/medias/shop001-01.MP4",
+    "map_url": "https://maps.app.goo.gl/expressdry",
+    "map_embed_url": "https://www.google.com/maps/embed?pb=expressdry",
+    "items": [
+      {
+        "name_th": "ซักแห้งเสื้อสูท",
+        "name_en": "Suit Dry Cleaning",
+        "price": 150,
+        "image": "https://images.unsplash.com/photo-1594736797933-d0a9ba6663db?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ซักรีดเสื้อเชิ้ต",
+        "name_en": "Shirt Laundry",
+        "price": 40,
+        "image": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ซักแห้งเดรส",
+        "name_en": "Dress Dry Clean",
+        "price": 120,
+        "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ซักแห้งเสื้อแจ็คเก็ต",
+        "name_en": "Jacket Dry Clean",
+        "price": 180,
+        "image": "https://images.unsplash.com/photo-1594736797933-d0a9ba6663db?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "รีดเสื้อผ้า",
+        "name_en": "Clothes Ironing",
+        "price": 25,
+        "image": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ซักผ้านวม",
+        "name_en": "Blanket Cleaning",
+        "price": 200,
+        "image": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "บริการด่วน",
+        "name_en": "Express Service",
+        "price": 80,
+        "image": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ซ่อมเสื้อผ้า",
+        "name_en": "Clothes Repair",
+        "price": 60,
+        "image": "https://images.unsplash.com/photo-1594736797933-d0a9ba6663db?w=400&h=300&fit=crop"
+      }
+    ],
+    "promotions": [
+      {
+        "title_th": "ลด 15% เสื้อเชิ้ต 5 ตัวขึ้นไป",
+        "title_en": "15% OFF 5+ Shirts",
+        "description_th": "ซักรีดเสื้อเชิ้ต 5 ตัวขึ้นไปในครั้งเดียว",
+        "description_en": "Laundry service for 5+ shirts at once",
+        "start_date": "2025-08-01",
+        "end_date": "2025-10-31"
+      }
+    ]
+  },
+  {
+    "id": "shop008",
+    "name_th": "ร้านดอกไม้ บลูม",
+    "name_en": "Bloom Flower Shop",
+    "logo": "logos/flowershop.png",
+    "images": [
+      "images/flowershop-1.jpg",
+      "images/flowershop-2.jpg",
+      "images/flowershop-3.jpg",
+      "images/bakery-interior.jpg",
+      "images/supermarket-interior.jpg"
+    ],
+    "videos": [
+      "videos/flowershop-promo.mp4"
+    ],
+    "description_th": "ร้านดอกไม้สด ช่อดอกไม้ ดอกไม้ประดับ และของขวัญ",
+    "description_en": "Fresh flowers, bouquets, floral arrangements and gifts.",
+    "type": "non-service",
+    "category_th": "ร้านดอกไม้",
+    "category_en": "Flower Shop",
+    "contact": {
+      "phone": "027889900",
+      "line": "@bloomflowers"
+    },
+    "location_th": "ชั้น G โซนของขวัญ",
+    "location_en": "Ground floor, Gift zone",
+    "address_th": "ซอยสุขุมวิท 39 กรุงเทพฯ",
+    "address_en": "Soi Sukhumvit 39, Bangkok",
+    "projects": ["prj002", "prj004"],
+    "status": "active",
+    "service_type": ["walk_in", "delivery", "reservation"],
+    "image": "/opt/yodeck/medias/shop001-02.MP4",
+    "map_url": "https://maps.app.goo.gl/bloomflowers",
+    "map_embed_url": "https://www.google.com/maps/embed?pb=bloomflowers",
+    "items": [
+      {
+        "name_th": "ช่อดอกกุหลาบแดง",
+        "name_en": "Red Rose Bouquet",
+        "price": 350,
+        "image": "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ช่อดอกลิลลี่",
+        "name_en": "Lily Bouquet",
+        "price": 280,
+        "image": "https://images.unsplash.com/photo-1563241527-3004b7be0fca?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "กล่องดอกไม้",
+        "name_en": "Flower Box",
+        "price": 450,
+        "image": "https://images.unsplash.com/photo-1563241527-3004b7be0fca?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ช่อดอกทิวลิป",
+        "name_en": "Tulip Bouquet",
+        "price": 320,
+        "image": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "แจกันดอกไม้",
+        "name_en": "Flower Arrangement",
+        "price": 500,
+        "image": "https://images.unsplash.com/photo-1563241527-3004b7be0fca?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "พวงหรีด",
+        "name_en": "Funeral Wreath",
+        "price": 800,
+        "image": "https://images.unsplash.com/photo-1563241527-3004b7be0fca?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ช่อเจ้าสาว",
+        "name_en": "Bridal Bouquet",
+        "price": 1200,
+        "image": "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "กระเช้าดอกไม้",
+        "name_en": "Flower Basket",
+        "price": 600,
+        "image": "https://images.unsplash.com/photo-1563241527-3004b7be0fca?w=400&h=300&fit=crop"
+      }
+    ],
+    "promotions": [
+      {
+        "title_th": "ช่อดอกไม้วาเลนไทน์ พิเศษ!",
+        "title_en": "Special Valentine's Bouquet!",
+        "description_th": "ช่อดอกกุหลาบแดง 12 ดอก ราคาพิเศษ",
+        "description_en": "12 red roses bouquet special price",
+        "start_date": "2025-02-01",
+        "end_date": "2025-02-14",
+        "image": "images/valentine-bouquet.jpg"
+      }
+    ]
+  },
+  {
+    "id": "shop009",
+    "name_th": "ร้านอาหารสัตว์เลี้ยง เพ็ทเซ็นเตอร์",
+    "name_en": "Pet Center",
+    "logo": "logos/petcenter.png",
+    "images": [
+      "images/petcenter-1.jpg",
+      "images/petcenter-2.jpg",
+      "images/supermarket-interior.jpg",
+      "images/convenience-store.jpg",
+      "images/pharmacy-interior.jpg"
+    ],
+    "videos": [],
+    "description_th": "อาหารสัตว์เลี้ยง อุปกรณ์ดูแล และบริการตัดขนสัตว์เลี้ยง",
+    "description_en": "Pet food, care supplies and pet grooming services.",
+    "type": "non-service",
+    "category_th": "ร้านสัตว์เลี้ยง",
+    "category_en": "Pet Store",
+    "contact": {
+      "phone": "028990011",
+      "line": "@petcenter"
+    },
+    "location_th": "ชั้น 2 โซนสัตว์เลี้ยง",
+    "location_en": "2nd floor, Pet zone",
+    "address_th": "ซอยสุขุมวิท 23 กรุงเทพฯ",
+    "address_en": "Soi Sukhumvit 23, Bangkok",
+    "projects": ["prj001", "prj003"],
+    "status": "active",
+    "service_type": ["walk_in", "delivery", "reservation"],
+    "image": "/opt/yodeck/medias/shop002-01.MP4",
+    "map_url": "https://maps.app.goo.gl/petcenter",
+    "map_embed_url": "https://www.google.com/maps/embed?pb=petcenter",
+    "items": [
+      {
+        "name_th": "อาหารสุนัขแบบเม็ด",
+        "name_en": "Dry Dog Food",
+        "price": 450,
+        "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "อาหารแมวแบบกระป๋อง",
+        "name_en": "Wet Cat Food",
+        "price": 85,
+        "image": "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ของเล่นสุนัข",
+        "name_en": "Dog Toys",
+        "price": 120,
+        "image": "https://images.unsplash.com/photo-1544023977-8da7eec56a9d?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ปลอกคอสัตว์เลี้ยง",
+        "name_en": "Pet Collars",
+        "price": 250,
+        "image": "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ผลิตภัณฑ์อาบน้ำสัตว์เลี้ยง",
+        "name_en": "Pet Shampoo",
+        "price": 180,
+        "image": "https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "บริการตัดขนสัตว์เลี้ยง",
+        "name_en": "Pet Grooming Service",
+        "price": 500,
+        "image": "https://images.unsplash.com/photo-1560807707-8cc77767d783?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ขนมสุนัขและแมว",
+        "name_en": "Pet Treats",
+        "price": 95,
+        "image": "https://images.unsplash.com/photo-1601758228006-55611be90a45?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "กระเป๋าใส่สัตว์เลี้ยง",
+        "name_en": "Pet Carriers",
+        "price": 850,
+        "image": "https://images.unsplash.com/photo-1544023977-8da7eec56a9d?w=400&h=300&fit=crop"
+      }
+    ],
+    "promotions": [
+      {
+        "title_th": "ซื้อ 2 แถม 1 อาหารสุนัข",
+        "title_en": "Buy 2 Get 1 Free Dog Food",
+        "description_th": "อาหารสุนัขแบรนด์ชั้นนำ ทุกขนาด",
+        "description_en": "Premium dog food brands, all sizes",
+        "start_date": "2025-08-01",
+        "end_date": "2025-08-31"
+      }
+    ]
+  },
+  {
+    "id": "shop010",
+    "name_th": "ร้านกาแฟโบราณ เฮอริเทจ",
+    "name_en": "Heritage Coffee Roasters",
+    "logo": "logos/heritagecoffee.png",
+    "images": [
+      "images/coffee-shop.jpg",
+      "images/barista-1.jpg",
+      "images/barista.png",
+      "images/bakery-interior.jpg",
+      "images/pastryparis-1.jpg"
+    ],
+    "videos": [
+      "videos/coffee-roasting.mp4"
+    ],
+    "description_th": "ร้านกาแฟคั่วเมล็ด เครื่องชงกาแฟ และอุปกรณ์บาริสต้า",
+    "description_en": "Coffee bean roastery, brewing equipment and barista supplies.",
+    "type": "non-service",
+    "category_th": "ร้านกาแฟ",
+    "category_en": "Coffee Shop",
+    "contact": {
+      "phone": "029001122",
+      "line": "@heritagecoffee"
+    },
+    "location_th": "ชั้น 1 โซนคาเฟ่",
+    "location_en": "1st floor, Café zone",
+    "address_th": "ซอยสุขุมวิท 38 กรุงเทพฯ",
+    "address_en": "Soi Sukhumvit 38, Bangkok",
+    "projects": ["prj003", "prj004"],
+    "status": "active",
+    "service_type": ["walk_in", "delivery"],
+    "image": "/opt/yodeck/medias/shop002-02.MP4",
+    "map_url": "https://maps.app.goo.gl/heritagecoffee",
+    "map_embed_url": "https://www.google.com/maps/embed?pb=heritagecoffee",
+    "items": [
+      {
+        "name_th": "เมล็ดกาแฟอราบิก้า",
+        "name_en": "Arabica Coffee Beans",
+        "price": 450,
+        "image": "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "เมล็ดกาแฟโรบัสต้า",
+        "name_en": "Robusta Coffee Beans",
+        "price": 320,
+        "image": "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "เครื่องชงกาแฟเดลอนจี",
+        "name_en": "DeLonghi Coffee Machine",
+        "price": 12500,
+        "image": "https://images.unsplash.com/photo-1517746136574-00b9c8e65de0?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "เครื่องบดกาแฟ",
+        "name_en": "Coffee Grinder",
+        "price": 2800,
+        "image": "https://images.unsplash.com/photo-1610889556528-6c54e720c231?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "กาแฟพร้อมดื่ม",
+        "name_en": "Ready-to-drink Coffee",
+        "price": 85,
+        "image": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "อุปกรณ์บาริสต้า",
+        "name_en": "Barista Equipment",
+        "price": 680,
+        "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=300&fit=crop"
+      }
+    ],
+    "promotions": [
+      {
+        "title_th": "ลด 25% เมล็ดกาแฟคั่วสด",
+        "title_en": "25% OFF Fresh Roasted Beans",
+        "description_th": "เมล็ดกาแฟคั่วสดทุกสายพันธุ์",
+        "description_en": "All varieties of fresh roasted coffee beans",
+        "start_date": "2025-08-01",
+        "end_date": "2025-09-15",
+        "image": "images/coffee-beans-promo.jpg"
+      }
+    ]
+  },
+  {
+    "id": "shop011",
+    "name_th": "บริการซ่อมมือถือ ฟิกซ์มี",
+    "name_en": "Fix Me Mobile Repair",
+    "logo": "logos/mobilerepair.png",
+    "images": [
+      "images/mobilerepair-1.jpg",
+      "images/mobilerepair-2.jpg"
+    ],
+    "videos": [],
+    "description_th": "ซ่อมมือถือ แท็บเล็ต เปลี่ยนจอ แบตเตอรี่ บริการด่วน",
+    "description_en": "Mobile phone and tablet repair, screen replacement, battery service.",
+    "type": "service",
+    "category_th": "ซ่อมมือถือ",
+    "category_en": "Mobile Repair",
+    "contact": {
+      "phone": "029112233",
+      "line": "@fixmemobile"
+    },
+    "location_th": "ชั้น 1 โซนเทคโนโลยี",
+    "location_en": "1st floor, Technology zone",
+    "address_th": "ซอยสุขุมวิท 24 กรุงเทพฯ",
+    "address_en": "Soi Sukhumvit 24, Bangkok",
+    "projects": ["prj001", "prj002", "prj004"],
+    "status": "active",
+    "service_type": ["walk_in", "reservation"],
+    "image": "/opt/yodeck/medias/unit001-01.MP4",
+    "map_url": "https://maps.app.goo.gl/fixmemobile",
+    "map_embed_url": "https://www.google.com/maps/embed?pb=fixmemobile",
+    "items": [
+      {
+        "name_th": "เปลี่ยนหน้าจอ iPhone",
+        "name_en": "iPhone Screen Replacement",
+        "price": 2500,
+        "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "เปลี่ยนแบตเตอรี่ Samsung",
+        "name_en": "Samsung Battery Replacement",
+        "price": 1200,
+        "image": "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ซ่อมลำโพงโทรศัพท์",
+        "name_en": "Phone Speaker Repair",
+        "price": 800,
+        "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "เปลี่ยนกล้องหลัง",
+        "name_en": "Rear Camera Replacement",
+        "price": 1500,
+        "image": "https://images.unsplash.com/photo-1598441834124-71746532857a?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ซ่อมปุ่มโฮม",
+        "name_en": "Home Button Repair",
+        "price": 600,
+        "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ซ่อมช่องชาร์จ",
+        "name_en": "Charging Port Repair",
+        "price": 900,
+        "image": "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ติดตั้งกระจกกันรอย",
+        "name_en": "Screen Protector Installation",
+        "price": 300,
+        "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ซ่อมแท็บเล็ต",
+        "name_en": "Tablet Repair Service",
+        "price": 1800,
+        "image": "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&h=300&fit=crop"
+      }
+    ],
+    "promotions": [
+      {
+        "title_th": "รับประกันการซ่อม 6 เดือน",
+        "title_en": "6-Month Repair Warranty",
+        "description_th": "รับประกันงานซ่อมทุกชิ้นส่วน 6 เดือนเต็ม",
+        "description_en": "Full 6-month warranty on all repair work",
+        "start_date": "2025-08-01",
+        "end_date": "2025-12-31"
+      }
+    ]
+  },
+  {
+    "id": "shop012",
+    "name_th": "ร้านเครื่องประดับ จิวเวลรี่ เฮ้าส์",
+    "name_en": "Jewelry House",
+    "logo": "logos/jewelryhouse.png",
+    "images": [
+      "images/jewelryhouse-1.jpg",
+      "images/jewelryhouse-2.jpg",
+      "images/jewelryhouse-3.jpg"
+    ],
+    "videos": [
+      "videos/jewelry-showcase.mp4"
+    ],
+    "description_th": "เครื่องประดับทอง เงิน เพชร แหวนแต่งงาน และของขวัญพิเศษ",
+    "description_en": "Gold, silver, diamond jewelry, wedding rings and special gifts.",
+    "type": "non-service",
+    "category_th": "เครื่องประดับ",
+    "category_en": "Jewelry Store",
+    "contact": {
+      "phone": "029223344",
+      "line": "@jewelryhouse"
+    },
+    "location_th": "ชั้น 2 โซนเครื่องประดับ",
+    "location_en": "2nd floor, Jewelry zone",
+    "address_th": "ซอยสุขุมวิท 26 กรุงเทพฯ",
+    "address_en": "Soi Sukhumvit 26, Bangkok",
+    "projects": ["prj002", "prj003"],
+    "status": "active",
+    "service_type": ["walk_in", "reservation"],
+    "image": "/opt/yodeck/medias/rest001-01.MP4",
+    "map_url": "https://maps.app.goo.gl/jewelryhouse",
+    "map_embed_url": "https://www.google.com/maps/embed?pb=jewelryhouse",
+    "items": [
+      {
+        "name_th": "แหวนทองคำแท้",
+        "name_en": "Gold Rings",
+        "price": 15000,
+        "image": "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "สร้อยคอเพชร",
+        "name_en": "Diamond Necklaces",
+        "price": 45000,
+        "image": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ต่างหูไข่มุก",
+        "name_en": "Pearl Earrings",
+        "price": 8500,
+        "image": "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "แหวนแต่งงาน",
+        "name_en": "Wedding Rings",
+        "price": 28000,
+        "image": "https://images.unsplash.com/photo-1544216717-3bbf52512659?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "กำไลเงินแท้",
+        "name_en": "Silver Bracelets",
+        "price": 3500,
+        "image": "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "จี้ทองคำ",
+        "name_en": "Gold Pendants",
+        "price": 12000,
+        "image": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "นาฬิกาข้อมือหรู",
+        "name_en": "Luxury Watches",
+        "price": 85000,
+        "image": "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "เข็มกลัดเพชร",
+        "name_en": "Diamond Brooches",
+        "price": 22000,
+        "image": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=300&fit=crop"
+      }
+    ],
+    "promotions": [
+      {
+        "title_th": "ลด 30% แหวนแต่งงาน",
+        "title_en": "30% OFF Wedding Rings",
+        "description_th": "แหวนแต่งงานทุกแบบ ทุกขนาด",
+        "description_en": "All wedding rings, all sizes",
+        "start_date": "2025-08-01",
+        "end_date": "2025-10-31",
+        "image": "images/wedding-rings-promo.jpg"
+      }
+    ]
+  }
+]

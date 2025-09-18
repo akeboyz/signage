@@ -1,0 +1,40 @@
+{
+  "daily": [
+    {
+      "id": "daily001",
+      "project_id": "prj001",
+      "name": "Shuttle Bus Schedule",
+      "image": "/opt/yodeck/medias/daily-shuttle.jpg",
+      "type": "transportation",
+      "schedule": "Every 30 minutes, 6:00 AM - 11:00 PM",
+      "route": "Project → BTS Station"
+    },
+    {
+      "id": "daily002",
+      "project_id": "prj002", 
+      "name": "Gym & Pool Hours",
+      "image": "/opt/yodeck/medias/daily-gym.jpg",
+      "type": "facility",
+      "schedule": "Gym: 5:00 AM - 10:00 PM | Pool: 6:00 AM - 9:00 PM",
+      "contact": "Ext. 101"
+    },
+    {
+      "id": "daily003",
+      "project_id": "prj003",
+      "name": "Garbage Collection",
+      "image": "/opt/yodeck/medias/daily-garbage.jpg", 
+      "type": "service",
+      "schedule": "Monday, Wednesday, Friday at 8:00 AM",
+      "note": "Please place bags outside by 7:30 AM"
+    },
+    {
+      "id": "daily004",
+      "project_id": "prj004",
+      "name": "Security Patrol",
+      "image": "/opt/yodeck/medias/daily-security.jpg",
+      "type": "service", 
+      "schedule": "24/7 patrol every 2 hours",
+      "emergency": "Press emergency button or call Ext. 911"
+    }
+  ]
+}

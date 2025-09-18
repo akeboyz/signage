@@ -1,0 +1,452 @@
+[
+  {
+    "id": "rest001",
+    "name_th": "ร้านก๋วยเตี๋ยวเรือเจ๊แดง",
+    "name_en": "Je Daeng Boat Noodle",
+    "logo": "logos/jedaeng.png",
+    "images": [
+      "images/restaurant-thai.jpg",
+      "images/rest001-1.jpg",
+      "images/jedaeng.png",
+      "images/coffee-shop.jpg",
+      "images/bakery-interior.jpg"
+    ],
+    "videos": [
+      "videos/rest001-promo.mp4"
+    ],
+    "description_th": "ก๋วยเตี๋ยวเรือรสเด็ดสูตรต้นตำรับ เส้นเหนียวนุ่ม น้ำซุปเข้มข้น",
+    "description_en": "Authentic boat noodles with rich broth and tender noodles.",
+    "type": "dine",
+    "category_th": "ร้านอาหารไทย",
+    "category_en": "Thai Restaurant",
+    "contact": { "phone": "0812345678", "line": "@jedaeng" },
+    "location_th": "ชั้น 2 โซนฟู้ดคอร์ท",
+    "location_en": "2nd floor, Food Court zone",
+    "projects": ["prj001", "prj002"],
+    "status": "active",
+    "map_url": "https://maps.app.goo.gl/example1",
+    "map_embed_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.6554634543896!2d100.56065431525234!3d13.738264290385764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29f05b6b0b8d7%3A0x8c5c8b2b6b4b5b5b!2sTerminal%2021!5e0!3m2!1sen!2sth!4v1642015100000!5m2!1sen!2sth",
+    "address": "22 Soi Sukhumvit 23, Wattana, Bangkok 10110",
+    "opening_hours": "Daily: 10:00 AM - 10:00 PM",
+    "address_th": "22 ซอยสุขุมวิท 23 เขตวัฒนา กรุงเทพฯ",
+    "address_en": "22 Soi Sukhumvit 23, Wattana, Bangkok",
+    "service_type": [
+      "ads_only",
+      "walk_in",
+      "mobile_order"
+    ],
+    "menu": [
+      {
+        "name_th": "ก๋วยเตี๋ยวเรือน้ำใส",
+        "name_en": "Clear Boat Noodles",
+        "price": 35,
+        "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ก๋วยเตี๋ยวเรือน้ำตก",
+        "name_en": "Dark Boat Noodles",
+        "price": 35,
+        "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ก๋วยเตี๋ยวเนื้อพิเศษ",
+        "name_en": "Special Beef Noodles",
+        "price": 45,
+        "image": "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ลูกชิ้นผัด",
+        "name_en": "Fried Meatballs",
+        "price": 25,
+        "image": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "น้ำเปล่า",
+        "name_en": "Water",
+        "price": 10,
+        "image": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "โค้ก",
+        "name_en": "Coke",
+        "price": 15,
+        "image": "https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ข้าวผัดปู",
+        "name_en": "Crab Fried Rice",
+        "price": 55,
+        "image": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ส้มตำไทย",
+        "name_en": "Thai Papaya Salad",
+        "price": 40,
+        "image": "https://images.unsplash.com/photo-1594756202469-9ff9799b2e4e?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ข้าวผัดกุ้ง",
+        "name_en": "Shrimp Fried Rice",
+        "price": 60,
+        "image": "https://images.unsplash.com/photo-1603133872765-c6d47ba84bc0?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ผัดไทย",
+        "name_en": "Pad Thai Noodles",
+        "price": 50,
+        "image": "https://images.unsplash.com/photo-1559314809-0f31657def5e?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ต้มยำกุ้ง",
+        "name_en": "Tom Yum Goong Soup",
+        "price": 65,
+        "image": "https://images.unsplash.com/photo-1569562211093-4ed0d0758f12?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "กะเพราหมูกรอบ",
+        "name_en": "Crispy Pork Basil",
+        "price": 55,
+        "image": "https://images.unsplash.com/photo-1562565652-a0d8f0c59eb4?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ข้าวมันไก่",
+        "name_en": "Hainanese Chicken Rice",
+        "price": 45,
+        "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "แกงเขียวหวาน",
+        "name_en": "Green Curry",
+        "price": 70,
+        "image": "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ข้าวซอย",
+        "name_en": "Khao Soi Noodles",
+        "price": 65,
+        "image": "https://images.unsplash.com/photo-1569562211093-4ed0d0758f12?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ไอศกรีมกะทิ",
+        "name_en": "Coconut Ice Cream",
+        "price": 30,
+        "image": "https://images.unsplash.com/photo-1570197788417-0e82375c9371?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ชาไทย",
+        "name_en": "Thai Tea",
+        "price": 25,
+        "image": "https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=400&h=300&fit=crop"
+      }
+    ],
+    "promotions": [
+      {
+        "title_th": "โปรลด 10% เมนูเส้นทุกชนิด",
+        "title_en": "10% OFF All Noodle Dishes",
+        "description_th": "เฉพาะวันจันทร์-ศุกร์ เวลา 11:00-14:00 น.",
+        "description_en": "Monday–Friday, 11am–2pm only.",
+        "start_date": "2025-08-05",
+        "end_date": "2025-08-31",
+        "image": "images/promo-jedaeng.jpg"
+      }
+    ]
+  },
+  {
+    "id": "rest002",
+    "name_th": "พิซซ่า เอ็กซ์เพรส",
+    "name_en": "Pizza Express",
+    "logo": "logos/pizzaexpress.png",
+    "images": [
+      "images/pizza-restaurant.jpg",
+      "images/rest002-1.jpg",
+      "images/pizzaexpress.png",
+      "images/steakhouse-1.jpg",
+      "images/restaurant-thai.jpg"
+    ],
+    "videos": [],
+    "description_th": "พิซซ่าสไตล์อิตาเลียนแป้งบางกรอบ ทำสดใหม่ทุกวัน",
+    "description_en": "Italian-style thin crust pizzas baked fresh daily.",
+    "type": "both",
+    "category_th": "ร้านพิซซ่า",
+    "category_en": "Pizza Restaurant",
+    "contact": { "phone": "0855555555" },
+    "location_th": "ชั้น 1 ติดลิฟต์",
+    "location_en": "1st floor, next to elevator",
+    "projects": ["prj001", "prj003"],
+    "status": "active",
+    "map_url": "https://maps.app.goo.gl/example2",
+    "map_embed_url": "https://www.google.com/maps/embed?pb=example2",
+    "address_th": "99 ถนนสุขุมวิท แขวงคลองเตย กรุงเทพฯ",
+    "address_en": "99 Sukhumvit Rd, Klongtoey, Bangkok",
+    "service_type": [
+      "ads_only",
+      "walk_in",
+      "reservation",
+      "delivery"
+    ],
+    "menu": [
+      {
+        "name_th": "พิซซ่ามาร์เกอริต้า",
+        "name_en": "Margherita Pizza",
+        "price": 180,
+        "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "พิซซ่าเปเปอโรนี",
+        "name_en": "Pepperoni Pizza",
+        "price": 220,
+        "image": "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "พิซซ่าสี่ชีส",
+        "name_en": "Four Cheese Pizza",
+        "price": 250,
+        "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "พิซซ่าฮาวายเอี้ยน",
+        "name_en": "Hawaiian Pizza",
+        "price": 240,
+        "image": "https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "สลัดซีซาร์",
+        "name_en": "Caesar Salad",
+        "price": 120,
+        "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ไก่ทอดกรอบ",
+        "name_en": "Crispy Chicken Wings",
+        "price": 150,
+        "image": "https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "พาสต้าคาร์โบนารา",
+        "name_en": "Carbonara Pasta",
+        "price": 200,
+        "image": "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ลาซานย่าเนื้อ",
+        "name_en": "Beef Lasagna",
+        "price": 280,
+        "image": "https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "พิซซ่าซูเปรีม",
+        "name_en": "Supreme Pizza",
+        "price": 320,
+        "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "พิซซ่าเนื้อบาร์บีคิว",
+        "name_en": "BBQ Beef Pizza",
+        "price": 290,
+        "image": "https://images.unsplash.com/photo-1506354666786-959d6d497f1a?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "พาสต้าอัลฟเรโด",
+        "name_en": "Fettuccine Alfredo",
+        "price": 230,
+        "image": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ริซอตโต้เห็ด",
+        "name_en": "Mushroom Risotto",
+        "price": 260,
+        "image": "https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "บรูสเคตต้า",
+        "name_en": "Bruschetta",
+        "price": 140,
+        "image": "https://images.unsplash.com/photo-1572441713132-51c75654db73?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ซุปมินิสโตรน",
+        "name_en": "Minestrone Soup",
+        "price": 110,
+        "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "เจลาโต้",
+        "name_en": "Gelato",
+        "price": 80,
+        "image": "https://images.unsplash.com/photo-1560008581-09b93dcde938?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "เลม่อนเทต",
+        "name_en": "Lemonade",
+        "price": 60,
+        "image": "https://images.unsplash.com/photo-1523362628745-0c100150b504?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "การ์ลิคเบรด",
+        "name_en": "Garlic Bread",
+        "price": 90,
+        "image": "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=400&h=300&fit=crop"
+      }
+    ],
+    "promotions": [
+      {
+        "title_th": "ซื้อ 1 แถม 1 เมนูพิซซ่า",
+        "title_en": "Buy 1 Get 1 Free Pizza",
+        "description_th": "ทุกวันพุธ เฉพาะทานที่ร้าน",
+        "description_en": "Every Wednesday, dine-in only.",
+        "start_date": "2025-08-01",
+        "end_date": "2025-08-31",
+        "image": "images/promo-pizzaexpress.jpg"
+      }
+    ]
+  },
+  {
+    "id": "rest003",
+    "name_th": "เพสทรี เดอ ปารีส",
+    "name_en": "Pâtisserie de Paris",
+    "logo": "logos/pastryparis.png",
+    "images": [
+      "images/bakery-interior.jpg",
+      "images/pastryparis-1.jpg",
+      "images/pastryparis.png",
+      "images/coffee-shop.jpg",
+      "images/supermarket-interior.jpg"
+    ],
+    "videos": [
+      "videos/pastryparis-promo.mp4"
+    ],
+    "description_th": "ขนมอบและเบเกอรี่สไตล์ฝรั่งเศสแท้ ๆ หอมกรุ่นจากเตาทุกวัน",
+    "description_en": "Authentic French pastries and bakery, freshly baked every day.",
+    "type": "dine",
+    "category_th": "เบเกอรี่ & ขนมอบ",
+    "category_en": "Bakery & Pastry Shop",
+    "contact": { "phone": "0991234567", "line": "@pastryparis" },
+    "location_th": "ชั้น 1 โซนเบเกอรี่",
+    "location_en": "1st floor, Bakery zone",
+    "projects": ["prj001", "prj004"],
+    "status": "active",
+    "map_url": "https://maps.app.goo.gl/pastryparis001",
+    "map_embed_url": "https://www.google.com/maps/embed?pb=pastryparis001",
+    "address_th": "11 ถนนสุขุมวิท ថ เขตวัฒนา กรุงเทพฯ",
+    "address_en": "11 Sukhumvit Rd, Klongtoey, Bangkok",
+    "service_type": [
+      "ads_only",
+      "walk_in"
+    ],
+    "menu": [
+      {
+        "name_th": "ครัวซองเนย",
+        "name_en": "Butter Croissant",
+        "price": 45,
+        "image": "https://images.unsplash.com/photo-1555507036-ab794f4ec5d4?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ปฏิสีส",
+        "name_en": "Petit Fours",
+        "price": 35,
+        "image": "https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "แม็คคารง",
+        "name_en": "Macarons",
+        "price": 55,
+        "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "เอแคลร์",
+        "name_en": "Éclair",
+        "price": 65,
+        "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "มิลล์เฟอย",
+        "name_en": "Mille-feuille",
+        "price": 75,
+        "image": "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "กาแฟเอสเปรสโซ",
+        "name_en": "Espresso Coffee",
+        "price": 55,
+        "image": "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "เค้กช็อกโกแลต",
+        "name_en": "Chocolate Cake",
+        "price": 85,
+        "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "คัพเค้กวนิลา",
+        "name_en": "Vanilla Cupcake",
+        "price": 40,
+        "image": "https://images.unsplash.com/photo-1587668178277-295251f900ce?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ทาร์ตผลไม้",
+        "name_en": "Fruit Tart",
+        "price": 95,
+        "image": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ปฏิสูร์ผลไม้",
+        "name_en": "Fruit Profiteroles",
+        "price": 105,
+        "image": "https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "มาดเลน",
+        "name_en": "Madeleines",
+        "price": 60,
+        "image": "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "เค้กซองช์",
+        "name_en": "Opera Cake",
+        "price": 120,
+        "image": "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "แพนเค้กฝรั่งเศส",
+        "name_en": "French Crepes",
+        "price": 85,
+        "image": "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "คาปูชิโน่",
+        "name_en": "Cappuccino",
+        "price": 70,
+        "image": "https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ลาเต้",
+        "name_en": "Caffé Latte",
+        "price": 75,
+        "image": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ชาร์ลอต",
+        "name_en": "Charlotte Cake",
+        "price": 110,
+        "image": "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400&h=300&fit=crop"
+      },
+      {
+        "name_th": "ปาแนตโทน",
+        "name_en": "Panettone",
+        "price": 130,
+        "image": "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=400&h=300&fit=crop"
+      }
+    ],
+    "promotions": [
+      {
+        "title_th": "ลด 15% เมนูขนมอบทุกชนิด",
+        "title_en": "15% OFF All Pastries",
+        "description_th": "เมื่อซื้อครับ 3 รายการขึ้นไป",
+        "description_en": "When you buy 3 items or more.",
+        "start_date": "2025-08-10",
+        "end_date": "2025-09-10",
+        "image": "images/promo-pastryparis.jpg"
+      }
+    ]
+  }
+]

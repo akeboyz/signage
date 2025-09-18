@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Yodeck Mahogany Signage</title>
+  <meta name="color-scheme" content="dark light"/>
+
+  <style>
+    :root{ --cta-bg: rgba(200,200,200,.35); --cta-border: rgba(255,255,255,.45); --cta-text: #fff; }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;background:#000}
+    body{color:#fff;overflow:hidden;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif}
+
+    .safe-viewport{position:fixed;inset:0;display:grid;place-items:center;overflow:hidden}
+    #frame{position:absolute;left:50%;top:50%;width:1080px;height:1920px;background:#000;overflow:hidden;
+           transform:translate(-50%,-50%) scale(1);transform-origin:center center;will-change:transform}
+
+    .stage{position:absolute;inset:0;background:#000}
+    video,img,iframe{position:absolute;inset:0;width:100%;height:100%;background:#000}
+    video,img{object-fit:contain}
+    iframe{border:0}
+
+    #status{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+      color:#ddd;font-weight:700;text-align:center;z-index:90;padding:10px 14px;border-radius:10px;
+      background:rgba(0,0,0,.35);display:none}
+    #status.show{display:block}
+
+    #mainCta{position:absolute;right:24px;bottom:24px;z-index:80;display:flex;align-items:flex-end}
+    #mainCtaBar{
+      margin:0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;
+      color:#fff;font-weight:700;font-size:40px;letter-spacing:.5px;text-shadow:0 2px 6px rgba(0,0,0,.45);
+      display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none
+    }
+
+    #headCta{position:absolute;left:24px;top:24px;z-index:80;display:flex}
+    #floatCta{
+      margin:0;padding:8px 14px;border:0;border-radius:999px;background:transparent;box-shadow:none;color:#fff;
+      font-weight:700;font-size:40px;letter-spacing:.5px;text-shadow:0 2px 6px rgba(0,0,0,.45);
+      display:none;align-items:center;gap:8px;max-inline-size:min(72%,520px);
+      white-space:normal;overflow-wrap:anywhere;hyphens:auto;text-wrap:balance;
+      user-select:none;pointer-events:auto;cursor:pointer;-webkit-tap-highlight-color:transparent;
+    }
+    #floatCta:hover{opacity:.9} #floatCta:active{opacity:.75}
+
+    .blink{animation:blink 1.2s ease-in-out infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+
+    #ver{position:absolute;left:12px;bottom:12px;z-index:100;font-size:12px;color:#9aa5b1;opacity:.7;user-select:none}
+    #debug{position:absolute;right:12px;top:12px;z-index:100;font-size:10px;color:#666;opacity:.7;max-width:300px;word-break:break-all}
+  </style>
+</head>
+<body>
+
+  <div class="safe-viewport">
+    <div id="frame">
+      <div class="stage" aria-live="polite">
+        <video id="v" playsinline preload="metadata" muted></video>
+        <img id="img" alt=""/>
+        <iframe id="web" allow="autoplay; fullscreen" style="display:none"></iframe>
+      </div>
+
+      <!-- CTA -->
+      <div id="mainCta">
+        <div id="mainCtaBar" title="Main Menu"><span>↩️ main menu</span></div>
+      </div>
+      <div id="headCta">
+        <div id="floatCta" role="button" tabindex="0" title="More details">
+          <span>👆🏻 for more details / รายละเอียดเพิ่มเติม</span>
+        </div>
+      </div>
+
+      <div id="status"></div>
+      <div id="ver">Yodeck Sync v1.0</div>
+      <div id="debug"></div>
+    </div>
+  </div>
+
+  <script>
+    /* =============== Responsive Frame Scaling =============== */
+    (function fit(){
+      const DESIGN_W=1080, DESIGN_H=1920, frame=document.getElementById('frame');
+      function apply(){
+        const s=Math.min(window.innerWidth/DESIGN_W, window.innerHeight/DESIGN_H);
+        frame.style.transform=`translate(-50%,-50%) scale(${s})`;
+      }
+      addEventListener('resize',apply); addEventListener('orientationchange',apply);
+      addEventListener('pageshow',apply); addEventListener('DOMContentLoaded',apply);
+      apply();
+    })();
+
+    /* =============== Yodeck Integration =============== */
+    (function(){
+      const IMG_DURATION_SEC = 8;
+      const URL_DURATION_SEC = 15;
+
+      const qs = new URLSearchParams(location.search);
+      const projectId = qs.get('project_id') || 'prj001';
+
+      // Yodeck parameters
+      const yodeckUuid = qs.get('uuid');
+      const yodeckPreview = qs.get('preview') === 'true';
+      const yodeckScheduleDir = qs.get('schedule_directory');
+
+      const elV   = document.getElementById('v');
+      const elImg = document.getElementById('img');
+      const elWeb = document.getElementById('web');
+      const elStat= document.getElementById('status');
+      const elVer = document.getElementById('ver');
+      const elDebug = document.getElementById('debug');
+      const mainCtaBar=document.getElementById('mainCtaBar');
+      const floatCta=document.getElementById('floatCta');
+
+      function showStatus(msg){elStat.textContent=msg;elStat.classList.add('show')}
+      function hideStatus(){elStat.classList.remove('show')}
+      function debug(msg){elDebug.textContent=msg}
+
+      function hideAll(){
+        elV.pause(); elV.removeAttribute('src'); elV.load(); elV.style.display='none';
+        elImg.removeAttribute('src'); elImg.style.display='none';
+        elWeb.src='about:blank'; elWeb.style.display='none';
+      }
+
+      // Enhanced media detection with local files
+      function detectYodeckMedia(){
+        const mediaList = [];
+
+        if (projectId === 'prj003') {
+          // Mahogany project media - mix of local and remote
+          mediaList.push(
+            // Local images from medias folder
+            {type: 'image', src: './medias/mahogany-lobby.jpg', duration: IMG_DURATION_SEC, title: 'Mahogany Lobby'},
+            {type: 'image', src: './medias/mahogany-pool.jpg', duration: IMG_DURATION_SEC, title: 'Swimming Pool'},
+            {type: 'image', src: './medias/mahogany-room.jpg', duration: IMG_DURATION_SEC, title: 'Model Room'},
+            // Unsplash fallbacks for missing local files
+            {type: 'image', src: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1080&h=1920&fit=crop', duration: IMG_DURATION_SEC, title: 'Luxury Property'},
+            {type: 'image', src: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1080&h=1920&fit=crop', duration: IMG_DURATION_SEC, title: 'Modern Living'},
+            {type: 'image', src: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1080&h=1920&fit=crop', duration: IMG_DURATION_SEC, title: 'Architecture'},
+            // Interactive pages
+            {type: 'url', src: './index.html', duration: URL_DURATION_SEC, title: 'Main Website'},
+            {type: 'url', src: './unit-signage.html', duration: URL_DURATION_SEC, title: 'Available Units'}
+          );
+        } else if (projectId === 'prj002') {
+          // Restaurant project
+          mediaList.push(
+            {type: 'image', src: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1080&h=1920&fit=crop', duration: IMG_DURATION_SEC, title: 'Fine Dining'},
+            {type: 'url', src: './rest-signage.html', duration: URL_DURATION_SEC, title: 'Restaurant Menu'}
+          );
+        } else if (projectId === 'prj001') {
+          // Shopping project
+          mediaList.push(
+            {type: 'image', src: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1080&h=1920&fit=crop', duration: IMG_DURATION_SEC, title: 'Shopping Center'},
+            {type: 'url', src: './shop-signage.html', duration: URL_DURATION_SEC, title: 'Store Directory'}
+          );
+        } else {
+          // Default content
+          mediaList.push(
+            {type: 'image', src: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1080&h=1920&fit=crop', duration: IMG_DURATION_SEC, title: 'Welcome'},
+            {type: 'url', src: './index.html', duration: URL_DURATION_SEC, title: 'Main Site'}
+          );
+        }
+
+        return mediaList;
+      }
+
+      // Try to load from Yodeck media library first
+      async function getYodeckMedia(){
+        debug(`Project: ${projectId}${yodeckUuid ? ', UUID: ' + yodeckUuid : ''}${yodeckPreview ? ' (Preview)' : ''}`);
+
+        try {
+          // Check for Yodeck media manifest
+          const manifestUrl = yodeckScheduleDir ? `/${yodeckScheduleDir}/media.json` : null;
+          if (manifestUrl) {
+            const response = await fetch(manifestUrl, {cache: 'no-store'});
+            if (response.ok) {
+              const yodeckMedia = await response.json();
+              debug('Loaded Yodeck media manifest');
+              return yodeckMedia.items || yodeckMedia;
+            }
+          }
+
+          // Try Yodeck API endpoint (if available)
+          if (yodeckUuid && !yodeckPreview) {
+            const apiUrl = `https://api.yodeck.com/v1/media/${yodeckUuid}`;
+            const response = await fetch(apiUrl);
+            if (response.ok) {
+              const apiData = await response.json();
+              debug('Loaded from Yodeck API');
+              return apiData.media || apiData;
+            }
+          }
+        } catch (error) {
+          console.warn('Yodeck media fetch failed:', error);
+          debug('Yodeck fetch failed, using local media');
+        }
+
+        // Fallback to local media detection
+        return detectYodeckMedia();
+      }
+
+      function buildMainMenuUrl(pid){
+        return `./menu.html?project_id=${pid}`;
+      }
+
+      function buildDetailUrl(item){
+        if (!item || !item.title) return null;
+
+        // Map based on content type
+        if (item.title.toLowerCase().includes('property') || item.title.toLowerCase().includes('unit') || item.title.toLowerCase().includes('room')) {
+          return './category.html?type=units';
+        }
+        if (item.title.toLowerCase().includes('restaurant') || item.title.toLowerCase().includes('dining')) {
+          return './category.html?type=restaurants';
+        }
+        if (item.title.toLowerCase().includes('shop') || item.title.toLowerCase().includes('store')) {
+          return './category.html?type=shops';
+        }
+
+        return './index.html';
+      }
+
+      function setupMainCta(){
+        const url = buildMainMenuUrl(projectId);
+        const go = () => {
+          if (window.parent !== window) {
+            // Running in Yodeck iframe, open in same frame
+            location.href = url;
+          } else {
+            // Standalone, open in new tab
+            window.open(url, '_blank');
+          }
+        };
+        mainCtaBar.onclick = go;
+        mainCtaBar.onkeydown = e => {if(e.key==='Enter'||e.key===' ') go()};
+      }
+
+      function showHeadFor(item){
+        const url = buildDetailUrl(item);
+        if(!url){floatCta.style.display='none';return;}
+        const go = () => {
+          if (window.parent !== window) {
+            location.href = url;
+          } else {
+            window.open(url, '_blank');
+          }
+        };
+        floatCta.onclick = go;
+        floatCta.onkeydown = e => {if(e.key==='Enter'||e.key===' ') go()};
+        floatCta.style.display = 'flex';
+      }
+
+      let mediaList = [];
+      let currentIndex = 0;
+
+      async function playAll(){
+        hideStatus();
+        mediaList = await getYodeckMedia();
+
+        if(mediaList.length === 0){
+          showStatus('ไม่มีรายการสื่อที่พร้อมเล่น');
+          return;
+        }
+
+        showStatus(`กำลังโหลด ${mediaList.length} รายการ...`);
+        await new Promise(r => setTimeout(r, 2000));
+        hideStatus();
+
+        while(true){
+          const item = mediaList[currentIndex];
+          debug(`${item.title} (${currentIndex + 1}/${mediaList.length})`);
+
+          try {
+            await playItem(item);
+          } catch(e) {
+            console.error(e);
+            debug(`Error: ${e.message}`);
+          }
+
+          currentIndex = (currentIndex + 1) % mediaList.length;
+          await new Promise(r => setTimeout(r, 500)); // Transition delay
+        }
+      }
+
+      async function playItem(item){
+        hideAll();
+        showHeadFor(item);
+
+        document.getElementById('mainCta').style.display = '';
+        document.getElementById('headCta').style.display = 'none';
+
+        if (item.type === 'video') {
+          elV.src = item.src;
+          elV.style.display = 'block';
+          elV.muted = true;
+
+          try {
+            await elV.play();
+            await new Promise(resolve => {
+              const duration = isFinite(elV.duration) && elV.duration > 0 ? elV.duration : 30;
+              const watchdog = setTimeout(resolve, (duration + 2) * 1000);
+              elV.onended = () => { clearTimeout(watchdog); resolve(); };
+              elV.onerror = () => { clearTimeout(watchdog); resolve(); };
+            });
+          } catch(e) {
+            console.error('Video play error:', e);
+            await new Promise(r => setTimeout(r, 3000)); // Fallback duration
+          }
+
+        } else if (item.type === 'image') {
+          return new Promise((resolve, reject) => {
+            elImg.onload = () => {
+              elImg.style.display = 'block';
+              document.getElementById('headCta').style.display = '';
+              setTimeout(resolve, (item.duration || IMG_DURATION_SEC) * 1000);
+            };
+            elImg.onerror = () => {
+              // Try fallback URL if local image fails
+              if (!item.src.startsWith('http') && !item._fallbackTried) {
+                item._fallbackTried = true;
+                const fallbacks = [
+                  'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1080&h=1920&fit=crop',
+                  'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1080&h=1920&fit=crop'
+                ];
+                const fallback = fallbacks[Math.floor(Math.random() * fallbacks.length)];
+                elImg.src = fallback;
+              } else {
+                // Skip this item
+                setTimeout(resolve, 1000);
+              }
+            };
+            elImg.src = item.src;
+          });
+
+        } else if (item.type === 'url') {
+          elWeb.src = item.src;
+          elWeb.style.display = 'block';
+          document.getElementById('headCta').style.display = '';
+
+          await new Promise(resolve => {
+            const duration = item.duration || URL_DURATION_SEC;
+            const watchdog = setTimeout(resolve, duration * 1000 + 3000);
+            elWeb.onload = () => {
+              setTimeout(() => {
+                clearTimeout(watchdog);
+                resolve();
+              }, duration * 1000);
+            };
+            elWeb.onerror = () => {
+              showStatus('โหลดหน้าไม่สำเร็จ');
+              setTimeout(() => {
+                clearTimeout(watchdog);
+                resolve();
+              }, 1500);
+            };
+          });
+        }
+
+        floatCta.style.display = 'none';
+      }
+
+      // Initialize
+      function init(){
+        setupMainCta();
+        showStatus('กำลังเชื่อมต่อ Yodeck...');
+
+        // Start playback
+        setTimeout(() => {
+          playAll().catch(e => {
+            console.error(e);
+            showStatus('เกิดข้อผิดพลาดในการโหลดสื่อ');
+          });
+        }, 1000);
+      }
+
+      // Yodeck environment detection
+      if (window.parent !== window) {
+        debug('Running in Yodeck player');
+        elVer.textContent = 'Yodeck Player v1.0';
+      } else {
+        debug('Standalone mode');
+        elVer.textContent = 'Standalone v1.0';
+      }
+
+      init();
+    })();
+  </script>
+</body>
+</html>

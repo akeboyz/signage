@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Signage Player</title>
+  <meta name="color-scheme" content="dark light"/>
+
+  <style>
+    :root{ --cta-bg: rgba(200,200,200,.35); --cta-border: rgba(255,255,255,.45); --cta-text: #fff; }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;background:#000}
+    body{color:#fff;overflow:hidden;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif}
+
+    /* ✅ กรอบกลางจอ + สเกลทั้งเฟรม (มาตรฐานเดียวกับ announce.html) */
+    .safe-viewport{position:fixed;inset:0;display:grid;place-items:center;overflow:hidden}
+    #frame{position:absolute;left:50%;top:50%;width:1080px;height:1920px;background:#000;overflow:hidden;
+           transform:translate(-50%,-50%) scale(1);transform-origin:center center;will-change:transform}
+
+    /* พื้นที่เล่นสื่อ */
+    .stage{position:absolute;inset:0;background:#000}
+    video,img,iframe{position:absolute;inset:0;width:100%;height:100%;background:#000}
+    video,img{object-fit:contain} /* เลือก cover ได้ถ้าต้องการครอบ */
+    iframe{border:0}
+
+    /* สถานะ */
+    #status{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+      color:#ddd;font-weight:700;text-align:center;z-index:90;padding:10px 14px;border-radius:10px;
+      background:rgba(0,0,0,.35);display:none}
+    #status.show{display:block}
+
+    /* ✅ CTA แบบพิกเซลคงที่ */
+    #mainCta{position:absolute;right:24px;bottom:24px;z-index:80;display:flex;align-items:flex-end}
+    #mainCtaBar{
+      margin:0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;
+      color:#fff;font-weight:700;font-size:40px;letter-spacing:.5px;text-shadow:0 2px 6px rgba(0,0,0,.45);
+      display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none
+    }
+
+    #headCta{position:absolute;left:24px;top:24px;z-index:80;display:flex}
+    #floatCta{
+      margin:0;padding:8px 14px;border:0;border-radius:999px;background:transparent;box-shadow:none;color:#fff;
+      font-weight:700;font-size:40px;letter-spacing:.5px;text-shadow:0 2px 6px rgba(0,0,0,.45);
+      display:none;align-items:center;gap:8px;max-inline-size:min(72%,520px);
+      white-space:normal;overflow-wrap:anywhere;hyphens:auto;text-wrap:balance;
+      user-select:none;pointer-events:auto;cursor:pointer;-webkit-tap-highlight-color:transparent;
+    }
+    #floatCta:hover{opacity:.9} #floatCta:active{opacity:.75}
+
+    .blink{animation:blink 1.2s ease-in-out infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+
+    /* ปุ่มปลดล็อกเสียง */
+    #unlock{
+      position:absolute;right:16px;top:16px;z-index:100;
+      padding:10px 14px;border-radius:10px;border:0;cursor:pointer;
+      font:600 15px system-ui;background:#1a73e8;color:#fff;
+      box-shadow:0 6px 18px rgba(0,0,0,.32);display:none;
+    }
+
+    #ver{position:absolute;left:12px;bottom:12px;z-index:100;font-size:12px;color:#9aa5b1;opacity:.7;user-select:none}
+  </style>
+</head>
+<body>
+
+  <div class="safe-viewport">
+    <!-- ✅ เฟรมคงที่ 1080×1920 -->
+    <div id="frame">
+      <div class="stage" aria-live="polite">
+        <!-- A) วิดีโอ/รูป -->
+        <video id="v" playsinline preload="metadata" muted></video>
+        <img id="img" alt=""/>
+
+        <!-- B) ประกาศ (iframe) -->
+        <iframe id="ann" allow="autoplay; fullscreen" style="display:none"></iframe>
+
+        <!-- C) URL อื่น ๆ -->
+        <iframe id="web" allow="autoplay; fullscreen" style="display:none"></iframe>
+      </div>
+
+      <!-- CTA -->
+      <div id="mainCta">
+        <div id="mainCtaBar" title="Main Menu"><span>↩️ main menu</span></div>
+      </div>
+      <div id="headCta">
+        <div id="floatCta" role="button" tabindex="0" title="More details">
+          <span>👆🏻 for more details / รายละเอียดเพิ่มเติม</span>
+        </div>
+      </div>
+
+      <!-- overlay อื่นในเฟรม -->
+      <div id="status"></div>
+      <div id="ver"></div>
+      <button id="unlock">🔊 เปิดเสียง</button>
+    </div>
+  </div>
+
+  <!-- 🔊 เครื่องเล่นเพลงพื้นหลัง -->
+  <audio id="bgm" preload="auto" playsinline></audio>
+
+  <script>
+    /* =============== fit เฟรมให้พอดีจอ (เหมือน announce.html) =============== */
+    (function fit(){
+      const DESIGN_W=1080, DESIGN_H=1920, frame=document.getElementById('frame');
+      function apply(){
+        const s=Math.min(window.innerWidth/DESIGN_W, window.innerHeight/DESIGN_H);
+        frame.style.transform=`translate(-50%,-50%) scale(${s})`;
+      }
+      addEventListener('resize',apply); addEventListener('orientationchange',apply);
+      addEventListener('pageshow',apply); addEventListener('DOMContentLoaded',apply);
+    })();
+
+    /* ===================== BGM ===================== */
+    (function bgmLoop(){
+      const audio  = document.getElementById('bgm');
+      window.elBgm = audio;
+      const tracks = [1,2,3,4,5].map(n => `/ann/music/bg-music${String(n).padStart(3,'0')}.mp3`);
+      let i = 0;
+      audio.volume = 0.6; audio.loop = false;
+
+      function playCurrent(){
+        audio.src = tracks[i];
+        const p = audio.play();
+        if (p && p.catch) {
+          const unlock = () => { audio.play().catch(()=>{}); window.removeEventListener('pointerdown', unlock); };
+          window.addEventListener('pointerdown', unlock, { once:true });
+        }
+      }
+      audio.addEventListener('ended', () => { i = (i+1) % tracks.length; playCurrent(); });
+      audio.addEventListener('error', () => { i = (i+1) % tracks.length; playCurrent(); });
+      document.addEventListener('DOMContentLoaded', playCurrent);
+      audio.nextTrack = () => { i = (i+1) % tracks.length; playCurrent(); };
+    })();
+
+    /* ===================== Core ===================== */
+  (function(){
+    const IMG_DURATION_SEC = 10;
+    const URL_DURATION_SEC = 20;
+		const ANNOUNCE_GUARD_MS = 5000;   // guard สูงสุด 5 วินาที เฉพาะกรณีพัง/ไม่ส่งสัญญาณ
+    const VERSION_POLL_MS = 21_600_000;
+
+    const qs = new URLSearchParams(location.search);
+    const projectId = qs.get('project_id') || 'prj001';
+
+    const playlistPath = `/ann/data/playlist.json`;
+    const mediasPath   = `/ann/data/medias.json`;
+
+    const elV   = document.getElementById('v');
+    const elImg = document.getElementById('img');
+    const ifrAnn= document.getElementById('ann');
+    const elWeb = document.getElementById('web');
+    const elStat= document.getElementById('status');
+    const elVer = document.getElementById('ver');
+    const mainCtaBar=document.getElementById('mainCtaBar');
+    const floatCta=document.getElementById('floatCta');
+    const unlockBtn=document.getElementById('unlock');
+
+    const isHttpUrl = s => typeof s==='string' && /^https?:\/\//i.test(s);
+    const extOf = p => { const m=(p||'').match(/\.([a-z0-9]+)(?:[?#]|$)/i); return m?m[1].toLowerCase():''; };
+    const sleep = ms => new Promise(r=>setTimeout(r,ms));
+    const todayISO=()=>new Date().toISOString().slice(0,10);
+
+    function isiOSSafari(){
+      const ua=navigator.userAgent;
+      const isiOS=/iPad|iPhone|iPod/.test(ua);
+      const isSafari=/^((?!chrome|android).)*safari/i.test(ua);
+      return isiOS || isSafari;
+    }
+    function withinDateRange(m){
+      const t=todayISO(), s=m.start_date||null, e=m.end_date||null;
+      if(s && t<s) return false; if(e && t>e) return false; return true;
+    }
+    function showStatus(msg){elStat.textContent=msg;elStat.classList.add('show')}
+    function hideStatus(){elStat.classList.remove('show')}
+
+    function hideAll(){
+      elV.pause(); elV.removeAttribute('src'); elV.load(); elV.style.display='none';
+      elImg.removeAttribute('src'); elImg.style.display='none';
+      elWeb.src='about:blank'; elWeb.style.display='none';
+      ifrAnn.src='about:blank'; ifrAnn.style.display='none';
+    }
+
+    function buildMainMenuUrl(pid){
+      const u = new URL('/ann/menu.html', location.origin);
+      u.searchParams.set('project_id', pid);
+      return u.toString();
+    }
+
+    function buildDetailUrl(meta){
+      if(!meta) return null;
+      const ref=(meta.id_ref||'').toLowerCase(); if(!ref) return null;
+      let type='';
+      if(ref.startsWith('unit')) type='unit';
+      else if(ref.startsWith('shop')) type='shop';
+      else if(ref.startsWith('rest')) type='rest';
+      else if(ref.startsWith('market')) type='market';
+      else if(ref.startsWith('food')) type='food';
+      else return null;
+      const id=encodeURIComponent(meta.id_ref);
+      switch(type){
+        case 'unit':   return `/unit.html?id=${id}`;
+        case 'shop':   return `/shop.html?id=${id}`;
+        case 'rest':   return `/rest.html?rest=${id}`;
+        case 'market': return `/marketplace.html?id=${id}`;
+        case 'food':   return `/foodie.html?id=${id}`;
+        default:       return null;
+      }
+    }
+
+    // ทำ path สื่อให้เป็น root-relative เสมอ
+    function resolveMediaSrc(s){
+      if(!s) return s;
+      if (/^https?:\/\//i.test(s) || s.startsWith('/')) return s;
+      const rootPath = '/' + s.replace(/^(\.\/)+/, '').replace(/^ann\//, '');
+      return new URL(rootPath, location.origin).toString();
+    }
+
+    async function loadJson(path){
+      const res=await fetch(path,{cache:'no-store'});
+      if(!res.ok) throw new Error(`HTTP ${res.status} @ ${path}`);
+      return res.json();
+    }
+
+    // ---------- ลิสต์เล่น: ใส่ประกาศก่อน แล้วต่อเพลย์ลิสต์ ----------
+    async function buildSequence(pid){
+      const [allPlaylists,medias]=await Promise.all([loadJson(playlistPath),loadJson(mediasPath)]);
+      const pl=allPlaylists?.playlists?.[pid]||{items:[],loop:true};
+      const ids=(pl.items||[]).map(x=>x.media_id);
+      const list=Array.isArray(medias?.medias)?medias.medias:[];
+      const byId=new Map(list.map(m=>[m.media_id,m]));
+      const out=[];
+
+const annUrl = new URL('/ann/announce.html', location.origin);
+annUrl.searchParams.set('project_id', pid);
+      out.push({
+        kind:'announce-iframe',
+        src: annUrl.toString(),
+        meta:{ id_ref:`announce:${pid}`, detail_url: annUrl.toString() }
+      });
+
+      for(const id of ids){
+        const m=byId.get(id); if(!m) continue;
+        const approved=(m.approval_status||'').toLowerCase()==='approved';
+        const inDate=withinDateRange(m);
+        const inProject=Array.isArray(m.project_ids)?m.project_ids.includes(pid):true;
+        if(!approved||!inDate||!inProject) continue;
+
+        let kind='video',src=m.file_name,duration=0;
+        const ext=extOf(m.file_name);
+        if(m.media_type==='image' || ['jpg','jpeg','png','gif','webp'].includes(ext)){
+          kind='image'; duration=IMG_DURATION_SEC;
+        }else if(m.media_type==='url' || isHttpUrl(m.file_name)){
+          kind='url'; duration=URL_DURATION_SEC;
+        }else{ kind='video'; }
+        src = resolveMediaSrc(src);
+        out.push({kind,src,duration,meta:m});
+      }
+
+      const loop=pl?.loop!==false;
+      return {sequence:out,loop};
+    }
+
+    // CTA main → menu.html
+    function setupMainCta(){
+      const url=buildMainMenuUrl(projectId);
+      const go=()=>location.href=url;
+      mainCtaBar.onclick=go;
+      mainCtaBar.onkeydown=e=>{if(e.key==='Enter'||e.key===' ') go()};
+    }
+
+    // CTA head (รายละเอียด) จาก meta
+    function showHeadFor(meta){
+      const url=(meta && meta.detail_url) || buildDetailUrl(meta);
+      if(!url){floatCta.style.display='none';return;}
+      const go=()=>location.href=url;
+      floatCta.onclick=go;
+      floatCta.onkeydown=e=>{if(e.key==='Enter'||e.key===' ') go()};
+      floatCta.style.display='flex';
+    }
+
+    const lastKey=`signage:lastIndex:${projectId}`;
+    let sequence=[],loopPlay=true,index=0;
+
+    async function playAll(){
+      hideStatus();
+      if(sequence.length===0){showStatus('ไม่มีรายการที่พร้อมเล่นสำหรับโปรเจกต์นี้');return;}
+      const saved=parseInt(sessionStorage.getItem(lastKey)||'0',10);
+      index=(!isNaN(saved)&&saved>=0&&saved<sequence.length)?saved:0;
+      while(true){
+        const item=sequence[index];
+        sessionStorage.setItem(lastKey,String(index));
+        try{await playItem(item);}catch(e){ console.error(e); }
+        index++;
+        if(index>=sequence.length){ if(!loopPlay) break; index=0; }
+      }
+    }
+
+    async function playItem(item){
+      hideAll();
+      showHeadFor(item.meta);
+
+      // ซ่อน CTA signage ไว้ก่อน แล้วเปิดเฉพาะตอนวิดีโอ (CTA ระยะคงที่ ไม่ต้องคำนวณ)
+      document.getElementById('mainCta').style.display = 'none';
+      document.getElementById('headCta').style.display = 'none';
+
+      if (item.kind === 'video') {
+        elV.src = item.src;
+
+        const url = buildMainMenuUrl(projectId);
+        const go  = () => location.href = url;
+        document.getElementById('mainCta').style.display = '';
+        document.getElementById('headCta').style.display = 'none';
+        mainCtaBar.onclick   = go;
+        mainCtaBar.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') go(); };
+
+        elV.loop = false;
+        elV.style.display = 'block';
+        elV.muted = true;
+
+        // ===== BGM helpers =====
+        const elBgm = window.elBgm;
+        const bgmPause  = () => { try { if (elBgm && !elBgm.paused) elBgm.pause(); } catch(_){} };
+        const bgmResume = () => { try { if (elBgm && elBgm.paused) elBgm.play().catch(()=>{}); } catch(_){} };
+        const bgmNext   = () => { try { if (elBgm && typeof elBgm.nextTrack === 'function') elBgm.nextTrack(); } catch(_){} };
+
+        bgmPause();
+
+        function hasAudioNow(v){
+          try {
+            if ('audioTracks' in v && v.audioTracks && v.audioTracks.length > 0) return true;
+            if (typeof v.mozHasAudio === 'boolean') return v.mozHasAudio;
+            if (typeof v.webkitAudioDecodedByteCount === 'number') return v.webkitAudioDecodedByteCount > 0;
+          } catch(_) {}
+          return false;
+        }
+
+        const metaReady = new Promise(res => {
+          if (!isFinite(elV.duration) || elV.duration === 0) {
+            elV.addEventListener('loadedmetadata', () => res(), { once: true });
+          } else { res(); }
+        });
+        await Promise.race([metaReady, sleep(2000)]);
+        try { await elV.play(); } catch (_) {}
+
+        let usingVideoAudio = false;
+        if (hasAudioNow(elV)) { usingVideoAudio = true; elV.muted = false; }
+        else {
+          await sleep(600);
+          if (hasAudioNow(elV)) { usingVideoAudio = true; elV.muted = false; }
+          else { bgmResume(); }
+        }
+
+        await new Promise(resolve => {
+          const sec = (isFinite(elV.duration) && elV.duration > 0) ? elV.duration : 30;
+          const watchdog = setTimeout(() => { if (usingVideoAudio) bgmNext(); resolve(); }, Math.ceil(sec + 1) * 1000);
+          elV.onended = () => { clearTimeout(watchdog); if (usingVideoAudio) bgmNext(); resolve(); };
+          elV.onerror = () => { clearTimeout(watchdog); if (usingVideoAudio) bgmNext(); resolve(); };
+        });
+
+        floatCta.style.display = 'none';
+      }
+      else if(item.kind==='image'){
+        elImg.src=item.src; elImg.style.display='block';
+        await sleep((item.duration||IMG_DURATION_SEC)*1000);
+        floatCta.style.display='none';
+      }
+else if (item.kind === 'announce-iframe') {
+  // ใช้ overlay ของประกาศเอง
+  document.getElementById('mainCta').style.display = 'none';
+  document.getElementById('headCta').style.display = 'none';
+
+  const elBgm = window.elBgm;
+  const bgmPause  = () => { try{ if(elBgm && !elBgm.paused) elBgm.pause(); }catch(_){} };
+  const bgmResume = () => { try{ if(elBgm && elBgm.paused)  elBgm.play().catch(()=>{}); }catch(_){} };
+
+  floatCta.style.display = 'none';
+
+  const src = item.src;
+  let resolved = false;
+  let openGuard = null;   // guard ระหว่าง "โหลด iframe"
+  let playGuard = null;   // guard หลัง iframe โหลดแล้ว รอ DONE
+
+  const ANNOUNCE_OPEN_GUARD_MS = 8000;   // รอโหลดประกาศ
+  const ANNOUNCE_PLAY_GUARD_MS = 40000;  // รอประกาศจบรอบ (> ~28s)
+
+  const finish = () => {
+    if (resolved) return;
+    resolved = true;
+    clearTimeout(openGuard);
+    clearTimeout(playGuard);
+    window.removeEventListener('message', onMsg);
+  };
+
+  const onMsg = (ev) => {
+    if (ev?.data?.type === 'ANNOUNCE_CYCLE_DONE') {
+      finish();
+      bgmResume();
+    }
+    if (ev?.data?.type === 'REQUEST_UNLOCK_BTN') {
+      unlockBtn.style.display = 'block';
+    }
+  };
+  window.addEventListener('message', onMsg);
+
+  // แสดงประกาศทันที
+  bgmPause();
+  ifrAnn.style.display = 'block';
+  ifrAnn.src = 'about:blank';
+
+  // guard ระหว่างรอให้ iframe โหลด
+  openGuard = setTimeout(() => {
+    if (resolved) return;
+    finish(); bgmResume(); // โหลดไม่ขึ้น → ข้าม
+  }, ANNOUNCE_OPEN_GUARD_MS);
+
+  // ใส่ src จริง แล้ว "เริ่ม guard หลัก" หลัง onload เท่านั้น
+  setTimeout(() => {
+    ifrAnn.onload = () => {
+      if (resolved) return;
+      clearTimeout(openGuard);
+      playGuard = setTimeout(() => {
+        if (resolved) return;
+        finish(); bgmResume(); // ไม่ส่ง DONE ภายในเวลา → ข้าม
+      }, ANNOUNCE_PLAY_GUARD_MS);
+    };
+    ifrAnn.onerror = () => { if (!resolved) { finish(); bgmResume(); } };
+    ifrAnn.src = src;
+  }, 30);
+
+  // รอจนจบ
+  await new Promise(r => {
+    const t = setInterval(() => { if (resolved) { clearInterval(t); r(); } }, 200);
+  });
+
+  // cleanup
+  try { ifrAnn.contentWindow?.postMessage({ type:'STOP_AUDIO' }, '*'); } catch(_){}
+  setTimeout(() => { ifrAnn.src = 'about:blank'; }, 50);
+}
+      else if(item.kind==='url'){
+        floatCta.style.display='none';
+        const watchdog = setTimeout(()=>{ try{elWeb.src='about:blank';}catch{} }, Math.max((item.duration||URL_DURATION_SEC),5)*1000 + 3000);
+        await new Promise(resolve=>{
+          const done=()=>{ clearTimeout(watchdog); resolve(); };
+          elWeb.onload = ()=>{ setTimeout(done, (item.duration||URL_DURATION_SEC)*1000); };
+          elWeb.onerror= ()=>{ showStatus('โหลดหน้าไม่สำเร็จ'); setTimeout(done, 1500); };
+          elWeb.src=item.src; elWeb.style.display='block';
+        });
+      }
+    }
+
+    function setupUnlock(){
+      if(!isiOSSafari()) return;
+      unlockBtn.style.display='block';
+      const once=()=>{
+        unlockBtn.style.display='none';
+        try{ ifrAnn.contentWindow?.postMessage({type:'UNLOCK_AUDIO'}, '*'); }catch(_){}
+        try{ elV.muted=true; elV.play().then(()=>{ elV.pause(); elV.currentTime=0; }); }catch(_){}
+      };
+      unlockBtn.addEventListener('click', once, {once:true});
+      window.addEventListener('pointerdown', once, {once:true});
+    }
+
+    (function pollVersion(){
+      let cur='';
+      async function tick(){
+        try{
+          const r=await fetch('/version.txt',{cache:'no-store'});
+          if(r.ok){
+            const t=(await r.text()).trim();
+            if(cur && t && t!==cur) location.reload();
+            cur=t; elVer.textContent=t?`v ${t}`:'';
+          }
+        }catch(e){}
+      }
+      tick(); setInterval(tick, VERSION_POLL_MS);
+    })();
+
+    function init(){
+      setupMainCta();
+      setupUnlock();
+      buildSequence(projectId).then(({sequence:seq,loop})=>{
+        sequence=seq; loopPlay=loop; playAll();
+      }).catch(e=>{ console.error(e); showStatus('โหลดข้อมูลไม่สำเร็จ'); });
+    }
+
+    init();
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+{
+  "version": "1.0.0",
+  "generated_at": "2025-08-17",
+  "source": "medias.json",
+  "playlists": {
+    "prj001": {
+      "project_id": "prj001",
+      "loop": true,
+      "items": [
+        { "media_id": "unit001-01" },
+        { "media_id": "shop001-01" },
+        { "media_id": "shop002-01" },
+        { "media_id": "rest001-01" }
+      ]
+    },
+    "prj002": {
+      "project_id": "prj002",
+      "loop": true,
+      "items": [
+        { "media_id": "unit001-01" },
+        { "media_id": "shop002-01" },
+        { "media_id": "rest001-01" }
+      ]
+    },
+    "prj003": {
+      "project_id": "prj003",
+      "loop": true,
+      "items": [
+        { "media_id": "shop001-01" },
+        { "media_id": "shop002-01" },
+        { "media_id": "rest001-01" }
+      ]
+    },
+    "prj004": {
+      "project_id": "prj004",
+      "loop": true,
+      "items": [
+        { "media_id": "unit001-01" },
+        { "media_id": "shop001-01" },
+        { "media_id": "shop002-01" },
+        { "media_id": "rest001-01" }
+      ]
+    }
+  }
+}

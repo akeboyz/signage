@@ -1,0 +1,229 @@
+{
+  "parties": [
+    {
+      "party_id": "prt-jp-001",
+      "party_type": "juristic",
+      "person_type": "corporate",
+      "display_name": "นิติบุคคลอาคารชุด เพรสิเดนท์พาร์ค ฮาร์เบอร์วิว - มะฮอกกานี ทาวเวอร์",
+      "display_name_en": "President Park Habour View - Mahogany Tower Juristic Person",
+      "corporate": {
+        "corporate_id": "0105567890123",
+        "registration_country": "TH",
+        "authorized_directors": [
+          {
+            "name": "นส. กฤษณา กาลรา",
+            "position": "กรรมการผู้มีอำนาจ",
+            "id_type": "national_id",
+            "id_number": "1-2345-67890-12-3",
+            "id_country": "TH",
+            "specimen_signature_url": "private://parties/prt-jp-001/sign_somchai.png",
+            "valid_from": "2024-01-01",
+            "valid_to": null,
+            "notes": "ลงนามร่วมเท่านั้น"
+          }
+        ],
+        "signing_authority_notes": "ต้องมีกรรมการ 2 คนลงนามร่วมและประทับตรา"
+      },
+      "individual": null,
+      "contacts": [
+        {
+          "role": "manager",
+          "name": "คุณแซม",
+          "phone": "08x-xxx-xxxx",
+          "email": "manager@example.com"
+        }
+      ],
+      "addresses": [
+        { "type": "office", "line1": "...", "province": "...", "zip": "...", "country": "TH" }
+      ],
+      "bank_accounts": [
+        { "bank": "KBANK", "account_name": "Mahogany Tower JP", "account_no": "xxx-x-xxxxx-x" }
+      ],
+      "attachments": [
+        {
+          "doc_type": "corp_cert",
+          "name": "company_certificate.pdf",
+          "url": "private://.../company_certificate.pdf"
+        }
+      ],
+      "shop_ids": [],
+      "rest_ids": [],
+      "unit_ids": [],
+      "project_ids": ["prj003"],
+      "status": "active"
+    },
+
+    {
+      "party_id": "prt-jp-002",
+      "party_type": "juristic",
+      "person_type": "corporate",
+      "display_name": "The Sukhumvit Residence Juristic Person",
+      "display_name_en": "The Sukhumvit Residence Juristic Person",
+      "corporate": {
+        "corporate_id": null,
+        "registration_country": "TH",
+        "authorized_directors": [],
+        "signing_authority_notes": null
+      },
+      "individual": null,
+      "contacts": [
+        {
+          "role": "Juristic Manager",
+          "name": "คุณสมชาย สมบูรณ์",
+          "phone": "081-234-5678",
+          "email": "somchai@juristic.com",
+          "line": "@sukhumvitresidence"
+        }
+      ],
+      "addresses": [],
+      "bank_accounts": [],
+      "attachments": [],
+      "shop_ids": [],
+      "rest_ids": [],
+      "unit_ids": [],
+      "project_ids": ["prj001"],
+      "status": "active"
+    },
+
+    {
+      "party_id": "prt-jp-003",
+      "party_type": "juristic",
+      "person_type": "corporate",
+      "display_name": "The Lumpini 24 Juristic Person",
+      "display_name_en": "The Lumpini 24 Juristic Person",
+      "corporate": {
+        "corporate_id": null,
+        "registration_country": "TH",
+        "authorized_directors": [],
+        "signing_authority_notes": null
+      },
+      "individual": null,
+      "contacts": [
+        {
+          "role": "Juristic Manager",
+          "name": "คุณวิทยา ลิ้มเจริญ",
+          "phone": "082-345-6789",
+          "email": "wittaya@lumpini.com",
+          "line": "@thelumpini24"
+        }
+      ],
+      "addresses": [],
+      "bank_accounts": [],
+      "attachments": [],
+      "shop_ids": [],
+      "rest_ids": [],
+      "unit_ids": [],
+      "project_ids": ["prj002"],
+      "status": "active"
+    },
+
+    {
+      "party_id": "prt-jp-004",
+      "party_type": "juristic",
+      "person_type": "corporate",
+      "display_name": "Noble Refine Sukhumvit 26 Juristic Person",
+      "display_name_en": "Noble Refine Sukhumvit 26 Juristic Person",
+      "corporate": {
+        "corporate_id": null,
+        "registration_country": "TH",
+        "authorized_directors": [],
+        "signing_authority_notes": null
+      },
+      "individual": null,
+      "contacts": [
+        {
+          "role": "Juristic Manager",
+          "name": "คุณประเสริฐ ศรีทอง",
+          "phone": "084-222-3333",
+          "email": "prasert@noble.co.th",
+          "line": "@noblerefine26"
+        }
+      ],
+      "addresses": [],
+      "bank_accounts": [],
+      "attachments": [],
+      "shop_ids": [],
+      "rest_ids": [],
+      "unit_ids": [],
+      "project_ids": ["prj004"],
+      "status": "active"
+    },
+
+    {
+      "party_id": "prt-po-001",
+      "party_type": "owner",
+      "person_type": "individual",
+      "display_name": "สมหญิง ใจดี",
+      "display_name_en": "Somying Jaidee",
+      "corporate": null,
+      "individual": {
+        "id_type": "passport",
+        "id_number": "AB1234567",
+        "id_country": "TH"
+      },
+      "contacts": [
+        { "role": "primary", "name": "สมหญิง", "phone": "08x-xxx-xxxx" }
+      ],
+      "addresses": [
+        { "type": "billing", "line1": "...", "province": "...", "zip": "...", "country": "TH" }
+      ],
+      "bank_accounts": [
+        { "bank": "SCB", "account_name": "Somying Jaidee", "account_no": "xxx-x-xxxxx-x" }
+      ],
+      "attachments": [
+        {
+          "doc_type": "passport",
+          "name": "passport_scan.pdf",
+          "url": "private://.../passport_scan.pdf"
+        }
+      ],
+      "shop_ids": [],
+      "rest_ids": [],
+      "unit_ids": [],
+      "project_ids": [],
+      "status": "active"
+    },
+
+    {
+      "party_id": "prt-cz-001",
+      "party_type": "customer",
+      "person_type": "corporate",
+      "display_name": "บริษัท อควาแม็กซ์ พรอพเพอร์ตี้ จำกัด",
+      "display_name_en": "Aquamax Property co., ltd.",
+      "corporate": {
+        "corporate_id": "0105556032458",
+        "registration_country": "TH",
+        "authorized_directors": [
+          {
+            "name": "Sutthipong Kultangwattana",
+            "position": "Authorized directors",
+            "id_type": "national_id",
+            "id_number": null,
+            "id_country": "TH",
+            "specimen_signature_url": null,
+            "valid_from": null,
+            "valid_to": null,
+            "notes": null
+          }
+        ],
+        "signing_authority_notes": null
+      },
+      "individual": null,
+      "contacts": [],
+      "addresses": [],
+      "bank_accounts": [
+        {
+          "bank": "KBANK",
+          "account_name": "บจก. อควาแม็กซ์ พรอพเพอร์ตี้",
+          "account_no": "4222730983"
+        }
+      ],
+      "attachments": [],
+      "shop_ids": ["shop001", "shop002"],
+      "rest_ids": [],
+      "unit_ids": [],
+      "project_ids": [],
+      "status": "active"
+    }
+  ]
+}

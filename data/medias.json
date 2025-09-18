@@ -1,0 +1,58 @@
+{
+  "version": "1.0.0",
+  "generated_at": "2025-08-14",
+  "medias": [
+    {
+      "media_id": "unit001-01",
+      "id_ref": "unit001",
+      "project_ids": ["prj001", "prj002", "prj004"],
+      "media_type": "video",
+      "file_name": "/opt/yodeck/medias/unit001-01.mp4",
+      "file_size_mb": 17.6,
+      "length_sec": 30,
+      "start_date": "2025-08-14",
+      "end_date": null,
+      "media_title": "Unit 001 Promo Cut 01",
+      "approval_status": "approved"
+    },
+    {
+      "media_id": "shop001-01",
+      "id_ref": "shop001",
+      "project_ids": ["prj001", "prj003", "prj004"],
+      "media_type": "video",
+      "file_name": "/opt/yodeck/medias/shop001-01.mp4",
+      "file_size_mb": 4.2,
+      "length_sec": 31,
+      "start_date": "2025-08-10",
+      "end_date": "2025-09-30",
+      "media_title": "Shop 001 Teaser 01",
+      "approval_status": "approved"
+    },
+    {
+      "media_id": "shop002-01",
+      "id_ref": "shop002",
+      "project_ids": ["prj001", "prj002", "prj003", "prj004"],
+      "media_type": "video",
+      "file_name": "/opt/yodeck/medias/shop002-01.mp4",
+      "file_size_mb": 6.4,
+      "length_sec": 31,
+      "start_date": "2025-08-10",
+      "end_date": "2025-09-30",
+      "media_title": "Shop 001 Teaser 01",
+      "approval_status": "approved"
+    },
+    {
+      "media_id": "rest001-01",
+      "id_ref": "rest001",
+      "project_ids": ["prj001", "prj002", "prj003", "prj004"],
+      "media_type": "video",
+      "file_name": "/opt/yodeck/medias/rest001-01.mp4",
+      "file_size_mb": 6.6,
+      "length_sec": 30,
+      "start_date": "2025-08-01",
+      "end_date": null,
+      "media_title": "Restaurant 001 KV",
+      "approval_status": "approved"
+    }
+  ]
+}

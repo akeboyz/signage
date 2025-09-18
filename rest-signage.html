@@ -1,0 +1,1954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Restaurant Details - Signage</title>
+
+  <style>
+    /* ================== Reset & Base ================== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      background: black;
+      overflow: hidden;
+      font-family: 'Nunito', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ================== Signage Container (9:16) ================== */
+    .page-wrapper {
+      aspect-ratio: 9 / 16;
+      width: 100%;
+      height: 100vh;
+      max-width: 56.25vh;
+      display: flex;
+      flex-direction: column;
+      background: white;
+      position: relative;
+    }
+
+    /* ================== Header Section ================== */
+    .rest-header {
+      background: linear-gradient(135deg, #FF6900 0%, #e05d00 100%);
+      color: white;
+      padding: 12px 15px;
+      text-align: center;
+      position: relative;
+      height: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .rest-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+      line-height: 1.1;
+    }
+
+    .rest-subtitle {
+      font-size: 0.8rem;
+      opacity: 0.9;
+      line-height: 1.1;
+    }
+
+    .back-btn {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 11px;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+      user-select: none;
+      line-height: 1.1;
+    }
+
+    /* ================== Content Section ================== */
+    .content-section {
+      flex: 1;
+      padding: 10px;
+      overflow: hidden;
+      background: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .unit-card {
+      background: white;
+      border-radius: 12px;
+      padding: 10px;
+      color: #333;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* ================== Top Section Layout ================== */
+    .top-section {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 8px;
+      height: 120px;
+    }
+
+    .rest-info-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 8px;
+      overflow: hidden;
+      padding: 12px;
+    }
+
+    .rest-info-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0.4) 50%,
+        rgba(0, 0, 0, 0.6) 100%);
+      z-index: 1;
+    }
+
+    .rest-header-info {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+    }
+
+    .rest-name {
+      font-size: 1.1rem;
+      color: white;
+      margin-bottom: 3px;
+      font-weight: 700;
+      line-height: 1.1;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .rest-category {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.7rem;
+      margin-bottom: 2px;
+      line-height: 1.1;
+      font-weight: 600;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .rest-location {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.65rem;
+      margin-bottom: 3px;
+      font-weight: 500;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .rest-about {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.6rem;
+      line-height: 1.2;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .service-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+      margin-top: 3px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .service-badge {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 2px 6px;
+      border-radius: 8px;
+      font-size: 0.5rem;
+      font-weight: 600;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ================== Compact Image Gallery ================== */
+    .image-gallery {
+      flex: 0 0 120px;
+      width: 120px;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      background: #f5f5f5;
+      border: 1px solid #e0e0e0;
+    }
+
+    .main-image-container {
+      position: relative;
+      width: 100%;
+      height: 120px;
+      overflow: hidden;
+      background: #f0f0f0;
+    }
+
+    .main-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    .image-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      border: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .prev-btn { left: 4px; }
+    .next-btn { right: 4px; }
+
+    .image-counter {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-size: 0.5rem;
+      line-height: 1;
+    }
+
+    /* ================== Compact Details Grid ================== */
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 6px;
+      margin: 8px 0;
+      flex: 1;
+    }
+
+    .detail-item {
+      display: flex;
+      flex-direction: column;
+      padding: 6px;
+      background: #f8f9fa;
+      border-radius: 6px;
+      min-height: 45px;
+      justify-content: center;
+    }
+
+    .detail-label {
+      font-size: 0.6rem;
+      color: #666;
+      margin-bottom: 2px;
+      font-weight: 600;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .detail-value {
+      font-size: 0.7rem;
+      color: #333;
+      font-weight: 600;
+      line-height: 1.1;
+    }
+
+    /* ================== Compact Contact Section ================== */
+    .contact-section {
+      background: rgba(255, 105, 0, 0.1);
+      border-radius: 8px;
+      padding: 8px;
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+
+    .contact-title {
+      font-size: 0.7rem;
+      color: #FF6900;
+      margin-bottom: 6px;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1;
+    }
+
+    .contact-buttons {
+      display: flex;
+      gap: 6px;
+    }
+
+    .contact-btn {
+      flex: 1;
+      background: #FF6900;
+      color: white;
+      border: none;
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-size: 0.6rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      line-height: 1;
+    }
+
+    .contact-btn:hover {
+      background: #e05d00;
+    }
+
+    .contact-btn.secondary {
+      background: #001D56;
+    }
+
+    .contact-btn.secondary:hover {
+      background: #001a4d;
+    }
+
+    /* ================== Menu Section ================== */
+    .menu-section {
+      background: #fff9f5;
+      border-radius: 8px;
+      padding: 8px;
+      margin-top: 6px;
+      flex-shrink: 0;
+      border: 1px solid #ffe5d1;
+      position: relative;
+    }
+
+    .menu-title {
+      font-size: 0.7rem;
+      color: #FF6900;
+      margin-bottom: 6px;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1;
+    }
+
+    .menu-container {
+      position: relative;
+      overflow: hidden;
+      height: 80px;
+    }
+
+    .menu-scroll {
+      display: flex;
+      gap: 6px;
+      transition: transform 0.3s ease;
+      height: 80px;
+      align-items: flex-start;
+      flex-wrap: nowrap;
+      align-content: flex-start;
+    }
+
+    .menu-item {
+      background: white;
+      border-radius: 8px;
+      border: 1px solid #f0f0f0;
+      min-width: 100px;
+      height: 75px;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    .menu-item-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: linear-gradient(135deg, #FF6900 0%, #e05d00 100%);
+    }
+
+    .menu-item-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: white;
+      padding: 4px 6px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .menu-item-name {
+      font-size: 0.55rem;
+      font-weight: 600;
+      line-height: 1.1;
+      text-align: left;
+      margin-bottom: 2px;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .menu-item-price {
+      font-size: 0.5rem;
+      color: #FFD700;
+      font-weight: 700;
+      line-height: 1;
+      text-align: left;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+    }
+
+    .menu-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 105, 0, 0.8);
+      color: white;
+      border: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      opacity: 0.8;
+    }
+
+    .menu-nav:hover {
+      opacity: 1;
+      background: rgba(255, 105, 0, 1);
+    }
+
+    .menu-nav.prev {
+      left: 2px;
+    }
+
+    .menu-nav.next {
+      right: 2px;
+    }
+
+    .menu-nav.disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    /* ================== Promotion Section ================== */
+    .promo-section {
+      background: linear-gradient(135deg, #f8f9ff 0%, #e4e8ff 100%);
+      border: 2px solid #d6e8ff;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+
+    .promo-title {
+      font-size: 1.1rem;
+      color: #001D56;
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .promo-item {
+      background: white;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .promo-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .promo-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #001D56;
+      margin-bottom: 4px;
+    }
+
+    .promo-desc {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.3;
+    }
+
+    /* ================== Map Modal ================== */
+    .map-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      z-index: 1000;
+      backdrop-filter: blur(5px);
+    }
+
+    .map-modal.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .map-content {
+      background: white;
+      border-radius: 16px;
+      width: 90%;
+      height: 80%;
+      max-width: 600px;
+      max-height: 500px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+
+    .map-header {
+      background: linear-gradient(135deg, #FF6900 0%, #e05d00 100%);
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .map-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .map-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 5px 10px;
+      border-radius: 50%;
+      transition: background 0.3s ease;
+    }
+
+    .map-close:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .map-body {
+      padding: 20px;
+      height: calc(100% - 80px);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .map-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 12px;
+    }
+
+    .map-location-icon {
+      width: 40px;
+      height: 40px;
+      background: #FF6900;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    .map-details {
+      flex: 1;
+    }
+
+    .map-address {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .map-location {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .map-iframe {
+      flex: 1;
+      border: none;
+      border-radius: 12px;
+      width: 100%;
+      min-height: 250px;
+    }
+
+    .map-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .map-btn {
+      flex: 1;
+      background: #FF6900;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .map-btn:hover {
+      background: #e05d00;
+    }
+
+    .map-btn.secondary {
+      background: #6c757d;
+    }
+
+    .map-btn.secondary:hover {
+      background: #5a6268;
+    }
+
+    /* ================== Auto-return Message ================== */
+    .auto-return {
+      position: absolute;
+      bottom: 10px;
+      right: 15px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      backdrop-filter: blur(10px);
+    }
+
+    /* ================== Loading State ================== */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      font-size: 1.2rem;
+      color: #666;
+    }
+
+    /* ================== Map Modal ================== */
+    .map-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .map-modal-backdrop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+    }
+
+    .map-modal-content {
+      position: relative;
+      background: white;
+      border-radius: 16px;
+      width: 90vw;
+      height: 90vw;
+      max-width: 500px;
+      max-height: 500px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      animation: modalSlideIn 0.3s ease-out;
+    }
+
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .map-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid #eee;
+      background: #f8f9fa;
+    }
+
+    .map-modal-header h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .map-modal-close {
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #666;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .map-modal-close:hover {
+      background: rgba(0, 0, 0, 0.1);
+      color: #333;
+    }
+
+    .map-modal-body {
+      display: flex;
+      flex-direction: column;
+      height: calc(100% - 65px);
+    }
+
+    .map-container {
+      flex: 1;
+      position: relative;
+    }
+
+    .map-container iframe {
+      border: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    .map-info {
+      padding: 16px 20px;
+      background: #f8f9fa;
+      border-top: 1px solid #eee;
+      flex-shrink: 0;
+    }
+
+    .map-address,
+    .map-hours,
+    .map-contact {
+      margin-bottom: 12px;
+      font-size: 13px;
+      line-height: 1.4;
+      color: #555;
+    }
+
+    .map-address:last-child,
+    .map-hours:last-child,
+    .map-contact:last-child {
+      margin-bottom: 0;
+    }
+
+    .map-address strong,
+    .map-hours strong,
+    .map-contact strong {
+      color: #333;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .map-contact a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .map-contact a:hover {
+      text-decoration: underline;
+    }
+
+    .map-button {
+      background: #0066cc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 16px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      margin-left: 8px;
+    }
+
+    .map-button:hover {
+      background: #0052a3;
+    }
+
+    /* ================== Cart & Ordering System ================== */
+    .menu-section {
+      position: relative;
+    }
+
+    .cart-icon-container {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      z-index: 10;
+      cursor: pointer;
+    }
+
+    .cart-icon {
+      background: rgba(255, 105, 0, 0.8);
+      color: white;
+      border: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.8;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .cart-icon:hover {
+      opacity: 1;
+      background: rgba(255, 105, 0, 1);
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: #FF0000;
+      color: white;
+      border-radius: 50%;
+      width: 14px;
+      height: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      font-weight: bold;
+      border: 1px solid white;
+      min-width: 14px;
+    }
+
+    .menu-item-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quantity-controls {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+
+    .quantity-controls .minus-section {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .quantity-controls.show .minus-section {
+      opacity: 1;
+    }
+
+    .quantity-btn {
+      background: rgba(255, 105, 0, 0.9);
+      color: white;
+      border: none;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s;
+      line-height: 1;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .quantity-btn:hover {
+      background: rgba(255, 105, 0, 1);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    .quantity-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .quantity-display {
+      color: white;
+      font-weight: bold;
+      font-size: 9px;
+      min-width: 10px;
+      text-align: center;
+      line-height: 1;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 8px;
+      padding: 1px 3px;
+    }
+
+    /* ================== Checkout Modal ================== */
+    .checkout-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .checkout-modal-backdrop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+    }
+
+    .checkout-modal-content {
+      position: relative;
+      background: white;
+      border-radius: 16px;
+      width: 90vw;
+      height: 90vw;
+      max-width: 500px;
+      max-height: 500px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      animation: modalSlideIn 0.3s ease-out;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .checkout-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid #eee;
+      background: #f8f9fa;
+      flex-shrink: 0;
+    }
+
+    .checkout-modal-header h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .checkout-modal-close {
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #666;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .checkout-modal-close:hover {
+      background: rgba(0, 0, 0, 0.1);
+      color: #333;
+    }
+
+    .checkout-modal-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 20px;
+    }
+
+    .cart-empty {
+      text-align: center;
+      color: #666;
+      padding: 40px 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+
+    .cart-item-image {
+      width: 50px;
+      height: 50px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .cart-item-details {
+      flex: 1;
+      margin-left: 12px;
+    }
+
+    .cart-item-name {
+      font-weight: 600;
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 4px;
+    }
+
+    .cart-item-price {
+      color: #666;
+      font-size: 12px;
+    }
+
+    .cart-item-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cart-quantity-btn {
+      background: #f0f0f0;
+      border: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .cart-quantity-btn:hover {
+      background: #e0e0e0;
+    }
+
+    .cart-quantity {
+      font-weight: bold;
+      min-width: 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .checkout-modal-footer {
+      padding: 16px 20px;
+      border-top: 1px solid #eee;
+      background: #f8f9fa;
+      flex-shrink: 0;
+    }
+
+    .cart-total {
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .checkout-btn {
+      width: 100%;
+      background: #FF6900;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .checkout-btn:hover {
+      background: #e05d00;
+    }
+
+    .checkout-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- Header Section -->
+    <div class="rest-header">
+      <div class="rest-title" id="restTitle">Restaurant Details</div>
+      <div class="rest-subtitle" id="restSubtitle">Loading...</div>
+      <button class="back-btn" id="backBtn">↩️ back to<br>dining</button>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content-section">
+      <div id="loadingState" class="loading">Loading restaurant details...</div>
+
+      <div id="errorState" class="error" style="display: none;">
+        <h3>Restaurant Not Found</h3>
+        <p>The requested restaurant could not be loaded.</p>
+      </div>
+
+      <div id="restContent" style="display: none;">
+        <!-- Restaurant content will be loaded here -->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Map Modal -->
+  <div id="mapModal" class="map-modal" style="display: none;">
+    <div class="map-modal-backdrop" onclick="closeMapModal()"></div>
+    <div class="map-modal-content">
+      <div class="map-modal-header">
+        <h3 id="mapModalTitle">Location</h3>
+        <button class="map-modal-close" onclick="closeMapModal()">×</button>
+      </div>
+      <div class="map-modal-body">
+        <div id="mapContainer" class="map-container">
+          <iframe id="mapIframe" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="map-info">
+          <div id="mapAddress" class="map-address"></div>
+          <div id="mapHours" class="map-hours"></div>
+          <div id="mapContact" class="map-contact"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div id="checkoutModal" class="checkout-modal" style="display: none;">
+    <div class="checkout-modal-backdrop" onclick="closeCheckoutModal()"></div>
+    <div class="checkout-modal-content">
+      <div class="checkout-modal-header">
+        <h3>Your Order</h3>
+        <button class="checkout-modal-close" onclick="closeCheckoutModal()">×</button>
+      </div>
+      <div class="checkout-modal-body">
+        <div id="cartItems"></div>
+        <div id="cartEmpty" class="cart-empty" style="display: none;">
+          <p>Your cart is empty</p>
+        </div>
+      </div>
+      <div class="checkout-modal-footer" id="checkoutFooter" style="display: none;">
+        <div id="cartTotal" class="cart-total"></div>
+        <button class="checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ===== PARAMETERS =====
+    const qs = new URLSearchParams(location.search);
+    const restId = qs.get('rest') || 'rest001';
+    const projectId = qs.get('project_id') || '';
+
+    // ===== UTILITY FUNCTIONS =====
+    const withBase = (p) => './' + p.replace(/^\.?\//, '');
+
+    function getImageUrl(imagePath) {
+      if (!imagePath) return '/opt/yodeck/medias/placeholder.jpg';
+      if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+        return imagePath; // External URL, use as-is
+      }
+      return withBase(imagePath); // Local path, add base
+    }
+
+    function escapeHtml(s) {
+      return String(s || '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+    }
+
+    function serviceBadges(arr) {
+      if (!Array.isArray(arr)) return [];
+      const map = {
+        walk_in: { text: 'Walk-in', class: 'walkin' },
+        delivery: { text: 'Delivery', class: 'delivery' },
+        mobile_order: { text: 'Mobile Order', class: 'mobile' },
+        reservation: { text: 'Reservation', class: 'reservation' },
+        ads_only: { text: 'Ads Only', class: 'ads' }
+      };
+      return arr.map(k => map[k] || { text: k, class: 'default' });
+    }
+
+    // ===== IMAGE GALLERY =====
+    function createImageGallery(images, videos) {
+      let currentIndex = 0;
+      const allImages = [];
+
+      // Combine images and videos
+      if (Array.isArray(images)) {
+        images.forEach(src => allImages.push(src));
+      }
+      if (Array.isArray(videos)) {
+        videos.forEach(src => allImages.push(src));
+      }
+
+      if (allImages.length === 0) {
+        allImages.push('/opt/yodeck/medias/placeholder.jpg');
+      }
+
+      console.log('Gallery images:', allImages);
+
+      const imageGallery = document.createElement('div');
+      imageGallery.className = 'image-gallery';
+
+      const imageContainer = document.createElement('div');
+      imageContainer.className = 'main-image-container';
+
+      const mainImage = document.createElement('img');
+      mainImage.className = 'main-image';
+      mainImage.src = getImageUrl(allImages[0]);
+      mainImage.alt = 'Restaurant Image';
+      mainImage.onerror = function() {
+        this.src = '/opt/yodeck/medias/placeholder.jpg';
+      };
+      mainImage.style.display = 'block';
+
+      const prevBtn = document.createElement('button');
+      prevBtn.className = 'image-nav prev-btn';
+      prevBtn.innerHTML = '‹';
+      prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
+        updateImage();
+      });
+
+      const nextBtn = document.createElement('button');
+      nextBtn.className = 'image-nav next-btn';
+      nextBtn.innerHTML = '›';
+      nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % allImages.length;
+        updateImage();
+      });
+
+      const imageCounter = document.createElement('div');
+      imageCounter.className = 'image-counter';
+      imageCounter.textContent = `1 / ${allImages.length}`;
+
+      function updateImage() {
+        mainImage.src = getImageUrl(allImages[currentIndex]);
+        imageCounter.textContent = `${currentIndex + 1} / ${allImages.length}`;
+      }
+
+      imageContainer.appendChild(mainImage);
+      if (allImages.length > 1) {
+        imageContainer.appendChild(prevBtn);
+        imageContainer.appendChild(nextBtn);
+      }
+      imageContainer.appendChild(imageCounter);
+      imageGallery.appendChild(imageContainer);
+
+      return imageGallery;
+    }
+
+    // ===== GLOBAL RESTAURANT REFERENCE & CART SYSTEM =====
+    let currentRestaurant = null;
+    let cart = [];
+
+    function updateCartDisplay() {
+      const cartIcon = document.getElementById('cartIcon');
+      const cartCount = document.getElementById('cartCount');
+
+      // Return early if elements don't exist yet
+      if (!cartIcon || !cartCount) return;
+
+      const hasOrderableItems = currentRestaurant &&
+        Array.isArray(currentRestaurant.service_type) &&
+        (currentRestaurant.service_type.includes('mobile_order') ||
+         currentRestaurant.service_type.includes('delivery'));
+
+      if (hasOrderableItems && cart.length > 0) {
+        cartIcon.style.display = 'block';
+        cartCount.style.display = 'block';
+        cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+      } else if (hasOrderableItems) {
+        cartIcon.style.display = 'block';
+        cartCount.style.display = 'none';
+      } else {
+        cartIcon.style.display = 'none';
+      }
+    }
+
+    function addToCart(menuItem) {
+      const existingItem = cart.find(item => item.id === menuItem.id);
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({
+          id: menuItem.id || menuItem.name_en,
+          name: menuItem.name_en || menuItem.name_th,
+          price: menuItem.price || 0,
+          image: menuItem.image,
+          quantity: 1
+        });
+      }
+      updateCartDisplay();
+      updateMenuItemControls(menuItem);
+      resetAutoReturn();
+    }
+
+    function removeFromCart(menuItem) {
+      const existingItem = cart.find(item => item.id === (menuItem.id || menuItem.name_en));
+      if (existingItem) {
+        existingItem.quantity -= 1;
+        if (existingItem.quantity <= 0) {
+          cart = cart.filter(item => item.id !== existingItem.id);
+        }
+      }
+      updateCartDisplay();
+      updateMenuItemControls(menuItem);
+      resetAutoReturn();
+    }
+
+    function getCartQuantity(menuItem) {
+      const cartItem = cart.find(item => item.id === (menuItem.id || menuItem.name_en));
+      return cartItem ? cartItem.quantity : 0;
+    }
+
+    function updateMenuItemControls(menuItem) {
+      const itemId = menuItem.id || menuItem.name_en;
+      const controls = document.querySelector(`[data-item-id="${itemId}"] .quantity-controls`);
+      const quantityDisplay = document.querySelector(`[data-item-id="${itemId}"] .quantity-display`);
+
+      if (controls && quantityDisplay) {
+        const quantity = getCartQuantity(menuItem);
+        quantityDisplay.textContent = quantity || '0';
+      }
+    }
+
+    function showCheckoutModal() {
+      const modal = document.getElementById('checkoutModal');
+      const cartItems = document.getElementById('cartItems');
+      const cartEmpty = document.getElementById('cartEmpty');
+      const checkoutFooter = document.getElementById('checkoutFooter');
+      const cartTotal = document.getElementById('cartTotal');
+
+      if (cart.length === 0) {
+        cartItems.innerHTML = '';
+        cartEmpty.style.display = 'block';
+        checkoutFooter.style.display = 'none';
+      } else {
+        cartEmpty.style.display = 'none';
+        checkoutFooter.style.display = 'block';
+
+        // Render cart items
+        cartItems.innerHTML = cart.map(item => `
+          <div class="cart-item">
+            <div class="cart-item-image" style="background-image: url('${item.image || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=100&h=100&fit=crop'}')"></div>
+            <div class="cart-item-details">
+              <div class="cart-item-name">${escapeHtml(item.name)}</div>
+              <div class="cart-item-price">฿${item.price}</div>
+            </div>
+            <div class="cart-item-controls">
+              <button class="cart-quantity-btn" onclick="updateCartItemQuantity('${item.id}', -1)">-</button>
+              <div class="cart-quantity">${item.quantity}</div>
+              <button class="cart-quantity-btn" onclick="updateCartItemQuantity('${item.id}', 1)">+</button>
+            </div>
+          </div>
+        `).join('');
+
+        // Calculate total
+        const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        cartTotal.textContent = `Total: ฿${total}`;
+      }
+
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      resetAutoReturn();
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById('checkoutModal').style.display = 'none';
+      document.body.style.overflow = 'auto';
+      resetAutoReturn();
+    }
+
+    function updateCartItemQuantity(itemId, change) {
+      const item = cart.find(item => item.id === itemId);
+      if (item) {
+        item.quantity += change;
+        if (item.quantity <= 0) {
+          cart = cart.filter(cartItem => cartItem.id !== itemId);
+        }
+        updateCartDisplay();
+        showCheckoutModal(); // Refresh the modal
+
+        // Update menu item controls
+        const menuItem = { id: itemId, name_en: itemId };
+        updateMenuItemControls(menuItem);
+      }
+    }
+
+    function proceedToCheckout() {
+      // Here you would integrate with payment system
+      alert(`Proceeding to checkout with ${cart.length} items. Total: ฿${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)}`);
+
+      // For demo, clear cart after "checkout"
+      cart = [];
+      updateCartDisplay();
+      closeCheckoutModal();
+    }
+
+    // ===== RENDER RESTAURANT DETAILS =====
+    function renderRestDetails(restaurant) {
+      // Store current restaurant reference for cart system
+      currentRestaurant = restaurant;
+
+      // Hide loading, show content
+      document.getElementById('loadingState').style.display = 'none';
+      document.getElementById('restContent').style.display = 'block';
+
+      // Update header
+      const name = restaurant.name_en || restaurant.name_th || 'Restaurant';
+      document.getElementById('restTitle').textContent = name;
+
+      const category = restaurant.category_en || restaurant.category_th || '';
+      const location = restaurant.location_en || restaurant.location_th || '';
+      document.getElementById('restSubtitle').textContent = [category, location].filter(Boolean).join(' • ');
+
+      const container = document.getElementById('restContent');
+      container.innerHTML = '';
+
+      // Restaurant Info Card
+      const restCard = document.createElement('div');
+      restCard.className = 'unit-card';
+
+      // Top Section: Info + Image
+      const topSection = document.createElement('div');
+      topSection.className = 'top-section';
+
+      // Info Section with Background Image
+      const infoSection = document.createElement('div');
+      infoSection.className = 'rest-info-section';
+
+      // Set background image on info section
+      const bgImage = (restaurant.images && restaurant.images.length > 0)
+        ? restaurant.images[0]
+        : 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=300&fit=crop';
+      infoSection.style.backgroundImage = `url('${bgImage}')`;
+
+      const headerInfo = document.createElement('div');
+      headerInfo.className = 'rest-header-info';
+
+      const restName = document.createElement('div');
+      restName.className = 'rest-name';
+      restName.textContent = name;
+
+      const restCategory = document.createElement('div');
+      restCategory.className = 'rest-category';
+      restCategory.textContent = category;
+
+      // Location information
+      const restLocation = document.createElement('div');
+      restLocation.className = 'rest-location';
+      restLocation.textContent = location;
+
+      // About/Description information
+      const restAbout = document.createElement('div');
+      restAbout.className = 'rest-about';
+      const description = restaurant.description_en || restaurant.description_th || '';
+      restAbout.textContent = description;
+
+      // Service badges (compact)
+      const serviceBadgesContainer = document.createElement('div');
+      serviceBadgesContainer.className = 'service-badges';
+      const services = serviceBadges(restaurant.service_type);
+      services.slice(0, 3).forEach(service => {
+        const badge = document.createElement('span');
+        badge.className = 'service-badge';
+        badge.textContent = service.text;
+        serviceBadgesContainer.appendChild(badge);
+      });
+
+      headerInfo.appendChild(restName);
+      headerInfo.appendChild(restCategory);
+      headerInfo.appendChild(restLocation);
+      headerInfo.appendChild(restAbout);
+      headerInfo.appendChild(serviceBadgesContainer);
+      infoSection.appendChild(headerInfo);
+
+      // Image gallery
+      const imageGallery = createImageGallery(restaurant.images, restaurant.videos);
+
+      topSection.appendChild(infoSection);
+      topSection.appendChild(imageGallery);
+      restCard.appendChild(topSection);
+
+      // Details grid
+      const detailsGrid = document.createElement('div');
+      detailsGrid.className = 'details-grid';
+
+      // Restaurant info
+      const infoCard = document.createElement('div');
+      infoCard.className = 'detail-item';
+      infoCard.innerHTML = `
+        <div class="detail-label">Category</div>
+        <div class="detail-value">${escapeHtml(category)}</div>
+      `;
+      detailsGrid.appendChild(infoCard);
+
+      const locationCard = document.createElement('div');
+      locationCard.className = 'detail-item';
+      locationCard.innerHTML = `
+        <div class="detail-label">Location</div>
+        <div class="detail-value">${escapeHtml(location)}</div>
+      `;
+      detailsGrid.appendChild(locationCard);
+
+      // Description
+      if (restaurant.description_en || restaurant.description_th) {
+        const descCard = document.createElement('div');
+        descCard.className = 'detail-item';
+        descCard.innerHTML = `
+          <div class="detail-label">About</div>
+          <div class="detail-value">${escapeHtml(restaurant.description_en || restaurant.description_th)}</div>
+        `;
+        detailsGrid.appendChild(descCard);
+      }
+
+      restCard.appendChild(detailsGrid);
+
+      // Menu section with horizontal scroll
+      if (restaurant.menu && Array.isArray(restaurant.menu) && restaurant.menu.length > 0) {
+        const menuSection = document.createElement('div');
+        menuSection.className = 'menu-section';
+
+        const menuTitle = document.createElement('div');
+        menuTitle.className = 'menu-title';
+        menuTitle.textContent = 'Menu Items';
+
+        // Add cart icon to menu section
+        const cartIcon = document.createElement('div');
+        cartIcon.id = 'cartIcon';
+        cartIcon.className = 'cart-icon-container';
+        cartIcon.style.display = 'none';
+        cartIcon.addEventListener('click', showCheckoutModal);
+        cartIcon.innerHTML = `
+          <div class="cart-icon">
+            🛒
+            <div id="cartCount" class="cart-count" style="display: none;">0</div>
+          </div>
+        `;
+
+        const menuContainer = document.createElement('div');
+        menuContainer.className = 'menu-container';
+
+        const menuScroll = document.createElement('div');
+        menuScroll.className = 'menu-scroll';
+
+        // Create menu items
+        restaurant.menu.forEach(menuItem => {
+          const menuItemElement = document.createElement('div');
+          menuItemElement.className = 'menu-item menu-item-card';
+          menuItemElement.setAttribute('data-item-id', menuItem.id || menuItem.name_en);
+
+          // Menu item image (with gradient fallback)
+          const menuItemImage = document.createElement('div');
+          menuItemImage.className = 'menu-item-image';
+
+          // Try to load the image, fall back to gradient if it fails
+          const img = new Image();
+          img.onload = function() {
+            menuItemImage.style.backgroundImage = `url('${this.src}')`;
+            menuItemImage.style.backgroundSize = 'cover';
+            menuItemImage.style.backgroundPosition = 'center';
+          };
+          img.onerror = function() {
+            // Keep the CSS gradient background as fallback
+            console.log('Menu image failed to load:', menuItem.image);
+          };
+          if (menuItem.image) {
+            img.src = getImageUrl(menuItem.image);
+          }
+
+          // Overlay with text
+          const overlay = document.createElement('div');
+          overlay.className = 'menu-item-overlay';
+
+          const menuItemName = document.createElement('div');
+          menuItemName.className = 'menu-item-name';
+          menuItemName.textContent = menuItem.name_en || menuItem.name_th || 'Menu Item';
+
+          const menuItemPrice = document.createElement('div');
+          menuItemPrice.className = 'menu-item-price';
+          menuItemPrice.textContent = menuItem.price ? `฿${menuItem.price}` : '';
+
+          overlay.appendChild(menuItemName);
+          overlay.appendChild(menuItemPrice);
+
+          // Add quantity controls (only for mobile_order or delivery)
+          const hasOrderableItems = restaurant &&
+            Array.isArray(restaurant.service_type) &&
+            (restaurant.service_type.includes('mobile_order') ||
+             restaurant.service_type.includes('delivery'));
+
+          console.log('Restaurant service types:', restaurant.service_type);
+          console.log('Has orderable items:', hasOrderableItems);
+
+          if (hasOrderableItems) {
+            const quantityControls = document.createElement('div');
+            quantityControls.className = 'quantity-controls';
+
+            const minusBtn = document.createElement('button');
+            minusBtn.className = 'quantity-btn';
+            minusBtn.textContent = '-';
+            minusBtn.onclick = (e) => {
+              e.stopPropagation();
+              removeFromCart(menuItem);
+            };
+
+            const quantityDisplay = document.createElement('div');
+            quantityDisplay.className = 'quantity-display';
+            quantityDisplay.textContent = '0';
+
+            const plusBtn = document.createElement('button');
+            plusBtn.className = 'quantity-btn';
+            plusBtn.textContent = '+';
+            plusBtn.onclick = (e) => {
+              e.stopPropagation();
+              addToCart(menuItem);
+            };
+
+            quantityControls.appendChild(minusBtn);
+            quantityControls.appendChild(quantityDisplay);
+            quantityControls.appendChild(plusBtn);
+            menuItemElement.appendChild(quantityControls);
+          }
+
+          menuItemElement.appendChild(menuItemImage);
+          menuItemElement.appendChild(overlay);
+          menuScroll.appendChild(menuItemElement);
+        });
+
+        // Navigation buttons
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'menu-nav prev';
+        prevBtn.innerHTML = '‹';
+
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'menu-nav next';
+        nextBtn.innerHTML = '›';
+
+        // Horizontal scroll functionality
+        let currentMenuScroll = 0;
+        const itemWidth = 106; // 100px + 6px gap
+        let visibleItems = 3; // default value
+        let maxScroll = 0;
+
+        function calculateScrollMetrics() {
+          // Get actual container width after rendering
+          const containerWidth = menuContainer.offsetWidth || 250; // fallback width
+          visibleItems = Math.floor(containerWidth / itemWidth) || 3;
+          maxScroll = Math.max(0, (restaurant.menu.length - visibleItems) * itemWidth);
+
+          console.log('Menu scroll metrics:', {
+            containerWidth,
+            visibleItems,
+            totalItems: restaurant.menu.length,
+            maxScroll
+          });
+        }
+
+        function updateMenuScroll() {
+          menuScroll.style.transform = `translateX(-${currentMenuScroll}px)`;
+
+          // Update button states
+          prevBtn.classList.toggle('disabled', currentMenuScroll <= 0);
+          nextBtn.classList.toggle('disabled', currentMenuScroll >= maxScroll);
+        }
+
+        prevBtn.addEventListener('click', () => {
+          calculateScrollMetrics(); // Recalculate in case of resize
+          if (currentMenuScroll > 0) {
+            currentMenuScroll = Math.max(0, currentMenuScroll - itemWidth * 2);
+            updateMenuScroll();
+          }
+        });
+
+        nextBtn.addEventListener('click', () => {
+          calculateScrollMetrics(); // Recalculate in case of resize
+          if (currentMenuScroll < maxScroll) {
+            currentMenuScroll = Math.min(maxScroll, currentMenuScroll + itemWidth * 2);
+            updateMenuScroll();
+          }
+        });
+
+        // Touch/swipe support
+        let startX = 0;
+        let currentX = 0;
+        let isDragging = false;
+
+        menuContainer.addEventListener('touchstart', (e) => {
+          startX = e.touches[0].clientX;
+          isDragging = true;
+        }, { passive: true });
+
+        menuContainer.addEventListener('touchmove', (e) => {
+          if (!isDragging) return;
+          currentX = e.touches[0].clientX;
+          e.preventDefault();
+        }, { passive: false });
+
+        menuContainer.addEventListener('touchend', () => {
+          if (!isDragging) return;
+          isDragging = false;
+          calculateScrollMetrics(); // Recalculate before touch action
+
+          const deltaX = startX - currentX;
+          if (Math.abs(deltaX) > 30) { // Minimum swipe distance
+            if (deltaX > 0 && currentMenuScroll < maxScroll) {
+              // Swipe left - scroll right
+              currentMenuScroll = Math.min(maxScroll, currentMenuScroll + itemWidth * 2);
+            } else if (deltaX < 0 && currentMenuScroll > 0) {
+              // Swipe right - scroll left
+              currentMenuScroll = Math.max(0, currentMenuScroll - itemWidth * 2);
+            }
+            updateMenuScroll();
+          }
+        });
+
+        menuContainer.appendChild(menuScroll);
+
+        menuSection.appendChild(menuTitle);
+        menuSection.appendChild(cartIcon);
+        menuSection.appendChild(menuContainer);
+        restCard.appendChild(menuSection);
+
+        // Update cart display after cart icon is created
+        setTimeout(() => updateCartDisplay(), 0);
+
+        // Initialize scroll state after DOM is added
+        setTimeout(() => {
+          calculateScrollMetrics();
+
+          // Only show navigation if needed
+          if (restaurant.menu.length > visibleItems) {
+            menuContainer.appendChild(prevBtn);
+            menuContainer.appendChild(nextBtn);
+          }
+
+          updateMenuScroll();
+        }, 100);
+      }
+
+      // Contact section
+      if (restaurant.contact) {
+        const contactSection = document.createElement('div');
+        contactSection.className = 'contact-section';
+
+        const contactInfo = [];
+        if (restaurant.contact.phone) contactInfo.push(`📞 ${restaurant.contact.phone}`);
+        if (restaurant.contact.line) contactInfo.push(`💬 Line: ${restaurant.contact.line}`);
+
+        // Check if restaurant has walk-in service to show map button
+        const hasWalkIn = restaurant.service_type && restaurant.service_type.includes('walk_in');
+        const mapButton = hasWalkIn && restaurant.map_embed_url ?
+          '<button class="contact-btn secondary map-btn-trigger">🗺️ View Map</button>' :
+          '<button class="contact-btn secondary">💬 Inquire</button>';
+
+        contactSection.innerHTML = `
+          <div class="contact-title">Contact Information</div>
+          <div class="contact-buttons">
+            <button class="contact-btn">📞 Call Now</button>
+            ${mapButton}
+          </div>
+        `;
+
+        // Add click event for map button
+        if (hasWalkIn && restaurant.map_embed_url) {
+          const mapTrigger = contactSection.querySelector('.map-btn-trigger');
+          mapTrigger.addEventListener('click', () => showMapModal(restaurant));
+        }
+
+        restCard.appendChild(contactSection);
+      }
+
+      // Add the card to container
+      container.appendChild(restCard);
+    }
+
+    // ===== LOAD RESTAURANT DATA =====
+    async function loadRestaurantData() {
+      try {
+        const response = await fetch(withBase('data/rest.json'));
+        const data = await response.json();
+        const restaurants = Array.isArray(data) ? data : (data.restaurants || []);
+        const restaurant = restaurants.find(r => r.id === restId);
+
+        if (!restaurant) {
+          document.getElementById('loadingState').style.display = 'none';
+          document.getElementById('errorState').style.display = 'block';
+          return;
+        }
+
+        renderRestDetails(restaurant);
+
+      } catch (error) {
+        console.error('Error loading restaurant data:', error);
+        document.getElementById('loadingState').style.display = 'none';
+        document.getElementById('errorState').style.display = 'block';
+        document.getElementById('errorState').innerHTML = `
+          <h3>Error</h3>
+          <p>Failed to load restaurant data</p>
+        `;
+      }
+    }
+
+    // ===== BACK BUTTON =====
+    document.getElementById('backBtn').addEventListener('click', () => {
+      const url = new URL('/category.html', location.origin);
+      url.searchParams.set('type', 'dining');
+      if (projectId) url.searchParams.set('project_id', projectId);
+      location.href = url.toString();
+    });
+
+    // ===== MAP MODAL FUNCTIONS =====
+    function showMapModal(restaurant) {
+      if (!restaurant.map_embed_url) return;
+
+      // Set modal content
+      document.getElementById('mapModalTitle').textContent = `${restaurant.name} - Location`;
+      document.getElementById('mapIframe').src = restaurant.map_embed_url;
+
+      // Set address and contact info
+      const addressEl = document.getElementById('mapAddress');
+      if (restaurant.address) {
+        addressEl.innerHTML = `<strong>Address:</strong><br>${escapeHtml(restaurant.address)}`;
+        addressEl.style.display = 'block';
+      } else {
+        addressEl.style.display = 'none';
+      }
+
+      const hoursEl = document.getElementById('mapHours');
+      if (restaurant.opening_hours) {
+        hoursEl.innerHTML = `<strong>Hours:</strong><br>${escapeHtml(restaurant.opening_hours)}`;
+        hoursEl.style.display = 'block';
+      } else {
+        hoursEl.style.display = 'none';
+      }
+
+      const contactEl = document.getElementById('mapContact');
+      if (restaurant.phone) {
+        contactEl.innerHTML = `<strong>Phone:</strong> <a href="tel:${escapeHtml(restaurant.phone)}">${escapeHtml(restaurant.phone)}</a>`;
+        contactEl.style.display = 'block';
+      } else {
+        contactEl.style.display = 'none';
+      }
+
+      // Show modal
+      document.getElementById('mapModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+
+      // Reset auto return timer when map is opened
+      resetAutoReturn();
+    }
+
+    function closeMapModal() {
+      document.getElementById('mapModal').style.display = 'none';
+      document.body.style.overflow = 'auto';
+      document.getElementById('mapIframe').src = 'about:blank';
+
+      // Reset auto return timer when map is closed
+      resetAutoReturn();
+    }
+
+    function resetAutoReturn() {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        const url = new URL('./menu.html', location.origin);
+        if (projectId) url.searchParams.set('project_id', projectId);
+        location.href = url.toString();
+      }, 60000);
+    }
+
+    // ===== AUTO RETURN =====
+    let timeout = setTimeout(() => {
+      const url = new URL('./menu.html', location.origin);
+      if (projectId) url.searchParams.set('project_id', projectId);
+      location.href = url.toString();
+    }, 60000);
+
+    // Reset timer on user interaction
+    ['click', 'touchstart', 'mousemove'].forEach(event => {
+      document.addEventListener(event, resetAutoReturn);
+    });
+
+    // ===== INITIALIZE =====
+    loadRestaurantData();
+  </script>
+</body>
+</html>

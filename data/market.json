@@ -1,0 +1,344 @@
+{
+  "markets": [
+    {
+      "id": "shop001",
+      "project_id": "prj001",
+      "name_th": "ซุปเปอร์มาร์เก็ต",
+      "name_en": "Supermarket",
+      "category_th": "ของใช้ในครัวเรือน",
+      "category_en": "Household",
+      "location_th": "ชั้นล่าง",
+      "location_en": "Ground Floor",
+      "service_type": ["walk_in", "delivery"],
+      "contact": {
+        "phone": "02-111-2222",
+        "line": "@supermarket"
+      },
+      "images": ["shop001-01.jpeg", "shop001-02.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "shop002",
+      "project_id": "prj002",
+      "name_th": "เซเว่น อีเลฟเว่น",
+      "name_en": "7-Eleven",
+      "category_th": "ร้านสะดวกซื้อ",
+      "category_en": "Convenience Store",
+      "location_th": "ชั้น 1",
+      "location_en": "1st Floor",
+      "service_type": ["walk_in"],
+      "contact": {
+        "phone": "02-222-3333",
+        "line": "@711"
+      },
+      "images": ["shop002-01.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "shop003",
+      "project_id": "prj003",
+      "name_th": "ร้านยา",
+      "name_en": "Pharmacy",
+      "category_th": "สุขภาพและความงาม",
+      "category_en": "Health & Beauty",
+      "location_th": "ชั้น 1",
+      "location_en": "1st Floor",
+      "service_type": ["walk_in", "delivery"],
+      "contact": {
+        "phone": "02-333-4444",
+        "line": "@pharmacy"
+      },
+      "images": ["shop003-01.jpeg", "shop003-02.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "shop004",
+      "project_id": "prj001",
+      "name_th": "บริการซักรีด",
+      "name_en": "Laundry Service",
+      "category_th": "บริการ",
+      "category_en": "Service",
+      "location_th": "ชั้นล่าง",
+      "location_en": "Ground Floor",
+      "service_type": ["walk_in", "pickup"],
+      "contact": {
+        "phone": "02-444-5555",
+        "line": "@laundry"
+      },
+      "images": ["shop004-01.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "shop005",
+      "project_id": "prj002",
+      "name_th": "บริการเสริมสวย",
+      "name_en": "Beauty Service",
+      "category_th": "บริการความงาม",
+      "category_en": "Beauty Service",
+      "location_th": "ชั้น 2",
+      "location_en": "2nd Floor",
+      "service_type": ["appointment"],
+      "contact": {
+        "phone": "02-555-6666",
+        "line": "@beauty"
+      },
+      "images": ["shop005-01.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "shop006",
+      "project_id": "prj003",
+      "name_th": "ซ่อมมือถือ",
+      "name_en": "Phone Repair Service",
+      "category_th": "บริการซ่อม",
+      "category_en": "Repair Service",
+      "location_th": "ชั้น 1",
+      "location_en": "1st Floor",
+      "service_type": ["walk_in"],
+      "contact": {
+        "phone": "02-666-7777",
+        "line": "@phonerepair"
+      },
+      "images": ["shop006-01.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "shop007",
+      "project_id": "prj004",
+      "name_th": "มินิมาร์ท",
+      "name_en": "Mini Mart",
+      "category_th": "ร้านสะดวกซื้อ",
+      "category_en": "Convenience Store",
+      "location_th": "ชั้นล่าง",
+      "location_en": "Ground Floor",
+      "service_type": ["walk_in"],
+      "contact": {
+        "phone": "02-777-8888",
+        "line": "@minimart"
+      },
+      "images": ["shop007-01.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "shop008",
+      "project_id": "prj004",
+      "name_th": "บริการทำความสะอาด",
+      "name_en": "Cleaning Service",
+      "category_th": "บริการทำความสะอาด",
+      "category_en": "Cleaning Service",
+      "location_th": "ชั้นล่าง",
+      "location_en": "Ground Floor",
+      "service_type": ["appointment", "on_call"],
+      "contact": {
+        "phone": "02-888-9999",
+        "line": "@cleaning"
+      },
+      "images": ["shop008-01.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "shop009",
+      "project_id": "prj001",
+      "name_th": "ร้านหนังสือ",
+      "name_en": "Bookstore",
+      "category_th": "หนังสือและเครื่องเขียน",
+      "category_en": "Books & Stationery",
+      "location_th": "ชั้น 1",
+      "location_en": "1st Floor",
+      "service_type": ["walk_in"],
+      "contact": {
+        "phone": "02-999-0001",
+        "line": "@bookstore"
+      },
+      "images": ["shop009-01.jpeg", "shop009-02.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "shop010",
+      "project_id": "prj001",
+      "name_th": "ร้านเสื้อผ้า",
+      "name_en": "Clothing Store",
+      "category_th": "เสื้อผ้าและแฟชั่น",
+      "category_en": "Clothing & Fashion",
+      "location_th": "ชั้น 2",
+      "location_en": "2nd Floor",
+      "service_type": ["walk_in"],
+      "contact": {
+        "phone": "02-000-1112",
+        "line": "@clothing"
+      },
+      "images": ["shop010-01.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "shop011",
+      "project_id": "prj001",
+      "name_th": "บริการจัดส่งพัสดุ",
+      "name_en": "Package Delivery Service",
+      "category_th": "บริการจัดส่ง",
+      "category_en": "Delivery Service",
+      "location_th": "ชั้นล่าง",
+      "location_en": "Ground Floor",
+      "service_type": ["walk_in", "pickup"],
+      "contact": {
+        "phone": "02-111-2223",
+        "line": "@delivery"
+      },
+      "images": ["shop011-01.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "shop012",
+      "project_id": "prj002",
+      "name_th": "ร้านขายของเล่น",
+      "name_en": "Toy Store",
+      "category_th": "ของเล่นและเกมส์",
+      "category_en": "Toys & Games",
+      "location_th": "ชั้น 2",
+      "location_en": "2nd Floor",
+      "service_type": ["walk_in"],
+      "contact": {
+        "phone": "02-222-3334",
+        "line": "@toystore"
+      },
+      "images": ["shop012-01.jpeg", "shop012-02.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "shop013",
+      "project_id": "prj002",
+      "name_th": "ร้านเบเกอรี่",
+      "name_en": "Bakery",
+      "category_th": "ขนมปังและเบเกอรี่",
+      "category_en": "Bakery & Bread",
+      "location_th": "ชั้นล่าง",
+      "location_en": "Ground Floor",
+      "service_type": ["walk_in"],
+      "contact": {
+        "phone": "02-333-4445",
+        "line": "@bakery"
+      },
+      "images": ["shop013-01.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "shop014",
+      "project_id": "prj002",
+      "name_th": "บริการซ่อมนาฬิกา",
+      "name_en": "Watch Repair Service",
+      "category_th": "บริการซ่อมนาฬิกา",
+      "category_en": "Watch Repair Service",
+      "location_th": "ชั้น 1",
+      "location_en": "1st Floor",
+      "service_type": ["walk_in", "appointment"],
+      "contact": {
+        "phone": "02-444-5556",
+        "line": "@watchrepair"
+      },
+      "images": ["shop014-01.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "shop015",
+      "project_id": "prj003",
+      "name_th": "ร้านอุปกรณ์กีฬา",
+      "name_en": "Sports Equipment",
+      "category_th": "อุปกรณ์กีฬา",
+      "category_en": "Sports & Equipment",
+      "location_th": "ชั้น 1",
+      "location_en": "1st Floor",
+      "service_type": ["walk_in"],
+      "contact": {
+        "phone": "02-555-6667",
+        "line": "@sports"
+      },
+      "images": ["shop015-01.jpeg", "shop015-02.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "shop016",
+      "project_id": "prj003",
+      "name_th": "ร้านขายผลไม้",
+      "name_en": "Fruit Shop",
+      "category_th": "ผลไม้สด",
+      "category_en": "Fresh Fruits",
+      "location_th": "ชั้นล่าง",
+      "location_en": "Ground Floor",
+      "service_type": ["walk_in"],
+      "contact": {
+        "phone": "02-666-7778",
+        "line": "@fruitshop"
+      },
+      "images": ["shop016-01.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "shop017",
+      "project_id": "prj003",
+      "name_th": "บริการถ่ายเอกสาร",
+      "name_en": "Copy & Print Service",
+      "category_th": "บริการถ่ายเอกสาร",
+      "category_en": "Copy & Print Service",
+      "location_th": "ชั้น 2",
+      "location_en": "2nd Floor",
+      "service_type": ["walk_in"],
+      "contact": {
+        "phone": "02-777-8889",
+        "line": "@copyprint"
+      },
+      "images": ["shop017-01.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "shop018",
+      "project_id": "prj004",
+      "name_th": "ร้านขายแว่นตา",
+      "name_en": "Optical Shop",
+      "category_th": "แว่นตาและอุปกรณ์สายตา",
+      "category_en": "Eyewear & Optical",
+      "location_th": "ชั้น 1",
+      "location_en": "1st Floor",
+      "service_type": ["walk_in", "appointment"],
+      "contact": {
+        "phone": "02-888-9990",
+        "line": "@optical"
+      },
+      "images": ["shop018-01.jpeg", "shop018-02.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "shop019",
+      "project_id": "prj004",
+      "name_th": "ร้านขายดอกไม้",
+      "name_en": "Flower Shop",
+      "category_th": "ดอกไม้และต้นไม้",
+      "category_en": "Flowers & Plants",
+      "location_th": "ชั้นล่าง",
+      "location_en": "Ground Floor",
+      "service_type": ["walk_in"],
+      "contact": {
+        "phone": "02-999-0001",
+        "line": "@flowershop"
+      },
+      "images": ["shop019-01.jpeg"],
+      "status": "open"
+    },
+    {
+      "id": "shop020",
+      "project_id": "prj004",
+      "name_th": "บริการซักแห้ง",
+      "name_en": "Dry Cleaning Service",
+      "category_th": "บริการซักแห้ง",
+      "category_en": "Dry Cleaning Service",
+      "location_th": "ชั้นล่าง",
+      "location_en": "Ground Floor",
+      "service_type": ["walk_in", "pickup"],
+      "contact": {
+        "phone": "02-000-1113",
+        "line": "@drycleaning"
+      },
+      "images": ["shop020-01.jpeg"],
+      "status": "open"
+    }
+  ]
+}

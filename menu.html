@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover"
+  />
+  <title>Main Menu</title>
+
+  <style>
+    /* ✅ รีเซ็ตพื้นฐาน */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* ✅ ขนาดเต็มหน้าจอและจัดตำแหน่งกึ่งกลาง */
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      background-color: black; /* พื้นหลัง */
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* ✅ Container ของกริดเมนู */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      width: 100vw;
+      height: 100vh;
+      max-width: 56.25vh;        /* 9:16 ratio */
+      background-color: white;
+    }
+
+    /* ✅ video ให้แสดงเต็มโดยไม่ตัด */
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background-color: white;
+      display: block;
+      cursor: pointer;
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* ✅ วิดีโอแถวบนสุด (project.mp4) */
+    .video-top {
+      grid-column: 1 / span 2;
+      grid-row: 1 / 2;
+    }
+
+    /* ✅ ไม่ให้มีช่องว่างระหว่างช่อง */
+    .video-grid > * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="video-grid">
+    <!-- ✅ วิดีโอบนสุดแบบเต็มแถว -->
+    <video class="video-top" src="/opt/yodeck/medias/project.mp4" autoplay muted loop playsinline></video>
+
+    <!-- ✅ 6 วิดีโอด้านล่างแบบ 2 คอลัมน์ 3 แถว -->
+    <video src="/opt/yodeck/medias/delivery.mp4" autoplay muted loop playsinline onclick="navigate('./category.html?type=delivery')"></video>
+    <video src="/opt/yodeck/medias/deal.mp4" autoplay muted loop playsinline onclick="navigate('./category.html?type=deal')"></video>
+    <video src="/opt/yodeck/medias/dining.mp4" autoplay muted loop playsinline onclick="navigate('./category.html?type=dining')"></video>
+    <video src="/opt/yodeck/medias/daily.mp4" autoplay muted loop playsinline onclick="navigate('./category.html?type=daily')"></video>
+    <video src="/opt/yodeck/medias/juristic.mp4" autoplay muted loop playsinline onclick="navigate('./category.html?type=juristic')"></video>
+    <video src="/opt/yodeck/medias/ondemand.mp4" autoplay muted loop playsinline onclick="navigate('./category.html?type=ondemand')"></video>
+  </div>
+
+  <script>
+    // อ่าน project_id จาก URL ปัจจุบัน
+const qs = new URLSearchParams(location.search);
+const projectId = qs.get('project_id') || '';
+    // ✅ รองรับการเปิดอัตโนมัติบน iOS/macOS
+    const isIOS = /iPad|iPhone|Macintosh/.test(navigator.userAgent);
+    const allVideos = document.querySelectorAll('video');
+    allVideos.forEach(v => {
+      if (isIOS) v.muted = true;
+      v.setAttribute('muted', '');
+      v.setAttribute('playsinline', '');
+      v.setAttribute('autoplay', '');
+      v.play().catch(()=>{});
+    });
+
+// ไปยังหน้า category พร้อมพก project_id (ถ้ามี)
+function navigate(url) {
+  const u = new URL(url, location.origin);
+  if (projectId) u.searchParams.set('project_id', projectId);
+  location.href = u.toString();
+}
+
+    // ✅ Auto Return หากไม่มีการแตะจอเกิน 1 นาที
+    let timeout;
+    function resetInactivityTimer() {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        // Check if we're in /ann/ directory, if so use ann/signage.html
+        const currentPath = window.location.pathname;
+        const signagePath = currentPath.includes('/ann/') ? './signage.html' : './ann/signage.html';
+        window.location.href = `${signagePath}?project_id=${encodeURIComponent(projectId)}`;
+      }, 60000);
+    }
+    window.addEventListener('click', resetInactivityTimer);
+    window.addEventListener('touchstart', resetInactivityTimer);
+    window.addEventListener('mousemove', resetInactivityTimer);
+    resetInactivityTimer();
+
+    // ✅ ตรวจสอบเวอร์ชันล่าสุดทุก 1 นาที หากไม่ตรง → โหลดใหม่
+    window.currentVersion = '';
+    setInterval(() => {
+      fetch('./version.txt', { cache: 'no-store' })
+        .then(res => res.text())
+        .then(serverVersion => {
+          const v = serverVersion.trim();
+          if (window.currentVersion && window.currentVersion !== v) {
+            console.log('🔁 New version detected → Reloading...');
+            location.reload();
+          }
+          window.currentVersion = v;
+        })
+        .catch(()=>{});
+    }, 60000);
+  </script>
+</body>
+</html>
