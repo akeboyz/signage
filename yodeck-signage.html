@@ -122,39 +122,99 @@
         elWeb.src='about:blank'; elWeb.style.display='none';
       }
 
-      // Enhanced media detection with local files
+      // Build Yodeck media URL from ID
+      function buildYodeckMediaUrl(mediaId, format = 'original') {
+        // Yodeck CDN URL patterns
+        const patterns = [
+          `https://cdn.yodeck.com/media/${mediaId}`,
+          `https://media.yodeck.com/${mediaId}`,
+          `https://assets.yodeck.com/media/${mediaId}`,
+          `https://storage.yodeck.com/media/${mediaId}/${format}`
+        ];
+        return patterns[0]; // Try primary pattern first
+      }
+
+      // Parse media from URL parameters
+      function parseMediaFromParams(){
+        const mediaList = [];
+
+        // Check for individual media parameters
+        for (let i = 1; i <= 20; i++) {
+          const mediaParam = qs.get(`media${i}`);
+          const titleParam = qs.get(`title${i}`) || `Media ${i}`;
+          const typeParam = qs.get(`type${i}`) || 'image';
+          const durationParam = parseInt(qs.get(`duration${i}`)) || (typeParam === 'video' ? 30 : IMG_DURATION_SEC);
+
+          if (mediaParam) {
+            let src = mediaParam;
+
+            // If it's just a number, assume it's a Yodeck media ID
+            if (/^\d+$/.test(mediaParam)) {
+              src = buildYodeckMediaUrl(mediaParam);
+            }
+
+            mediaList.push({
+              type: typeParam,
+              src: src,
+              duration: durationParam,
+              title: titleParam,
+              mediaId: /^\d+$/.test(mediaParam) ? mediaParam : null
+            });
+          }
+        }
+
+        // Check for comma-separated media IDs
+        const mediaIds = qs.get('media_ids');
+        if (mediaIds) {
+          const ids = mediaIds.split(',');
+          ids.forEach((id, index) => {
+            if (id.trim()) {
+              mediaList.push({
+                type: 'image', // Default to image
+                src: buildYodeckMediaUrl(id.trim()),
+                duration: IMG_DURATION_SEC,
+                title: `Yodeck Media ${id.trim()}`,
+                mediaId: id.trim()
+              });
+            }
+          });
+        }
+
+        return mediaList;
+      }
+
+      // Enhanced media detection with Yodeck integration
       function detectYodeckMedia(){
+        // First, try to get media from URL parameters
+        const paramMedia = parseMediaFromParams();
+        if (paramMedia.length > 0) {
+          debug(`Found ${paramMedia.length} media from parameters`);
+          return paramMedia;
+        }
+
+        // Fallback to project-specific content
         const mediaList = [];
 
         if (projectId === 'prj003') {
-          // Mahogany project media - mix of local and remote
+          // Try Yodeck media ID first, then fallback
           mediaList.push(
-            // Local images from medias folder
-            {type: 'image', src: './medias/mahogany-lobby.jpg', duration: IMG_DURATION_SEC, title: 'Mahogany Lobby'},
-            {type: 'image', src: './medias/mahogany-pool.jpg', duration: IMG_DURATION_SEC, title: 'Swimming Pool'},
-            {type: 'image', src: './medias/mahogany-room.jpg', duration: IMG_DURATION_SEC, title: 'Model Room'},
-            // Unsplash fallbacks for missing local files
+            {type: 'image', src: buildYodeckMediaUrl('26089873'), duration: IMG_DURATION_SEC, title: 'Yodeck Media 26089873', mediaId: '26089873'},
             {type: 'image', src: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1080&h=1920&fit=crop', duration: IMG_DURATION_SEC, title: 'Luxury Property'},
             {type: 'image', src: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1080&h=1920&fit=crop', duration: IMG_DURATION_SEC, title: 'Modern Living'},
-            {type: 'image', src: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1080&h=1920&fit=crop', duration: IMG_DURATION_SEC, title: 'Architecture'},
-            // Interactive pages
             {type: 'url', src: './index.html', duration: URL_DURATION_SEC, title: 'Main Website'},
             {type: 'url', src: './unit-signage.html', duration: URL_DURATION_SEC, title: 'Available Units'}
           );
         } else if (projectId === 'prj002') {
-          // Restaurant project
           mediaList.push(
             {type: 'image', src: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1080&h=1920&fit=crop', duration: IMG_DURATION_SEC, title: 'Fine Dining'},
             {type: 'url', src: './rest-signage.html', duration: URL_DURATION_SEC, title: 'Restaurant Menu'}
           );
         } else if (projectId === 'prj001') {
-          // Shopping project
           mediaList.push(
             {type: 'image', src: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1080&h=1920&fit=crop', duration: IMG_DURATION_SEC, title: 'Shopping Center'},
             {type: 'url', src: './shop-signage.html', duration: URL_DURATION_SEC, title: 'Store Directory'}
           );
         } else {
-          // Default content
           mediaList.push(
             {type: 'image', src: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1080&h=1920&fit=crop', duration: IMG_DURATION_SEC, title: 'Welcome'},
             {type: 'url', src: './index.html', duration: URL_DURATION_SEC, title: 'Main Site'}
